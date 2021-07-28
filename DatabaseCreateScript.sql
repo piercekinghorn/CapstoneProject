@@ -16,7 +16,7 @@ create table labEquipment
 
 insert into labEquipment values
 	(1, 'Automatic Level', 'Cairns', 'ROK 28/LG.01', 'Civil', 'Research and consulting', null, null);
-//test
+
 create table labBooking
 (book_id int unsigned not null auto_increment primary key,
   equip_ID int not null references labEquipment(equip_id),
@@ -56,3 +56,6 @@ create table authorized_users
 insert into authorized_users values 
   ('admin', sha1('password')
  );
+
+-- comment
+-- hello
