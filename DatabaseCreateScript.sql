@@ -57,3 +57,4 @@ insert into authorized_users values
   ('admin', sha1('password')
  );
 
+-- comment
