@@ -56,7 +56,3 @@ create table authorized_users
 insert into authorized_users values 
   ('admin', sha1('password')
  );
-
--- comment
--- hello
--- test
