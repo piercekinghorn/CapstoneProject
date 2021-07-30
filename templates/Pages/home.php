@@ -229,6 +229,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                     </div>
                 </div>
             </div>
+            <div class="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class</div>
         </div>
     </main>
 </body>
