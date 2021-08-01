@@ -1,4 +1,3 @@
-README-mods
 # Capstone Project
 
 ### Resources Directory
@@ -7,7 +6,7 @@ README-mods
 
 [Sprint Review Videos](https://drive.google.com/drive/u/1/folders/13LeweaKCsdYLkrc6tjZeUculwS8SzRbZ) (Weekly sprint reviews)
 
-[Project Boards](https://github.com/RJGY/capstoneproject/projects/1) 
+[Project Boards](https://github.com/RJGY/capstoneproject/projects/3) 
 
 [Source code](https://github.com/RJGY/capstoneproject)
 
@@ -20,3 +19,4 @@ ___
 - [Pierce Kinghorn](https://google.com.au "Link not set") needs to be set
 - [Nathan Snow](https://github.com/nathansnow1981/nathansnow1981)
 - Jack Rolfe
+- Nick 
