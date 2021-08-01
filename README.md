@@ -3,13 +3,9 @@ README-mods
 
 ### Resources Directory
 
-[Documents](https://drive.google.com/drive/u/1/folders/13LeweaKCsdYLkrc6tjZeUculwS8SzRbZ) (Reports, design specs etc)
+[Documentation](https://cqu365-my.sharepoint.com/:f:/g/personal/jack_rolfe_cqumail_com/EtysiLwBA1NOqG0zRGE6OJMBX_W6052omkSvq99B6_lfXA?e=rdQcFr) (Reports, design specs etc)
 
-[Diagrams](https://drive.google.com/drive/u/1/folders/13LeweaKCsdYLkrc6tjZeUculwS8SzRbZ) (UML class diagrams, ERDs etc)
-
-[PowerPoint presentations](https://drive.google.com/drive/u/1/folders/13LeweaKCsdYLkrc6tjZeUculwS8SzRbZ)
-
-[Videos](https://drive.google.com/drive/u/1/folders/13LeweaKCsdYLkrc6tjZeUculwS8SzRbZ) (Weekly sprint reviews)
+[Sprint Review Videos](https://drive.google.com/drive/u/1/folders/13LeweaKCsdYLkrc6tjZeUculwS8SzRbZ) (Weekly sprint reviews)
 
 [Project Boards](https://github.com/RJGY/capstoneproject/projects/1) 
 
