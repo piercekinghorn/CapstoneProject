@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\I18n\FrozenTime;
+
 /**
  * Labequipment Controller
  *
@@ -113,19 +115,26 @@ class LabequipmentController extends AppController
     public function book($id = null)
     {
         $this->loadModel('Labbooking');
-        $labbooking = $this->Labequipment->get($id, [
-            'contain' => [],
+        $labbooking = $this->Labbooking->newEntity([
+            'book_ID' => 200,
+            'equip_ID' => 0,
+            'staff_ID' => 0,
+            'student_ID' => 0,
+            'date_' => FrozenTime::now(),
+            'book_status' => 0,
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $Labbooking = $this->Labequipment->patchEntity($labbooking, $this->request->getData());
-             if ($this->Labbooking->save($labbooking)) {
-                $this->Flash->success(__('The labequipment has been saved.'));
+            $Labbooking = $this->Labbooking->patchEntity($labbooking, $this->request->getData());
+            if ($this->Labbooking->save($labbooking)) {
+                $this->Flash->success(__('The booking has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The labequipment could not be saved. Please, try again.'));
+            $this->Flash->error(__('The booking could not be saved. Please, try again.'));
         }
-        $this->set(compact('labequipment'));
+        $this->set(compact('labbooking'));
+
+        return $this->redirect(['action' => 'index']);
     }
 
 }

@@ -6,7 +6,7 @@
 ?>
 <div class="labbooking index content">
     <?= $this->Html->link(__('New Labbooking'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Labbooking') ?></h3>
+    <h3><?= __('Lab Booking') ?></h3>
     <div class="table-responsive">
         <table>
             <thead>
@@ -16,7 +16,7 @@
                     <th><?= $this->Paginator->sort('staff_ID') ?></th>
                     <th><?= $this->Paginator->sort('student_ID') ?></th>
                     <th><?= $this->Paginator->sort('date_') ?></th>
-                    <th><?= $this->Paginator->sort('book_status') ?></th>
+                    <th><?= $this->Paginator->sort('booking_status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
