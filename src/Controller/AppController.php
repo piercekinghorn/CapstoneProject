@@ -50,4 +50,22 @@ class AppController extends Controller
          */
         //$this->loadComponent('FormProtection');
     }
+
+    /*public function book($id = null)
+    {
+        $labbooking = $this->Labequipment->get($id, [
+            'contain' => [],
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $Labbooking = $this->Labequipment->patchEntity($labbooking, $this->request->getData());
+             if ($this->Labbooking->save($labbooking)) {
+                $this->Flash->success(__('The labequipment has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The labequipment could not be saved. Please, try again.'));
+        }
+        $this->set(compact('labequipment'));
+    }*/
+
 }

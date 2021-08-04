@@ -26,6 +26,7 @@
                     echo $this->Form->control('equip_whs');
                 ?>
             </fieldset>
+            <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>

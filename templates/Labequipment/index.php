@@ -37,9 +37,10 @@
                         <?= $this->Html->link(__('View'), ['action' => 'view', $labequipment->equip_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $labequipment->equip_id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $labequipment->equip_id], ['confirm' => __('Are you sure you want to delete # {0}?', $labequipment->equip_id)]) ?>
+                        <?= $this->Form->postLink(__('Book'), ['action' => 'book', $labequipment->equip_id], ['confirm' => __('Are you sure you want to Book # {0}?', $labequipment->equip_id)]) ?> <!-- Lab Booking Button -->
                     </td>
-                </tr>
                 <?php endforeach; ?>
+                </tr>
             </tbody>
         </table>
     </div>
