@@ -50,6 +50,10 @@
                     <th><?= __('Equip Id') ?></th>
                     <td><?= $this->Number->format($labequipment->equip_id) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Equip Status') ?></th>
+                    <td><?= $this->Number->format($labequipment->equip_status) ?></td>
+                </tr>
             </table>
         </div>
     </div>

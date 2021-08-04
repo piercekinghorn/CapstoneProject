@@ -24,6 +24,10 @@
             </thead>
             <tbody>
                 <?php foreach ($labequipment as $labequipment): ?>
+                <?php
+                if ($labequipment->equip_status == '1') {
+                    // code...
+                ?>
                 <tr>
                     <td><?= $this->Number->format($labequipment->equip_id) ?></td>
                     <td><?= h($labequipment->equip_name) ?></td>
@@ -39,7 +43,7 @@
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $labequipment->equip_id], ['confirm' => __('Are you sure you want to delete # {0}?', $labequipment->equip_id)]) ?>
                     </td>
                 </tr>
-                <?php endforeach; ?>
+                <?php } endforeach; ?>
             </tbody>
         </table>
     </div>

@@ -24,6 +24,7 @@
                     echo $this->Form->control('equip_details');
                     echo $this->Form->control('equip_media');
                     echo $this->Form->control('equip_whs');
+                    echo $this->Form->control('equip_status');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

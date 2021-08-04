@@ -94,11 +94,18 @@ class LabequipmentController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $labequipment = $this->Labequipment->get($id);
-        if ($this->Labequipment->delete($labequipment)) {
-            $this->Flash->success(__('The labequipment has been deleted.'));
-        } else {
+        $labequipment->equip_status = '0';
+
+                if ($this->request->is(['patch', 'post', 'put'])) {
+            $labequipment = $this->Labequipment->patchEntity($labequipment, $this->request->getData());
+            if ($this->Labequipment->save($labequipment)) {
+                $this->Flash->success(__('The labequipment has been deleted.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
             $this->Flash->error(__('The labequipment could not be deleted. Please, try again.'));
         }
+        $this->set(compact('labequipment'));
 
         return $this->redirect(['action' => 'index']);
     }
