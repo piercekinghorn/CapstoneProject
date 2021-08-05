@@ -108,33 +108,28 @@ class LabequipmentController extends AppController
 
     // Book Equipment Function
     /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     * Book method
+     * @param string|null $id Labequipment id.
+     * @return \Cake\Http\Response|null|void Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
+    
     public function book($id = null)
     {
         $this->loadModel('Labbooking');
-        $labbooking = $this->Labbooking->newEntity([
-            'book_ID' => 200,
-            'equip_ID' => 0,
-            'staff_ID' => 0,
-            'student_ID' => 0,
-            'date_' => FrozenTime::now(),
-            'book_status' => 0,
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
+        $labbooking = $this->Labbooking->newEmptyEntity();
+        if ($this->request->is('post')) {
             $Labbooking = $this->Labbooking->patchEntity($labbooking, $this->request->getData());
             if ($this->Labbooking->save($labbooking)) {
                 $this->Flash->success(__('The booking has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The booking could not be saved. Please, try again.'));
+            $this->Flash->error(__('The booking could not be saved. Please, try again. Labbooking: ' . $labbooking));
         }
         $this->set(compact('labbooking'));
 
         return $this->redirect(['action' => 'index']);
     }
-
+    
 }
