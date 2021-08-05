@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\I18n\FrozenTime;
-
+use Cake\ORM\TableRegistry;
 /**
  * Labequipment Controller
  *
@@ -13,6 +13,11 @@ use Cake\I18n\FrozenTime;
  */
 class LabequipmentController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->loadComponent('Book');
+    }
     /**
      * Index method
      *
@@ -104,32 +109,4 @@ class LabequipmentController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
-
-    // Book Equipment Function
-    /**
-     * Book method
-     * @param string|null $id Labequipment id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    
-    public function book($id = null)
-    {
-        $this->loadModel('Labbooking');
-        $labbooking = $this->Labbooking->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $Labbooking = $this->Labbooking->patchEntity($labbooking, $this->request->getData());
-            if ($this->Labbooking->save($labbooking)) {
-                $this->Flash->success(__('The booking has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The booking could not be saved. Please, try again. Labbooking: ' . $labbooking));
-        }
-        $this->set(compact('labbooking'));
-
-        return $this->redirect(['action' => 'index']);
-    }
-    
 }
