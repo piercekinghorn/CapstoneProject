@@ -26,7 +26,6 @@
                 <?php foreach ($labequipment as $labequipment): ?>
                 <?php
                 if ($labequipment->equip_status == '1') {
-                    // code...
                 ?>
                 <tr>
                     <td><?= $this->Number->format($labequipment->equip_id) ?></td>
