@@ -92,13 +92,22 @@ class LabequipmentController extends AppController
      */
     public function delete($id = null)
     {
+        // The delete function now unlists the labequipment rather then deleting it.
+        // The index page only shows equipment that have a status of 1, pressing delete sets it to zero.
         $this->request->allowMethod(['post', 'delete']);
         $labequipment = $this->Labequipment->get($id);
-        if ($this->Labequipment->delete($labequipment)) {
-            $this->Flash->success(__('The labequipment has been deleted.'));
-        } else {
+        $labequipment->equip_status = '0';
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $labequipment = $this->Labequipment->patchEntity($labequipment, $this->request->getData());
+            if ($this->Labequipment->save($labequipment)) {
+                $this->Flash->success(__('The labequipment has been deleted.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
             $this->Flash->error(__('The labequipment could not be deleted. Please, try again.'));
         }
+        $this->set(compact('labequipment'));
 
         return $this->redirect(['action' => 'index']);
     }

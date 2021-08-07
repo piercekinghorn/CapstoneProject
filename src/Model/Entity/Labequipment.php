@@ -16,6 +16,7 @@ use Cake\ORM\Entity;
  * @property string|null $equip_details
  * @property string|null $equip_media
  * @property string|null $equip_whs
+ * @property int $equip_status
  */
 class Labequipment extends Entity
 {
@@ -36,5 +37,6 @@ class Labequipment extends Entity
         'equip_details' => true,
         'equip_media' => true,
         'equip_whs' => true,
+        'equip_status' => true,
     ];
 }

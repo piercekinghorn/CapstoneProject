@@ -56,7 +56,7 @@ class LabequipmentTable extends Table
 
         $validator
             ->scalar('equip_name')
-            ->maxLength('equip_name', 25)
+            ->maxLength('equip_name', 50)
             ->requirePresence('equip_name', 'create')
             ->notEmptyString('equip_name');
 
@@ -91,6 +91,11 @@ class LabequipmentTable extends Table
             ->scalar('equip_whs')
             ->maxLength('equip_whs', 200)
             ->allowEmptyString('equip_whs');
+
+        $validator
+            ->integer('equip_status')
+            ->requirePresence('equip_status', 'create')
+            ->notEmptyString('equip_status');
 
         return $validator;
     }

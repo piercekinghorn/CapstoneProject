@@ -33,6 +33,7 @@
                         <?= $this->Html->link(__('View'), ['action' => 'view', $labbooking->book_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $labbooking->book_id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $labbooking->book_id], ['confirm' => __('Are you sure you want to delete # {0}?', $labbooking->book_id)]) ?>
+ 
                     </td>
                 </tr>
                 <?php endforeach; ?>

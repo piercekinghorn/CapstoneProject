@@ -12,23 +12,24 @@ create table labequipment
   equip_discipline varchar(25) null,
   equip_details varchar(25) null,
   equip_media varchar(50) null, 
-  equip_whs varchar(200) null 
+  equip_whs varchar(200) null,
+  equip_status int(1) not null
 );
 
 insert into labequipment values
-	(1, 'Automatic Level', 'Cairns', 'ROK 28/LG.01', 'Civil', 'Research and consulting', null, null),
-  (2, 'Automatic Level tripod', 'Cairns', 'ROK 28/LG.01', 'Civil', 'Research and consulting', null, null),
-  (3, 'Leica Total Station (S06 plus)', 'Cairns', 'ROK 28/LG.04', 'Civil', 'Research and consulting', null, null),
-  (4, 'Leica Total Station (S06)', 'Cairns', 'ROK 28/LG.04', 'Civil', 'Research and consulting', null, null),
-  (5, 'leica total Station tripod', 'Cairns', 'ROK 28/LG.04', 'Civil', 'Research and consulting', null, null),
-  (6, 'GNSS Leica Receiver (GS14)', 'Cairns', 'ROK 28/LG.04', 'Civil', 'Research and consulting', null, null),
-  (7, '2 Tonne Bridge Crane', 'Cairns', 'ROK 28/LG.01', 'Civil', 'Research and consulting', null, null),
-  (8, 'Flash Forge Creator 3 (FDM)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://www.flashforge.com/product-detail/1'),
-  (9, 'Funmat HT 3D Printer (FDM)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://www.intamsys.com/funmat-ht-3d-printer/'),
-  (10, 'Formbot Trex 3 (FDM)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://www.formbot3d.com/vivedino-t-rex-30-multi-function-big-size-3d-printer-p0062.html'),
-  (11, 'Formlabs 2 (SLA)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://formlabs.com/3d-printers/form-2/'),
-  (12, 'Tenma Programmable Power Supply 0-30V 10Amps', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null,'http://www.farnell.com/datasheets/2805374.pdf'),
-  (13, 'FESTO / LabVolt 8006 Power & Machines Trainers (qty 3)', 'Melbourne', '6.25', 'Electrical', 'ENEX20001', null,'https://www.labvolt.com/solutions/6_electricity_and_new_energy/59-8006-10_computer_assisted_0_2_kw_electromechanical_training_system');
+	(1, 'Automatic Level', 'Cairns', 'ROK 28/LG.01', 'Civil', 'Research and consulting', null, null, 1),
+  (2, 'Automatic Level tripod', 'Cairns', 'ROK 28/LG.01', 'Civil', 'Research and consulting', null, null, 1),
+  (3, 'Leica Total Station (S06 plus)', 'Cairns', 'ROK 28/LG.04', 'Civil', 'Research and consulting', null, null, 1),
+  (4, 'Leica Total Station (S06)', 'Cairns', 'ROK 28/LG.04', 'Civil', 'Research and consulting', null, null, 1),
+  (5, 'leica total Station tripod', 'Cairns', 'ROK 28/LG.04', 'Civil', 'Research and consulting', null, null, 1),
+  (6, 'GNSS Leica Receiver (GS14)', 'Cairns', 'ROK 28/LG.04', 'Civil', 'Research and consulting', null, null, 1),
+  (7, '2 Tonne Bridge Crane', 'Cairns', 'ROK 28/LG.01', 'Civil', 'Research and consulting', null, null, 1),
+  (8, 'Flash Forge Creator 3 (FDM)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://www.flashforge.com/product-detail/1', 1),
+  (9, 'Funmat HT 3D Printer (FDM)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://www.intamsys.com/funmat-ht-3d-printer/', 1),
+  (10, 'Formbot Trex 3 (FDM)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://www.formbot3d.com/vivedino-t-rex-30-multi-function-big-size-3d-printer-p0062.html', 1),
+  (11, 'Formlabs 2 (SLA)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://formlabs.com/3d-printers/form-2/', 1),
+  (12, 'Tenma Programmable Power Supply 0-30V 10Amps', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null,'http://www.farnell.com/datasheets/2805374.pdf', 1),
+  (13, 'FESTO / LabVolt 8006 Power & Machines Trainers (qty 3)', 'Melbourne', '6.25', 'Electrical', 'ENEX20001', null,'https://www.labvolt.com/solutions/6_electricity_and_new_energy/59-8006-10_computer_assisted_0_2_kw_electromechanical_training_system', 1);
 
 create table labbooking
 (book_id int unsigned not null auto_increment primary key,
