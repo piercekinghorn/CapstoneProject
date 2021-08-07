@@ -53,13 +53,13 @@ insert into lab_bookings values
 create table staff
 (
   staff_id int(10) not null primary key,
-  staff_staff_name varchar(50) not null,
-  staff_staff_campus varchar(50) not null,
-  staff_staff_contact varchar(30) not null
+  staff_name varchar(50) not null,
+  staff_campus varchar(50) not null,
+  staff_contact varchar(30) not null
 );
 
 insert into staff values
-	(0099, 'Jamie Shield', 'Cairns', 'j.shield@cqu.edu.au'),
+  (0099, 'Jamie Shield', 'Cairns', 'j.shield@cqu.edu.au'),
   (0100, 'Travis Frame', 'Cairns', 't.frame@cqu.edu.au'),
   (0101, 'Michael', 'Melbourne', 'michael@cqu.edu.au'); 
 
@@ -71,7 +71,7 @@ create table students
 );
 
 insert into students values
-	(12097012, 'John Doe', 'john.doe@cqumail.com'),
+  (12097012, 'John Doe', 'john.doe@cqumail.com'),
   (12877011, 'Jack Reed', 'jack.reed@cqumail.com'),
   (13254610, 'Grace Peay', 'grace.peay@cqumail.com'),
   (12087651, 'Jed Pena', 'jed.pena@cqumail.com'),
