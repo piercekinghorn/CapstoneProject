@@ -14,7 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Development';
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,14 +29,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?>
+    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'custom', 'materialize.min']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-nav">
+    <nav class="top-nav-bar">
         <div class="top-nav-title">
             <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
         </div>
@@ -46,7 +46,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
     </nav>
     <main class="main">
-        <div class="container">
+        <div class="container-new">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
