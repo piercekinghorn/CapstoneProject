@@ -1,7 +1,7 @@
 drop database if exists cquLabManager;
 create database cquLabManager;
---CREATE USER 'webauth'@'localhost' IDENTIFIED BY 'PASSWORD';
---GRANT ALL PRIVILEGES ON cqulabmanager.* TO 'webauth'@'localhost' WITH GRANT OPTION;
+CREATE USER 'webauth'@'localhost' IDENTIFIED BY 'PASSWORD';
+GRANT ALL PRIVILEGES ON cqulabmanager.* TO 'webauth'@'localhost' WITH GRANT OPTION;
 use cquLabManager;
 
 create table labequipment
