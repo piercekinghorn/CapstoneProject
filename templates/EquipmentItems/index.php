@@ -38,6 +38,7 @@
                         <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id)]) ?>
+                        <?= $this->Form->postLink(__('Book'), ['action' => 'book', $labequipment->equip_id], ['confirm' => __('Are you sure you want to Book # {0}?', $labequipment->equip_id)]) ?> <!-- Lab Booking Button -->
                     </td>
                 </tr>
                 <?php endif; ?>

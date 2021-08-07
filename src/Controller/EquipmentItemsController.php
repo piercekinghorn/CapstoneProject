@@ -3,8 +3,17 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\I18n\FrozenTime;
+use Cake\ORM\TableRegistry;
+
 class EquipmentItemsController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->loadComponent('Book');
+    }
+
     public function index()
     {
         $equipmentItems = $this->paginate($this->EquipmentItems);
