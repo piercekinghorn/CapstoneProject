@@ -38,7 +38,7 @@ $cakeDescription = 'Development';
 <body>
     <nav class="top-nav-bar">
         <div class="top-nav-title">
-            <a class="logo" href="<?= $this->Url->build('/') ?>">CQUniversity</a>
+            <a id="logo" href="<?= $this->Url->build('/') ?>">CQUniversity</a>
         </div>
         <div class="top-nav-links">
             <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
