@@ -10,13 +10,13 @@ class EquipmentItemsController extends AppController
 {
     public function book($id = null)
     {
-        $this->LabBookings = TableRegistry::get('Labbooking');
+        $this->LabBookings = TableRegistry::get('LabBookings');
         $labBookings = $this->LabBookings->newEmptyEntity();
-        $labBookings->equip_ID = $id;
+        $labBookings->equipment_ID = $id;
         $labBookings->staff_ID = 1234;
         $labBookings->student_ID = 2345;
-        $labBookings->date_ = FrozenTime::now();
-        $labBookings->book_status = true;
+        $labBookings->booking_date = FrozenTime::now();
+        $labBookings->booking_status = true;
         if ($this->request->is('post')) {
             if ($this->LabBookings->save($labBookings)) {
                 $this->Flash->success(__('The booking has been saved.'));
@@ -26,6 +26,8 @@ class EquipmentItemsController extends AppController
             $this->Flash->error(__('The booking could not be saved. Please, try again. Labbooking: ' . $labBookings));
         }
         $this->set(compact('labBookings'));
+        $this->autoRender = false;
+        return $this->redirect(['action' => 'index']);
     }
 
     public function index()

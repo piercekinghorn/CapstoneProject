@@ -17,8 +17,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Controller\Controller;
-use Cake\ORM\TableRegistry;
-use Cake\I18n\FrozenTime;
+
 /**
  * Application Controller
  *
