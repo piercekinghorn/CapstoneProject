@@ -44,6 +44,7 @@ class ErrorController extends AppController
     public function beforeFilter(EventInterface $event)
     {
     }
+    }
 
     /**
      * beforeRender callback.
