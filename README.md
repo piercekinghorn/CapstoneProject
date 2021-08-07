@@ -16,7 +16,7 @@ ___
 ### Project Team
 - [Reese Gunardi](https://github.com/RJGY)
 - [Myles Renaud](https://google.com.au "Link not set") needs to be set
-- [Pierce Kinghorn](https://google.com.au "Link not set") needs to be set
+- [Pierce Kinghorn](https://github.com/PierceKH) 
 - [Nathan Snow](https://github.com/nathansnow1981/nathansnow1981)
 - Jack Rolfe
 - Nick 

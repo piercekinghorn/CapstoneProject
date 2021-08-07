@@ -1,9 +1,10 @@
 drop database if exists cquLabManager;
 create database cquLabManager;
-grant SELECT, INSERT, UPDATE, DELETE ON cqulabmanager.* TO 'webauth'@'localhost';
-use cqulabmanager;
+--CREATE USER 'webauth'@'localhost' IDENTIFIED BY 'PASSWORD';
+--GRANT ALL PRIVILEGES ON cqulabmanager.* TO 'webauth'@'localhost' WITH GRANT OPTION;
+use cquLabManager;
 
-create table labEquipment
+create table labequipment
 (equip_id int unsigned not null auto_increment primary key,
   equip_name varchar(50) not null,
   equip_campus varchar(50) not null,
@@ -15,7 +16,7 @@ create table labEquipment
   equip_status int(1) not null
 );
 
-insert into labEquipment values
+insert into labequipment values
 	(1, 'Automatic Level', 'Cairns', 'ROK 28/LG.01', 'Civil', 'Research and consulting', null, null, 1),
   (2, 'Automatic Level tripod', 'Cairns', 'ROK 28/LG.01', 'Civil', 'Research and consulting', null, null, 1),
   (3, 'Leica Total Station (S06 plus)', 'Cairns', 'ROK 28/LG.04', 'Civil', 'Research and consulting', null, null, 1),
@@ -30,16 +31,16 @@ insert into labEquipment values
   (12, 'Tenma Programmable Power Supply 0-30V 10Amps', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null,'http://www.farnell.com/datasheets/2805374.pdf', 1),
   (13, 'FESTO / LabVolt 8006 Power & Machines Trainers (qty 3)', 'Melbourne', '6.25', 'Electrical', 'ENEX20001', null,'https://www.labvolt.com/solutions/6_electricity_and_new_energy/59-8006-10_computer_assisted_0_2_kw_electromechanical_training_system', 1);
 
-create table labBooking
+create table labbooking
 (book_id int unsigned not null auto_increment primary key,
   equip_ID int not null references labEquipment(equip_id),
   staff_ID int not null references staff(staff_id),
   student_ID int null references student(student_id),
-  date_ DATE not null default current_timestamp, 
+  date TIMESTAMP not null default current_timestamp, 
  book_status boolean default false not null
 );
 
-insert into labBooking values
+insert into labbooking values
   (1, 1, 0099, 12097012, current_timestamp, true),
   (2, 2, 0099, 12097012, current_timestamp, true),
   (3, 7, 0100, 12087651, current_timestamp, true),
@@ -86,5 +87,3 @@ insert into authorized_users values
   ('myles', sha1('password')),
   ('jack', sha1('password')),
   ('nick', sha1('password'));
-
-GRANT ALL PRIVILEGES ON cqulabmanager. * TO 'lab'@'localhost';
