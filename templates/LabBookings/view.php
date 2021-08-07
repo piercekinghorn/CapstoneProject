@@ -24,15 +24,15 @@
                 </tr>
                 <tr>
                     <th><?= __('Equip ID') ?></th>
-                    <td><?= $this->Number->format($labBookings->equipment_ID) ?></td>
+                    <td><?= $this->Number->format($labBookings->equipment_id) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Staff ID') ?></th>
-                    <td><?= $this->Number->format($labBookings->staff_ID) ?></td>
+                    <td><?= $this->Number->format($labBookings->staff_id) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Student ID') ?></th>
-                    <td><?= $this->Number->format($labBookings->student_ID) ?></td>
+                    <td><?= $this->Number->format($labBookings->student_id) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Booking Date ') ?></th>

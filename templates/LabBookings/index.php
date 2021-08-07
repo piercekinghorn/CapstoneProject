@@ -24,9 +24,9 @@
                 <?php foreach ($labBookings as $labBookings): ?>
                 <tr>
                     <td><?= $this->Number->format($labBookings->booking_id) ?></td>
-                    <td><?= $this->Number->format($labBookings->equipment_ID) ?></td>
-                    <td><?= $this->Number->format($labBookings->staff_ID) ?></td>
-                    <td><?= $this->Number->format($labBookings->student_ID) ?></td>
+                    <td><?= $this->Number->format($labBookings->equipment_id) ?></td>
+                    <td><?= $this->Number->format($labBookings->staff_id) ?></td>
+                    <td><?= $this->Number->format($labBookings->student_id) ?></td>
                     <td><?= h($labBookings->booking_date) ?></td>
                     <td><?= h($labBookings->booking_status) ?></td>
                     <td class="actions">

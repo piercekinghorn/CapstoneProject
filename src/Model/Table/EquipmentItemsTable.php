@@ -76,7 +76,7 @@ class EquipmentItemsTable extends Table
             ->allowEmptyString('equipment_whs');
 
         $validator
-            ->integer('equipment_status')
+            ->boolean('equipment_status')
             ->requirePresence('equipment_status', 'create')
             ->notEmptyString('equipment_status');
 
