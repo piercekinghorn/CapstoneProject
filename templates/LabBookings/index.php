@@ -12,9 +12,9 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('booking_id') ?></th>
-                    <th><?= $this->Paginator->sort('equipment_ID') ?></th>
-                    <th><?= $this->Paginator->sort('staff_ID') ?></th>
-                    <th><?= $this->Paginator->sort('student_ID') ?></th>
+                    <th><?= $this->Paginator->sort('equipment_id') ?></th>
+                    <th><?= $this->Paginator->sort('staff_id') ?></th>
+                    <th><?= $this->Paginator->sort('student_id') ?></th>
                     <th><?= $this->Paginator->sort('booking_date') ?></th>
                     <th><?= $this->Paginator->sort('booking_status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
