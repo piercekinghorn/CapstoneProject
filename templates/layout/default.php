@@ -38,11 +38,10 @@ $cakeDescription = 'Development';
 <body>
     <nav class="top-nav-bar">
         <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
+            <a class="logo" href="<?= $this->Url->build('/') ?>">CQUniversity</a>
         </div>
         <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+            <a class="logo" target="_blank" rel="noopener" href="https://my.cqu.edu.au/">MyCQU</a>
         </div>
     </nav>
     <main class="main">

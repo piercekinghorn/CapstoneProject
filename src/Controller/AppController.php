@@ -17,8 +17,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Controller\Controller;
-use Cake\ORM\TableRegistry;
-use Cake\I18n\FrozenTime;
+
 /**
  * Application Controller
  *
@@ -50,25 +49,5 @@ class AppController extends Controller
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
-    }
-
-    public function book($id = null)
-    {
-        $this->Labbooking = TableRegistry::get('Labbooking');
-        $labbooking = $this->Labbooking->newEmptyEntity();
-        $labbooking->equip_ID = $id;
-        $labbooking->staff_ID = 1234;
-        $labbooking->student_ID = 2345;
-        $labbooking->date_ = FrozenTime::now();
-        $labbooking->book_status = true;
-        if ($this->request->is('post')) {
-            if ($this->Labbooking->save($labbooking)) {
-                $this->Flash->success(__('The booking has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The booking could not be saved. Please, try again. Labbooking: ' . $labbooking));
-        }
-        $this->set(compact('labbooking'));
     }
 }
