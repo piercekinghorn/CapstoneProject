@@ -12,9 +12,9 @@ class EquipmentItemsController extends AppController
     {
         $this->LabBookings = TableRegistry::get('LabBookings');
         $labBookings = $this->LabBookings->newEmptyEntity();
-        $labBookings->equipment_ID = $id;
-        $labBookings->staff_ID = 1234;
-        $labBookings->student_ID = 2345;
+        $labBookings->equipment_id = $id;
+        $labBookings->staff_id = 1234;
+        $labBookings->student_id = 2345;
         $labBookings->booking_date = FrozenTime::now();
         $labBookings->booking_status = true;
         if ($this->request->is('post')) {
