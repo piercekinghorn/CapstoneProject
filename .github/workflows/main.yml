@@ -16,4 +16,4 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.KEY }}
-          script: cd ${{ secrets.PROJECT_PATH }} && git pull
+          script: cd /stack/projects/capstoneproject && git pull
