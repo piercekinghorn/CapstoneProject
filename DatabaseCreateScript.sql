@@ -116,4 +116,3 @@ insert into authorized_users values
   ('myles', sha1('password')),
   ('jack', sha1('password')),
   ('nick', sha1('password'));
-
