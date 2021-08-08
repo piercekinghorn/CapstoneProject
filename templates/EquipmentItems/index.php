@@ -6,7 +6,7 @@
 ?>
 <div class="equipmentItems index content">
     <?= $this->Html->link(__('New Equipment Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Equipment Items Test Again Take 4') ?></h3>
+    <h3><?= __('Equipment Items Test Again Take 5') ?></h3>
     <div class="table-responsive">
         <table>
             <thead>
