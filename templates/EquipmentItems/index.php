@@ -3,7 +3,19 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\EquipmentItems[]|\Cake\Collection\CollectionInterface $equipmentItems
  */
+
+$this->Html->scriptStart(['block' => true]);
+echo "document.addEventListener('DOMContentLoaded', function() {
+    function selected(date) {
+        console.log(date);
+    }
+    var options = {format:'dd mm yyyy', onSelect: selected};
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options);
+  });";
+$this->Html->scriptEnd()
 ?>
+
 <div class="equipmentItems index content">
     <?= $this->Html->link(__('New Equipment Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Equipment Items') ?></h3>
@@ -56,4 +68,13 @@
         </ul>
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
+</div>
+
+
+<div class="card-panel teal lighten-2">
+    <input type="text" class="datepicker" placeholder="Start Date"/>
+</div>
+
+<div class="card-panel teal lighten-2">
+    <input type="text" class="datepicker" placeholder="End Date"/>
 </div>
