@@ -36,24 +36,25 @@ $this->Html->scriptEnd()
             </thead>
             <tbody>
                 <?php foreach ($equipmentItems as $equipmentItems): ?>
-                <?php if ($equipmentItems->equipment_status == '1'): ?>
-                <tr>
-                    <td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>
-                    <td><?= h($equipmentItems->equipment_name) ?></td>
-                    <td><?= h($equipmentItems->equipment_campus) ?></td>
-                    <td><?= h($equipmentItems->equipment_lab) ?></td>
-                    <td><?= h($equipmentItems->equipment_discipline) ?></td>
-                    <td><?= h($equipmentItems->equipment_details) ?></td>
-                    <td><?= h($equipmentItems->equipment_media) ?></td>
-                    <td><?= h($equipmentItems->equipment_whs) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id)]) ?>
-                        <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to Book # {0}?', $equipmentItems->equipment_id)]) ?> <!-- Lab Booking Button -->
-                    </td>
-                </tr>
-                <?php endif; ?>
+                    <?php if ($equipmentItems->equipment_status == '1'): ?>
+                        <tr>
+                            <td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>
+                            <td><?= h($equipmentItems->equipment_name) ?></td>
+                            <td><?= h($equipmentItems->equipment_campus) ?></td>
+                            <td><?= h($equipmentItems->equipment_lab) ?></td>
+                            <td><?= h($equipmentItems->equipment_discipline) ?></td>
+                            <td><?= h($equipmentItems->equipment_details) ?></td>
+                            <td><?= h($equipmentItems->equipment_media) ?></td>
+                            <td><?= h($equipmentItems->equipment_whs) ?></td>
+                            <td><?= $this->Number->format($equipmentItems->equipment_status) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id)]) ?>
+                                <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id]) ?> <!-- Lab Booking Button -->
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
@@ -70,11 +71,12 @@ $this->Html->scriptEnd()
     </div>
 </div>
 
-
 <div class="card-panel teal lighten-2">
-    <input type="text" class="datepicker" placeholder="Start Date"/>
-</div>
-
-<div class="card-panel teal lighten-2">
-    <input type="text" class="datepicker" placeholder="End Date"/>
+    <?= $this->Form->create($labBookings) ?>
+    <?php
+        echo $this->Form->text('booking_date', ['class' => 'datepicker', 'placeholder' => 'Booking Date']);
+        echo $this->Form->text('date_return', ['class' => 'datepicker', 'placeholder' => 'Return Date']);
+    ?>
+    <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id]) ?>
+    <?= $this->Form->end() ?>
 </div>

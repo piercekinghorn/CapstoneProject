@@ -10,7 +10,7 @@ class EquipmentItemsController extends AppController
 {
     public function book($id = null)
     {
-        $this->LabBookings = TableRegistry::get('LabBookings');
+        $this->loadModel('LabBookings');
         $labBookings = $this->LabBookings->newEmptyEntity();
         $labBookings->equipment_id = $id;
         $labBookings->staff_id = 1234;
@@ -33,8 +33,11 @@ class EquipmentItemsController extends AppController
     public function index()
     {
         $equipmentItems = $this->paginate($this->EquipmentItems);
+        $this->LabBookings = TableRegistry::get('LabBookings');
+        $labBookings = $this->LabBookings->newEmptyEntity();
 
         $this->set(compact('equipmentItems'));
+        $this->set('labBookings');
     }
 
     public function view($id = null)

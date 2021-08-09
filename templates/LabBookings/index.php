@@ -16,6 +16,7 @@
                     <th><?= $this->Paginator->sort('staff_id') ?></th>
                     <th><?= $this->Paginator->sort('student_id') ?></th>
                     <th><?= $this->Paginator->sort('booking_date') ?></th>
+                    <th><?= $this->Paginator->sort('date_return') ?></th>
                     <th><?= $this->Paginator->sort('booking_status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -28,6 +29,7 @@
                     <td><?= $this->Number->format($labBookings->staff_id) ?></td>
                     <td><?= $this->Number->format($labBookings->student_id) ?></td>
                     <td><?= h($labBookings->booking_date) ?></td>
+                    <td><?= h($labBookings->date_return) ?></td>
                     <td><?= h($labBookings->booking_status) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $labBookings->booking_id]) ?>

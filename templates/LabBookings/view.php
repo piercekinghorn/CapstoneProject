@@ -39,6 +39,10 @@
                     <td><?= h($labBookings->booking_date) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Return Date') ?></th>
+                    <td><?= h($labBookings->date_return) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Booking Status') ?></th>
                     <td><?= $labBookings->booking_status ? __('Yes') : __('No'); ?></td>
                 </tr>

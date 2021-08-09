@@ -21,6 +21,7 @@
                     echo $this->Form->control('staff_id');
                     echo $this->Form->control('student_id');
                     echo $this->Form->control('booking_date');
+                    echo $this->Form->control('date_return');
                     echo $this->Form->control('booking_status');
                 ?>
             </fieldset>

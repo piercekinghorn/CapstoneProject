@@ -30,7 +30,7 @@ insert into equipment_items values
   (10, 'Formbot Trex 3 (FDM)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://www.formbot3d.com/vivedino-t-rex-30-multi-function-big-size-3d-printer-p0062.html', 1),
   (11, 'Formlabs 2 (SLA)', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null, 'https://formlabs.com/3d-printers/form-2/', 1),
   (12, 'Tenma Programmable Power Supply 0-30V 10Amps', 'Melbourne', '6.25', 'Multi Purpose', 'ENEX20001', null,'http://www.farnell.com/datasheets/2805374.pdf', 1),
-  (13, 'FESTO / LabVolt 8006 Power & Machines Trainers (qty 3)', 'Melbourne', '6.25', 'Electrical', 'ENEX20001', null,'https://www.labvolt.com/solutions/6_electricity_and_new_energy/59-8006-10_computer_assisted_0_2_kw_electromechanical_training_system', 1)
+  (13, 'FESTO / LabVolt 8006 Power & Machines Trainers (qty 3)', 'Melbourne', '6.25', 'Electrical', 'ENEX20001', null,'https://www.labvolt.com/solutions/6_electricity_and_new_energy/59-8006-10_computer_assisted_0_2_kw_electromechanical_training_system', 1),
   (14, 'Oscilloscopes', 'Rockhampton', 'ROK 28/2.13', 'Multi Purpose', 'ENAE12013', null, 'Standard lab induction', 1),
   (15, 'Oscillators', 'Rockhampton', 'ROK 28/2.13', 'Multi Purpose', 'ENAE12013', null, 'Standard lab induction', 1),
   (16, 'Multimeters', 'Rockhampton', 'ROK 28/2.13', 'Multi Purpose', 'ENAE12013', null, 'Standard lab induction', 1),
