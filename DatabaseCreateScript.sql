@@ -103,16 +103,13 @@ insert into students values
   (12097543, 'Stan Johnston', 'stanjohnston@cqumail.com');
 
 
-create table authorized_users
+create table users
 (
-  username varchar(20) not null primary key,
-  password varchar(40)
+  user_id int(10) unsigned not null auto_increment primary key,
+  username varchar(20) not null,
+  password varchar(255),
+  is_staff boolean default false not null
 );
 
-insert into authorized_users values 
-  ('lab', sha1('password')),
-  ('reese', sha1('password')),
-  ('pierce', sha1('password')),
-  ('myles', sha1('password')),
-  ('jack', sha1('password')),
-  ('nick', sha1('password'));
+insert into users values 
+  (NULL, 'jack', 'test', false);
