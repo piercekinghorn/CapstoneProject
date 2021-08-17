@@ -19,6 +19,7 @@
                 <?php
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
+                    echo $this->Form->control('is_staff', ['type' => 'checkbox', 'label' => 'Staff']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
