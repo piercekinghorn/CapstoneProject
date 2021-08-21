@@ -24,8 +24,13 @@
                 <?php
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('is_staff');
                 ?>
+                <div class="switch">
+                    <label>
+                        <?= $this->Form->control('is_staff', ['type' => 'checkbox', 'label' => 'Staff']) ?>
+                        <span class="lever"></span>
+                    </label>
+                </div>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
