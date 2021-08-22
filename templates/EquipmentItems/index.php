@@ -43,9 +43,6 @@ $this->Html->scriptEnd()
     // echo $this->Form->end();
 ?>
 
-<?= $this->Html->link(__('Filter'), ['action' => 'filter'], ['class' => 'button float-right']) ?>
-
-
 <!-- Default stuff -->
 
 <div class="equipmentItems index content">
