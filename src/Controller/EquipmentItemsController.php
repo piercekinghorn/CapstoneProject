@@ -9,6 +9,7 @@ use Cake\ORM\Locator\LocatorAwareTrait;
 
 class EquipmentItemsController extends AppController
 {
+
     public function book($id = null)
     {
         $this->loadModel('LabBookings');
@@ -31,27 +32,57 @@ class EquipmentItemsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    //Create an array of the distinct campus's
+    public function listCampus()
+    {
+        $query = $this->getTableLocator()->get('equipmentItems')
+                    ->find()
+                    ->select(['equipment_campus'])
+                    ->distinct(['equipment_campus']);
+        $this->set(compact('query'));             
+        $campuslist = array();
+        array_push($campuslist, 'Display All');
+        foreach ($query->all() as $equipmentItems) {
+            array_push($campuslist, $equipmentItems->equipment_campus);
+        } 
+        return $campuslist;
+
+    }
+
     public function index()
     {
-        //$results = filter($results);
-        $results = $this->filter($results)
-        if($results != null)
-        {
-            function_alert("filter check"); 
-           // $equipmentItems = $results
-            $equipmentItems = $this->paginate($this->EquipmentItems);
+        //Recieve Filter
+        $filter = $this->filterByCampus();
+
+        //After Post Request
+        if ($this->request->is('post')){
+            $filter = $this->filterByCampus();
+        
+            $settings = ['conditions' => array('EquipmentItems.equipment_campus LIKE' => "%$filter%")];
+
+            $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
             $this->set(compact('equipmentItems'));
+
+
+
+            $this->LabBookings = TableRegistry::get('LabBookings');
+            $labBookings = $this->LabBookings->newEmptyEntity();
+            $this->set('labBookings');
         }
+        //On initial Page Startup
         else
         {
+            $equipmentItems = $this->paginate($this->EquipmentItems);
+            $this->set(compact('equipmentItems'));
 
-        $equipmentItems = $this->paginate($this->EquipmentItems);
-        $this->LabBookings = TableRegistry::get('LabBookings');
-        $labBookings = $this->LabBookings->newEmptyEntity();
-
-        $this->set(compact('equipmentItems'));
-        $this->set('labBookings');  
+            $this->LabBookings = TableRegistry::get('LabBookings');
+            $this->set('labBookings');
+            $labBookings = $this->LabBookings->newEmptyEntity();
         }
+
+        //Retrieve Campus List
+        $campuslist = $this->listCampus();
+        $this->set(compact('campuslist'));       
     }
 
     public function view($id = null)
@@ -117,44 +148,32 @@ class EquipmentItemsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-   /*public function filter() //original
+    public function filterByName()
     {
-        $campusplaceholder = 'Cairns'; //hardcoded to test
-        $query = $this->getTableLocator()->get('equipmentItems')
-                    ->find()
-                    ->where(['equipment_campus' => $campusplaceholder]);
-        $this->set(compact('query'));
-        $results = array();
-        foreach ($query->all() as $equipmentItems) {
-            array_push($results, $equipmentItems);
-        } 
-        $this->set(compact('results'));
-        debug($results);    
-    }*/
 
-    public function filter($value) // first working method to pass data from button
-    {
-        $query = $this->getTableLocator()->get('equipmentItems')
-                    ->find()
-                    ->where(['equipment_campus' => $value ]);
-        $this->set(compact('query'));
-        $results = array();
-        foreach ($query->all() as $equipmentItems) {
-            array_push($results, $equipmentItems);
-        } 
-        $equipmentItems = $results;
+        //For the other filter stuff
 
-        $this->set(compact('equipmentItems'));
-        //return $this->redirect(['action' => 'index']);
-        debug($results);  
     }
 
-       /* <?php
+    public function filterByCampus()
+    {
+        $campus = null;
+        if ($this->request->is('post')){
+            $selectedCampus = $this->EquipmentItems->newEmptyEntity();
+            $selectedCampus = $this->EquipmentItems->patchEntity($selectedCampus, $this->request->getData());
 
-        function function_alert($message) {    
-            echo "<script>alert('$message');</script>";
+           
+            $campuslist = $this->listCampus();
+            $selectedCampus = $selectedCampus->campus;
+            $campus = $campuslist[$selectedCampus];
+             
         }
-        function_alert("Welcome to Geeks for Geeks"); 
-        ?>  */
-          
+
+        if($campus == 'Display All')
+        {
+            $campus = null;
+        }
+
+        return $campus;
+    }  
 }

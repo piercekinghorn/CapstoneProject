@@ -16,47 +16,37 @@ echo "document.addEventListener('DOMContentLoaded', function() {
 $this->Html->scriptEnd()
 ?>
 
-           <!--- <div>
-               <span>Campus Filter:</span>
-                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="GET" style="display:inline;">
-                    <button type="submit" value = "filter">All</button>
-                    <button type="submit" >Cairns</button>
-                    <button type="submit">Bundaberg</button>
-                    <button type="submit">Melbourne</button>
-                    <button type="submit" value = "Rockhampton">Rockhampton</button>
-                </form>
-            </div> --->
-                <!---<?= $this->Html->link(__('Filter'), ['action' => 'filter'], ['class' => 'button float-right']) ?>
 
-                <?= $this->Form->postLink('Click',['controller' => 'EquipmentItems', 'action' => 'filter', 'cairns']);?> -
-
-             <h3><?= __('') ?></h3>
-
-    <!-- Under the h3 Equipment Itmes is where drop down v1.0 needs to go -->
+<!-- Filter By Name -->
+<h3>Filter By Name</h3>
+<?php
+    echo $this->Form->create($equipmentItems);
+    echo $this->Form->control('', ['placeholder' => 'Enter Equipment Name']);
+    echo $this->Form->button(__('Submit'));
+    echo $this->form->end();
+?>
 
 
-    <?= $this->Form->postButton('Cairns',['controller' => 'EquipmentItems', 'action' => 'filter', 'cairns']);?>
-    <?= $this->Form->postButton('Bundaberg',['controller' => 'EquipmentItems', 'action' => 'filter', 'bundaberg']);?>
-    <?= $this->Form->postButton('Melbourne',['controller' => 'EquipmentItems', 'action' => 'filter', 'melbourne' ]);?>
-    <?= $this->Form->postButton('Rockhampton',['controller' => 'EquipmentItems', 'action' => 'filter', 'rockhampton']);?>
+<!-- Filter By Campus -->
+<h3>Filter By Campus</h3>
+<?php
+    echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
+    echo $this->Form->select('campus', $campuslist , array('value' => $campuslist));
 
-<select name = "campus">
-    <?php
+    echo $this->Form->button('Submit');
+    echo $this->Form->end();
 
-    $mysqli = NEW MySQLi('localhost','root','','cqulabmanager');
+    // echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items/filterByCampus', 'campus', 'type' => 'POST']);
+    // echo $this->Form->input('selected_campus', array('type'=>'select','options' => $campuslist , 'value' => $campuslist));
 
-    $resultSet = $mysqli->query("SELECT DISTINCT equipment_campus FROM equipment_items");
+    // echo $this->Form->button('Submit');
+    // echo $this->Form->end();
+?>
 
-        while($rows = $resultSet -> fetch_assoc())
-        {
-            $equipment_campus = $rows['equipment_campus'];      
-            echo "<option value = '$equipment_campus'>$equipment_campus</option>";
-        }
+<?= $this->Html->link(__('Filter'), ['action' => 'filter'], ['class' => 'button float-right']) ?>
 
-    ?>
-</select>
-<button type = "submit" value = $campus>Submit</button>
 
+<!-- Default stuff -->
 
 <div class="equipmentItems index content">
     <?= $this->Html->link(__('New Equipment Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>
