@@ -20,9 +20,10 @@ $this->Html->scriptEnd()
 <!-- Filter By Name -->
 <h3>Filter By Name</h3>
 <?php
-    echo $this->Form->create($equipmentItems);
-    echo $this->Form->control('', ['placeholder' => 'Enter Equipment Name']);
-    echo $this->Form->button(__('Submit'));
+    echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
+    echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Equipment Name']);
+    echo $this->Form->hidden('filterType', array('value' => 'EF'));
+    echo $this->Form->button('Submit');
     echo $this->form->end();
 ?>
 
@@ -31,16 +32,12 @@ $this->Html->scriptEnd()
 <h3>Filter By Campus</h3>
 <?php
     echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
-    echo $this->Form->select('campus', $campuslist , array('value' => $campuslist));
-
+    echo $this->Form->select('campusFilter', $campuslist , array('value' => $campuslist));
+    //Determine if its campus filter
+    echo $this->Form->hidden('filterType', array('value' => 'CF'));
     echo $this->Form->button('Submit');
     echo $this->Form->end();
 
-    // echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items/filterByCampus', 'campus', 'type' => 'POST']);
-    // echo $this->Form->input('selected_campus', array('type'=>'select','options' => $campuslist , 'value' => $campuslist));
-
-    // echo $this->Form->button('Submit');
-    // echo $this->Form->end();
 ?>
 
 
