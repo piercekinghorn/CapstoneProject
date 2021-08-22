@@ -16,9 +16,53 @@ echo "document.addEventListener('DOMContentLoaded', function() {
 $this->Html->scriptEnd()
 ?>
 
+           <!--- <div>
+               <span>Campus Filter:</span>
+                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="GET" style="display:inline;">
+                    <button type="submit" value = "filter">All</button>
+                    <button type="submit" >Cairns</button>
+                    <button type="submit">Bundaberg</button>
+                    <button type="submit">Melbourne</button>
+                    <button type="submit" value = "Rockhampton">Rockhampton</button>
+                </form>
+            </div> --->
+                <!---<?= $this->Html->link(__('Filter'), ['action' => 'filter'], ['class' => 'button float-right']) ?>
+
+                <?= $this->Form->postLink('Click',['controller' => 'EquipmentItems', 'action' => 'filter', 'cairns']);?> -
+
+             <h3><?= __('') ?></h3>
+
+    <!-- Under the h3 Equipment Itmes is where drop down v1.0 needs to go -->
+
+
+    <?= $this->Form->postButton('Cairns',['controller' => 'EquipmentItems', 'action' => 'filter', 'cairns']);?>
+    <?= $this->Form->postButton('Bundaberg',['controller' => 'EquipmentItems', 'action' => 'filter', 'bundaberg']);?>
+    <?= $this->Form->postButton('Melbourne',['controller' => 'EquipmentItems', 'action' => 'filter', 'melbourne' ]);?>
+    <?= $this->Form->postButton('Rockhampton',['controller' => 'EquipmentItems', 'action' => 'filter', 'rockhampton']);?>
+
+<select name = "campus">
+    <?php
+
+    $mysqli = NEW MySQLi('localhost','root','','cqulabmanager');
+
+    $resultSet = $mysqli->query("SELECT DISTINCT equipment_campus FROM equipment_items");
+
+        while($rows = $resultSet -> fetch_assoc())
+        {
+            $equipment_campus = $rows['equipment_campus'];      
+            echo "<option value = '$equipment_campus'>$equipment_campus</option>";
+        }
+
+    ?>
+</select>
+<button type = "submit" value = $campus>Submit</button>
+
+
 <div class="equipmentItems index content">
     <?= $this->Html->link(__('New Equipment Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Equipment Items') ?></h3>
+
+
     <div class="table-responsive">
         <table>
             <thead>

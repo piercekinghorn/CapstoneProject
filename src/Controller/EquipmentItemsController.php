@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use Cake\I18n\FrozenTime;
 use Cake\ORM\TableRegistry;
+use Cake\ORM\Locator\LocatorAwareTrait;
 
 class EquipmentItemsController extends AppController
 {
@@ -32,12 +33,25 @@ class EquipmentItemsController extends AppController
 
     public function index()
     {
+        //$results = filter($results);
+        $results = $this->filter($results)
+        if($results != null)
+        {
+            function_alert("filter check"); 
+           // $equipmentItems = $results
+            $equipmentItems = $this->paginate($this->EquipmentItems);
+            $this->set(compact('equipmentItems'));
+        }
+        else
+        {
+
         $equipmentItems = $this->paginate($this->EquipmentItems);
         $this->LabBookings = TableRegistry::get('LabBookings');
         $labBookings = $this->LabBookings->newEmptyEntity();
 
         $this->set(compact('equipmentItems'));
-        $this->set('labBookings');
+        $this->set('labBookings');  
+        }
     }
 
     public function view($id = null)
@@ -102,4 +116,45 @@ class EquipmentItemsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+   /*public function filter() //original
+    {
+        $campusplaceholder = 'Cairns'; //hardcoded to test
+        $query = $this->getTableLocator()->get('equipmentItems')
+                    ->find()
+                    ->where(['equipment_campus' => $campusplaceholder]);
+        $this->set(compact('query'));
+        $results = array();
+        foreach ($query->all() as $equipmentItems) {
+            array_push($results, $equipmentItems);
+        } 
+        $this->set(compact('results'));
+        debug($results);    
+    }*/
+
+    public function filter($value) // first working method to pass data from button
+    {
+        $query = $this->getTableLocator()->get('equipmentItems')
+                    ->find()
+                    ->where(['equipment_campus' => $value ]);
+        $this->set(compact('query'));
+        $results = array();
+        foreach ($query->all() as $equipmentItems) {
+            array_push($results, $equipmentItems);
+        } 
+        $equipmentItems = $results;
+
+        $this->set(compact('equipmentItems'));
+        //return $this->redirect(['action' => 'index']);
+        debug($results);  
+    }
+
+       /* <?php
+
+        function function_alert($message) {    
+            echo "<script>alert('$message');</script>";
+        }
+        function_alert("Welcome to Geeks for Geeks"); 
+        ?>  */
+          
 }
