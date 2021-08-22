@@ -82,8 +82,7 @@ class EquipmentItemsController extends AppController
 
         //Retrieve Campus List
         $campuslist = $this->listCampus();
-        $this->set(compact('campuslist'));
-        
+        $this->set(compact('campuslist'));       
     }
 
     public function view($id = null)
@@ -154,8 +153,6 @@ class EquipmentItemsController extends AppController
 
         //For the other filter stuff
 
-
-
     }
 
     public function filterByCampus()
@@ -179,5 +176,4 @@ class EquipmentItemsController extends AppController
 
         return $campus;
     }  
-
 }

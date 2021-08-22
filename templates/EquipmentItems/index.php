@@ -43,18 +43,16 @@ $this->Html->scriptEnd()
     // echo $this->Form->end();
 ?>
 
-
-
-
-
-
-
+<?= $this->Html->link(__('Filter'), ['action' => 'filter'], ['class' => 'button float-right']) ?>
 
 
 <!-- Default stuff -->
+
 <div class="equipmentItems index content">
     <?= $this->Html->link(__('New Equipment Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Equipment Items') ?></h3>
+
+
     <div class="table-responsive">
         <table>
             <thead>
