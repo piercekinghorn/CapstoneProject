@@ -16,6 +16,42 @@ echo "document.addEventListener('DOMContentLoaded', function() {
 $this->Html->scriptEnd()
 ?>
 
+
+<!-- Filter By Name -->
+<h3>Filter By Name</h3>
+<?php
+    echo $this->Form->create($equipmentItems);
+    echo $this->Form->control('', ['placeholder' => 'Enter Equipment Name']);
+    echo $this->Form->button(__('Submit'));
+    echo $this->form->end();
+?>
+
+
+<!-- Filter By Campus -->
+<h3>Filter By Campus</h3>
+<?php
+    echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
+    echo $this->Form->select('campus', $campuslist , array('value' => $campuslist));
+
+    echo $this->Form->button('Submit');
+    echo $this->Form->end();
+
+    // echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items/filterByCampus', 'campus', 'type' => 'POST']);
+    // echo $this->Form->input('selected_campus', array('type'=>'select','options' => $campuslist , 'value' => $campuslist));
+
+    // echo $this->Form->button('Submit');
+    // echo $this->Form->end();
+?>
+
+
+
+
+
+
+
+
+
+<!-- Default stuff -->
 <div class="equipmentItems index content">
     <?= $this->Html->link(__('New Equipment Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Equipment Items') ?></h3>
