@@ -31,6 +31,7 @@ $this->Html->scriptEnd()
 <!-- Filter By Campus -->
 <h3>Filter By Campus</h3>
 <?php
+    $equipmentItems;
     echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
     echo $this->Form->select('campusFilter', $campuslist , array('value' => $campuslist));
     //Determine if its campus filter
