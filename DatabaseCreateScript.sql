@@ -107,15 +107,9 @@ create table users
 (
   user_id int(10) unsigned not null auto_increment primary key,
   username varchar(20) not null,
-  password varchar(40) not null,
+  password varchar(255),
   is_staff boolean default false not null
 );
 
 insert into users values 
-  (1, 'lab', sha1('password'), true),
-  (2, 'reese', sha1('password'), true),
-  (3, 'pierce', sha1('password'), true),
-  (4, 'myles', sha1('password'), true),
-  (5, 'jack', sha1('password'), true),
-  (6, 'nick', sha1('password'), true),
-  (7, 'john', sha1('password'), false);
+  (NULL, 'jack', 'test', false);

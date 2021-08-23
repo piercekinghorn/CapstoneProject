@@ -9,14 +9,22 @@ use Cake\ORM\Locator\LocatorAwareTrait;
 
 class EquipmentItemsController extends AppController
 {
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // Configure the login action to not require authentication, preventing
+        // the infinite redirect loop issue
+        $this->Authentication->addUnauthenticatedActions(['index', 'view']);
+    }
 
     public function book($id = null)
     {
         $this->loadModel('LabBookings');
         $labBookings = $this->LabBookings->newEmptyEntity();
+        $this->Authorization->authorize($labBookings);
         $labBookings->equipment_id = $id;
         $labBookings->staff_id = 1234;
-        $labBookings->student_id = 2345;
+        $labBookings->student_id = $this->request->getAttribute('identity')->getIdentifier();
         $labBookings->booking_date = FrozenTime::now();
         $labBookings->booking_status = true;
         if ($this->request->is('post')) {
@@ -51,8 +59,9 @@ class EquipmentItemsController extends AppController
 
     public function index()
     {
-        // //Recieve Filter
-        // $filter = $this->filterByCampus();
+        //Recieve Filter
+        $this->Authorization->skipAuthorization();
+        $filter = $this->filterByCampus();
 
         //After Post Request
         if ($this->request->is('post')){
@@ -98,12 +107,12 @@ class EquipmentItemsController extends AppController
 
         //Retrieve Campus List
         $campuslist = $this->listCampus();
-        $this->set(compact('campuslist'));
-        
+        $this->set(compact('campuslist'));       
     }
 
     public function view($id = null)
     {
+        $this->Authorization->skipAuthorization();
         $equipmentItems = $this->EquipmentItems->get($id, [
             'contain' => [],
         ]);
@@ -114,6 +123,7 @@ class EquipmentItemsController extends AppController
     public function add()
     {
         $equipmentItems = $this->EquipmentItems->newEmptyEntity();
+        $this->Authorization->authorize($equipmentItems);
         if ($this->request->is('post')) {
             $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
             if ($this->EquipmentItems->save($equipmentItems)) {
@@ -131,6 +141,7 @@ class EquipmentItemsController extends AppController
         $equipmentItems = $this->EquipmentItems->get($id, [
             'contain' => [],
         ]);
+        $this->Authorization->authorize($equipmentItems);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
             if ($this->EquipmentItems->save($equipmentItems)) {
@@ -149,6 +160,7 @@ class EquipmentItemsController extends AppController
         // The index page only shows equipment that have a status of 1, pressing delete sets it to zero.
         $this->request->allowMethod(['post', 'delete']);
         $equipmentItems = $this->EquipmentItems->get($id);
+        $this->Authorization->authorize($equipmentItems);
         $equipmentItems->equipment_status = '0';
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -166,6 +178,14 @@ class EquipmentItemsController extends AppController
     }
 
     public function filterByCampus($filter)
+
+    public function filterByName()
+    {
+
+        //For the other filter stuff
+
+    }
+
     {
         $campusFilter = null;             
         $campuslist = $this->listCampus();
@@ -178,5 +198,4 @@ class EquipmentItemsController extends AppController
 
         return $campusFilter;
     }  
-
 }

@@ -40,18 +40,13 @@ $this->Html->scriptEnd()
 
 ?>
 
-
-
-
-
-
-
-
-
 <!-- Default stuff -->
+
 <div class="equipmentItems index content">
     <?= $this->Html->link(__('New Equipment Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Equipment Items') ?></h3>
+
+
     <div class="table-responsive">
         <table>
             <thead>
@@ -79,7 +74,6 @@ $this->Html->scriptEnd()
                             <td><?= h($equipmentItems->equipment_details) ?></td>
                             <td><?= h($equipmentItems->equipment_media) ?></td>
                             <td><?= h($equipmentItems->equipment_whs) ?></td>
-                            <td><?= $this->Number->format($equipmentItems->equipment_status) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>

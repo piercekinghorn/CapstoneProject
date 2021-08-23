@@ -82,4 +82,16 @@ class EquipmentItemsTable extends Table
 
         return $validator;
     }
+
+
+    /*function filter($equipment_campus = null)
+    {
+        $query = $this->equipment_items->find();
+        foreach ($query->all() as $article) 
+        {
+            ->where(['equipment_campus' = 'Bundaberg']);
+        }
+    }*/
+
+
 }
