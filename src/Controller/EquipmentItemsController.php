@@ -65,14 +65,30 @@ class EquipmentItemsController extends AppController
 
         //After Post Request
         if ($this->request->is('post')){
-            $filter = $this->filterByCampus();
-        
-            $settings = ['conditions' => array('EquipmentItems.equipment_campus LIKE' => "%$filter%")];
 
-            $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
-            $this->set(compact('equipmentItems'));
+            //Check filter type
+            $selectedFilter = $this->EquipmentItems->newEmptyEntity();
+            $selectedFilter = $this->EquipmentItems->patchEntity($selectedFilter, $this->request->getData());
+            $filterType = $selectedFilter->filterType;
+
+            //Run filter type function
+            //Filter by equipment
+            if($filterType == 'EF'){
+                $filter = $selectedFilter->equipmentFilter;
+                $settings = ['conditions' => array('EquipmentItems.equipment_name LIKE' => "%$filter%")];
+                $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
+                $this->set(compact('equipmentItems'));
 
 
+            }
+            //Filter By Campus
+            if($filterType == 'CF'){
+                $filter = $selectedFilter->campusFilter;
+                $filter = $this->filterByCampus($filter);
+                $settings = ['conditions' => array('EquipmentItems.equipment_campus LIKE' => "%$filter%")];
+                $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
+                $this->set(compact('equipmentItems'));
+            }
 
             $this->LabBookings = TableRegistry::get('LabBookings');
             $labBookings = $this->LabBookings->newEmptyEntity();
@@ -161,6 +177,8 @@ class EquipmentItemsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    public function filterByCampus($filter)
+
     public function filterByName()
     {
 
@@ -168,25 +186,16 @@ class EquipmentItemsController extends AppController
 
     }
 
-    public function filterByCampus()
     {
-        $campus = null;
-        if ($this->request->is('post')){
-            $selectedCampus = $this->EquipmentItems->newEmptyEntity();
-            $selectedCampus = $this->EquipmentItems->patchEntity($selectedCampus, $this->request->getData());
-
-           
-            $campuslist = $this->listCampus();
-            $selectedCampus = $selectedCampus->campus;
-            $campus = $campuslist[$selectedCampus];
-             
-        }
-
-        if($campus == 'Display All')
+        $campusFilter = null;             
+        $campuslist = $this->listCampus();
+        $campusFilter = $campuslist[$filter];
+                    
+        if($campusFilter == 'Display All')
         {
-            $campus = null;
+            $campusFilter = null;
         }
 
-        return $campus;
+        return $campusFilter;
     }  
 }
