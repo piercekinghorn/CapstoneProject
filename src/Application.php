@@ -89,6 +89,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                     return $handler->handle($request);
                 } catch (\Cake\Http\Exception\InvalidCsrfTokenException $exception) {
                     // handle the catched exception
+                    return Router::url('/users/login');
                 }
             })
 
