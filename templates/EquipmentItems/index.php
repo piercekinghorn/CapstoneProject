@@ -77,7 +77,6 @@ $this->Html->scriptEnd()
                             <td><?= h($equipmentItems->equipment_details) ?></td>
                             <td><?= h($equipmentItems->equipment_media) ?></td>
                             <td><?= h($equipmentItems->equipment_whs) ?></td>
-                            <td><?= $this->Number->format($equipmentItems->equipment_status) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
