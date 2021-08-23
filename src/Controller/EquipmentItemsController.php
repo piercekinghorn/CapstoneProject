@@ -177,8 +177,6 @@ class EquipmentItemsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function filterByCampus($filter)
-
     public function filterByName()
     {
 
@@ -186,12 +184,13 @@ class EquipmentItemsController extends AppController
 
     }
 
+    public function filterByCampus($filter = 0)
     {
         $campusFilter = null;             
         $campuslist = $this->listCampus();
         $campusFilter = $campuslist[$filter];
                     
-        if($campusFilter == 'Display All')
+        if($campusFilter == 'Display All' || $filter == 0)
         {
             $campusFilter = null;
         }
