@@ -184,13 +184,13 @@ class EquipmentItemsController extends AppController
 
     }
 
-    public function filterByCampus($filter = 0)
+    public function filterByCampus($filter = '')
     {
         $campusFilter = null;             
         $campuslist = $this->listCampus();
         $campusFilter = $campuslist[$filter];
                     
-        if($campusFilter == 'Display All' || $filter == 0)
+        if($campusFilter == 'Display All' || $filter == '')
         {
             $campusFilter = null;
         }
