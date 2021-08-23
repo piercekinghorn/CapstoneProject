@@ -89,9 +89,6 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                     return $handler->handle($request);
                 } catch (\Cake\Http\Exception\InvalidCsrfTokenException $exception) {
                     // handle the catched exception
-                    $response = new \Cake\Http\Response();
-    
-                    return $response->withStringBody('Oh noes, CSRF error!');
                 }
             })
 
