@@ -80,19 +80,6 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             // and make an error page/response
             ->add(new ErrorHandlerMiddleware(Configure::read('Error')))
 
-            // Handle plugin/theme assets like CakePHP normally does.
-            ->add(new AssetMiddleware([
-                'cacheTime' => Configure::read('Asset.cacheTime'),
-            ]))
-
-            ->add(new RoutingMiddleware($this))
-
-            ->add(new AuthenticationMiddleware($this))
-
-            ->add(new AuthorizationMiddleware($this))
-
-            ->add(new BodyParserMiddleware())
-
             ->add(function (
                 \Psr\Http\Message\ServerRequestInterface $request,
                 \Psr\Http\Server\RequestHandlerInterface $handler
@@ -107,6 +94,19 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                     return $response->withStringBody('Oh noes, CSRF error!');
                 }
             })
+
+            // Handle plugin/theme assets like CakePHP normally does.
+            ->add(new AssetMiddleware([
+                'cacheTime' => Configure::read('Asset.cacheTime'),
+            ]))
+
+            ->add(new RoutingMiddleware($this))
+
+            ->add(new AuthenticationMiddleware($this))
+
+            ->add(new AuthorizationMiddleware($this))
+
+            ->add(new BodyParserMiddleware())
 
             ->add(new CsrfProtectionMiddleware([
                 'httponly' => true,
