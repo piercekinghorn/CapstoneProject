@@ -8,13 +8,22 @@ use Cake\ORM\TableRegistry;
 
 class EquipmentItemsController extends AppController
 {
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // Configure the login action to not require authentication, preventing
+        // the infinite redirect loop issue
+        $this->Authentication->addUnauthenticatedActions(['index', 'view']);
+    }
+
     public function book($id = null)
     {
         $this->loadModel('LabBookings');
         $labBookings = $this->LabBookings->newEmptyEntity();
+        $this->Authorization->authorize($labBookings);
         $labBookings->equipment_id = $id;
         $labBookings->staff_id = 1234;
-        $labBookings->student_id = 2345;
+        $labBookings->student_id = $this->request->getAttribute('identity')->getIdentifier();
         $labBookings->booking_date = FrozenTime::now();
         $labBookings->booking_status = true;
         if ($this->request->is('post')) {
@@ -32,16 +41,18 @@ class EquipmentItemsController extends AppController
 
     public function index()
     {
+        $this->Authorization->skipAuthorization();
         $equipmentItems = $this->paginate($this->EquipmentItems);
-        $this->LabBookings = TableRegistry::get('LabBookings');
+        $this->loadModel('LabBookings');
         $labBookings = $this->LabBookings->newEmptyEntity();
 
         $this->set(compact('equipmentItems'));
-        $this->set('labBookings');
+        $this->set('LabBookings');
     }
 
     public function view($id = null)
     {
+        $this->Authorization->skipAuthorization();
         $equipmentItems = $this->EquipmentItems->get($id, [
             'contain' => [],
         ]);
@@ -52,6 +63,7 @@ class EquipmentItemsController extends AppController
     public function add()
     {
         $equipmentItems = $this->EquipmentItems->newEmptyEntity();
+        $this->Authorization->authorize($equipmentItems);
         if ($this->request->is('post')) {
             $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
             if ($this->EquipmentItems->save($equipmentItems)) {
@@ -69,6 +81,7 @@ class EquipmentItemsController extends AppController
         $equipmentItems = $this->EquipmentItems->get($id, [
             'contain' => [],
         ]);
+        $this->Authorization->authorize($equipmentItems);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
             if ($this->EquipmentItems->save($equipmentItems)) {
@@ -87,6 +100,7 @@ class EquipmentItemsController extends AppController
         // The index page only shows equipment that have a status of 1, pressing delete sets it to zero.
         $this->request->allowMethod(['post', 'delete']);
         $equipmentItems = $this->EquipmentItems->get($id);
+        $this->Authorization->authorize($equipmentItems);
         $equipmentItems->equipment_status = '0';
 
         if ($this->request->is(['patch', 'post', 'put'])) {
