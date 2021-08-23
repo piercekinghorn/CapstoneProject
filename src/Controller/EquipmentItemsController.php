@@ -77,7 +77,7 @@ class EquipmentItemsController extends AppController
                 $filter = $selectedFilter->equipmentFilter;
                 $settings = ['conditions' => array('EquipmentItems.equipment_name LIKE' => "%$filter%")];
                 $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
-                $this->set(compact('EquipmentItems'));
+                $this->set(compact('equipmentItems'));
 
 
             }
@@ -87,7 +87,7 @@ class EquipmentItemsController extends AppController
                 $filter = $this->filterByCampus($filter);
                 $settings = ['conditions' => array('EquipmentItems.equipment_campus LIKE' => "%$filter%")];
                 $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
-                $this->set(compact('EquipmentItems'));
+                $this->set(compact('equipmentItems'));
             }
 
             $this->LabBookings = TableRegistry::get('LabBookings');
@@ -98,7 +98,7 @@ class EquipmentItemsController extends AppController
         else
         {
             $equipmentItems = $this->paginate($this->EquipmentItems);
-            $this->set(compact('EquipmentItems'));
+            $this->set(compact('equipmentItems'));
 
             $this->LabBookings = TableRegistry::get('LabBookings');
             $this->set('LabBookings');
@@ -117,7 +117,7 @@ class EquipmentItemsController extends AppController
             'contain' => [],
         ]);
 
-        $this->set(compact('EquipmentItems'));
+        $this->set(compact('equipmentItems'));
     }
 
     public function add()
@@ -133,7 +133,7 @@ class EquipmentItemsController extends AppController
             }
             $this->Flash->error(__('The equipment item could not be saved. Please, try again.'));
         }
-        $this->set(compact('EquipmentItems'));
+        $this->set(compact('equipmentItems'));
     }
 
     public function edit($id = null)
@@ -151,7 +151,7 @@ class EquipmentItemsController extends AppController
             }
             $this->Flash->error(__('The equipment item could not be saved. Please, try again.'));
         }
-        $this->set(compact('EquipmentItems'));
+        $this->set(compact('equipmentItems'));
     }
 
     public function delete($id = null)
@@ -172,7 +172,7 @@ class EquipmentItemsController extends AppController
             }
             $this->Flash->error(__('The equipment item could not be deleted. Please, try again.'));
         }
-        $this->set(compact('EquipmentItems'));
+        $this->set(compact('equipmentItems'));
 
         return $this->redirect(['action' => 'index']);
     }
