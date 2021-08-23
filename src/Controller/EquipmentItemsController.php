@@ -43,7 +43,7 @@ class EquipmentItemsController extends AppController
     //Create an array of the distinct campus's
     public function listCampus()
     {
-        $query = $this->getTableLocator()->get('equipmentItems')
+        $query = $this->getTableLocator()->get('EquipmentItems')
                     ->find()
                     ->select(['equipment_campus'])
                     ->distinct(['equipment_campus']);
@@ -77,7 +77,7 @@ class EquipmentItemsController extends AppController
                 $filter = $selectedFilter->equipmentFilter;
                 $settings = ['conditions' => array('EquipmentItems.equipment_name LIKE' => "%$filter%")];
                 $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
-                $this->set(compact('equipmentItems'));
+                $this->set(compact('EquipmentItems'));
 
 
             }
@@ -87,21 +87,21 @@ class EquipmentItemsController extends AppController
                 $filter = $this->filterByCampus($filter);
                 $settings = ['conditions' => array('EquipmentItems.equipment_campus LIKE' => "%$filter%")];
                 $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
-                $this->set(compact('equipmentItems'));
+                $this->set(compact('EquipmentItems'));
             }
 
             $this->LabBookings = TableRegistry::get('LabBookings');
             $labBookings = $this->LabBookings->newEmptyEntity();
-            $this->set('labBookings');
+            $this->set('LabBookings');
         }
         //On initial Page Startup
         else
         {
             $equipmentItems = $this->paginate($this->EquipmentItems);
-            $this->set(compact('equipmentItems'));
+            $this->set(compact('EquipmentItems'));
 
             $this->LabBookings = TableRegistry::get('LabBookings');
-            $this->set('labBookings');
+            $this->set('LabBookings');
             $labBookings = $this->LabBookings->newEmptyEntity();
         }
 
@@ -117,7 +117,7 @@ class EquipmentItemsController extends AppController
             'contain' => [],
         ]);
 
-        $this->set(compact('equipmentItems'));
+        $this->set(compact('EquipmentItems'));
     }
 
     public function add()
@@ -133,7 +133,7 @@ class EquipmentItemsController extends AppController
             }
             $this->Flash->error(__('The equipment item could not be saved. Please, try again.'));
         }
-        $this->set(compact('equipmentItems'));
+        $this->set(compact('EquipmentItems'));
     }
 
     public function edit($id = null)
@@ -151,7 +151,7 @@ class EquipmentItemsController extends AppController
             }
             $this->Flash->error(__('The equipment item could not be saved. Please, try again.'));
         }
-        $this->set(compact('equipmentItems'));
+        $this->set(compact('EquipmentItems'));
     }
 
     public function delete($id = null)
@@ -172,7 +172,7 @@ class EquipmentItemsController extends AppController
             }
             $this->Flash->error(__('The equipment item could not be deleted. Please, try again.'));
         }
-        $this->set(compact('equipmentItems'));
+        $this->set(compact('EquipmentItems'));
 
         return $this->redirect(['action' => 'index']);
     }
