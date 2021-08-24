@@ -36,9 +36,9 @@ class LabBookingsController extends AppController
 
         $this->loadModel('LabBookings');
                 
-        //$labBookings = $this->LabBookings->newEmptyEntity();
+        $labBookings = $this->LabBookings->newEmptyEntity();
 
-        $this->Authorization->authorize($labBookings);
+        //$this->Authorization->authorize($labBookings);
         if ($this->request->is('post')) {
             $labBookings = $this->LabBookings->patchEntity($labBookings, $this->request->getData());
             if ($this->LabBookings->save($labBookings)) {
