@@ -18,10 +18,10 @@ $this->Html->scriptEnd()
 
 
 <!-- Filter By Name -->
-<h3>Filter By Name</h3>
+<h3>Filter By Search</h3>
 <?php
     echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
-    echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Equipment Name']);
+    echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Search']);
     echo $this->Form->hidden('filterType', array('value' => 'EF'));
     echo $this->Form->button('Submit');
     echo $this->form->end();
