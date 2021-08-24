@@ -95,7 +95,7 @@ class EquipmentItemsController extends AppController
         //On initial Page Startup
         else
         {
-            $EquipmentItems = $this->paginate($this->EquipmentItems);
+            $equipmentItems = $this->paginate($this->EquipmentItems);
             $this->set(compact('equipmentItems'));
 
             $this->LabBookings = TableRegistry::get('LabBookings');
