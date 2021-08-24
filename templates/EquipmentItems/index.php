@@ -20,7 +20,7 @@ $this->Html->scriptEnd()
 <!-- Filter By Name -->
 <h3>Filter By Name</h3>
 <?php
-    echo $this->Form->create($EquipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
+    echo $this->Form->create($EquipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
     echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Equipment Name']);
     echo $this->Form->hidden('filterType', array('value' => 'EF'));
     echo $this->Form->button('Submit');
@@ -31,7 +31,7 @@ $this->Html->scriptEnd()
 <!-- Filter By Campus -->
 <h3>Filter By Campus</h3>
 <?php
-    echo $this->Form->create($EquipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
+    echo $this->Form->create($EquipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
     echo $this->Form->select('campusFilter', $campuslist , array('value' => $campuslist));
     //Determine if its campus filter
     echo $this->Form->hidden('filterType', array('value' => 'CF'));
