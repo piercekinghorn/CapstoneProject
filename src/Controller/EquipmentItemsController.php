@@ -52,6 +52,7 @@ class EquipmentItemsController extends AppController
         $query = $this->getTableLocator()->get('EquipmentItems')
                     ->find()
                     ->select(['equipment_campus'])
+                    ->where(['equipment_status' => 1])
                     ->distinct(['equipment_campus']);
         $this->set(compact('query'));             
         $campuslist = array();
