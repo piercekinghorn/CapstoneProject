@@ -50,8 +50,8 @@ class EquipmentItemsController extends AppController
         $this->set(compact('query'));             
         $campuslist = array();
         array_push($campuslist, 'Display All');
-        foreach ($query->all() as $EquipmentItems) {
-            array_push($campuslist, $EquipmentItems->equipment_campus);
+        foreach ($query->all() as $equipmentItems) {
+            array_push($campuslist, $equipmentItems->equipment_campus);
         } 
         return $campuslist;
 
@@ -75,7 +75,7 @@ class EquipmentItemsController extends AppController
             if($filterType == 'EF'){
                 $filter = $selectedFilter->equipmentFilter;
                 $settings = ['conditions' => array('EquipmentItems.equipment_name LIKE' => "%$filter%")];
-                $EquipmentItems = $this->paginate($this->EquipmentItems, $settings);
+                $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
                 $this->set(compact('equipmentItems'));
 
             }
@@ -84,7 +84,7 @@ class EquipmentItemsController extends AppController
                 $filter = $selectedFilter->campusFilter;
                 $filter = $this->filterByCampus($filter);
                 $settings = ['conditions' => array('EquipmentItems.equipment_campus LIKE' => "%$filter%")];
-                $EquipmentItems = $this->paginate($this->EquipmentItems, $settings);
+                $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
                 $this->set(compact('equipmentItems'));
             }
 
@@ -111,7 +111,7 @@ class EquipmentItemsController extends AppController
     public function view($id = null)
     {
         $this->Authorization->skipAuthorization();
-        $EquipmentItems = $this->EquipmentItems->get($id, [
+        $equipmentItems = $this->EquipmentItems->get($id, [
             'contain' => [],
         ]);
 
@@ -120,11 +120,11 @@ class EquipmentItemsController extends AppController
 
     public function add()
     {
-        $EquipmentItems = $this->EquipmentItems->newEmptyEntity();
-        $this->Authorization->authorize($EquipmentItems);
+        $equipmentItems = $this->EquipmentItems->newEmptyEntity();
+        $this->Authorization->authorize($equipmentItems);
         if ($this->request->is('post')) {
-            $EquipmentItems = $this->EquipmentItems->patchEntity($EquipmentItems, $this->request->getData());
-            if ($this->EquipmentItems->save($EquipmentItems)) {
+            $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
+            if ($this->EquipmentItems->save($equipmentItems)) {
                 $this->Flash->success(__('The labequipment has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -136,13 +136,13 @@ class EquipmentItemsController extends AppController
 
     public function edit($id = null)
     {
-        $EquipmentItems = $this->EquipmentItems->get($id, [
+        $equipmentItems = $this->EquipmentItems->get($id, [
             'contain' => [],
         ]);
-        $this->Authorization->authorize($EquipmentItems);
+        $this->Authorization->authorize($equipmentItems);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $EquipmentItems = $this->EquipmentItems->patchEntity($EquipmentItems, $this->request->getData());
-            if ($this->EquipmentItems->save($EquipmentItems)) {
+            $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
+            if ($this->EquipmentItems->save($equipmentItems)) {
                 $this->Flash->success(__('The equipment item has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -157,13 +157,13 @@ class EquipmentItemsController extends AppController
         // The delete function now unlists the equipment item rather then deleting it.
         // The index page only shows equipment that have a status of 1, pressing delete sets it to zero.
         $this->request->allowMethod(['post', 'delete']);
-        $EquipmentItems = $this->EquipmentItems->get($id);
-        $this->Authorization->authorize($EquipmentItems);
-        $EquipmentItems->equipment_status = '0';
+        $equipmentItems = $this->EquipmentItems->get($id);
+        $this->Authorization->authorize($equipmentItems);
+        $equipmentItems->equipment_status = '0';
 
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $EquipmentItems = $this->EquipmentItems->patchEntity($EquipmentItems, $this->request->getData());
-            if ($this->EquipmentItems->save($EquipmentItems)) {
+            $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
+            if ($this->EquipmentItems->save($equipmentItems)) {
                 $this->Flash->success(__('The equipment item has been deleted.'));
 
                 return $this->redirect(['action' => 'index']);
