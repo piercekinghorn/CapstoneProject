@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\EquipmentItems[]|\Cake\Collection\CollectionInterface $equipmentItems
+ * @var \App\Model\Entity\EquipmentItems[]|\Cake\Collection\CollectionInterface $EquipmentItems
  */
 
 $this->Html->scriptStart(['block' => true]);
@@ -20,7 +20,7 @@ $this->Html->scriptEnd()
 <!-- Filter By Name -->
 <h3>Filter By Name</h3>
 <?php
-    echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
+    echo $this->Form->create($EquipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
     echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Equipment Name']);
     echo $this->Form->hidden('filterType', array('value' => 'EF'));
     echo $this->Form->button('Submit');
@@ -31,7 +31,7 @@ $this->Html->scriptEnd()
 <!-- Filter By Campus -->
 <h3>Filter By Campus</h3>
 <?php
-    echo $this->Form->create($equipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
+    echo $this->Form->create($EquipmentItems, ['action' => '/capstoneproject/equipment-items', 'type' => 'POST']);
     echo $this->Form->select('campusFilter', $campuslist , array('value' => $campuslist));
     //Determine if its campus filter
     echo $this->Form->hidden('filterType', array('value' => 'CF'));
@@ -42,7 +42,7 @@ $this->Html->scriptEnd()
 
 <!-- Default stuff -->
 
-<div class="equipmentItems index content">
+<div class="EquipmentItems index content">
     <?= $this->Html->link(__('New Equipment Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Equipment Items') ?></h3>
 
@@ -63,22 +63,22 @@ $this->Html->scriptEnd()
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($equipmentItems as $equipmentItems): ?>
-                    <?php if ($equipmentItems->equipment_status == '1'): ?>
+                <?php foreach ($EquipmentItems as $EquipmentItems): ?>
+                    <?php if ($EquipmentItems->equipment_status == '1'): ?>
                         <tr>
-                            <td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>
-                            <td><?= h($equipmentItems->equipment_name) ?></td>
-                            <td><?= h($equipmentItems->equipment_campus) ?></td>
-                            <td><?= h($equipmentItems->equipment_lab) ?></td>
-                            <td><?= h($equipmentItems->equipment_discipline) ?></td>
-                            <td><?= h($equipmentItems->equipment_details) ?></td>
-                            <td><?= h($equipmentItems->equipment_media) ?></td>
-                            <td><?= h($equipmentItems->equipment_whs) ?></td>
+                            <td><?= $this->Number->format($EquipmentItems->equipment_id) ?></td>
+                            <td><?= h($EquipmentItems->equipment_name) ?></td>
+                            <td><?= h($EquipmentItems->equipment_campus) ?></td>
+                            <td><?= h($EquipmentItems->equipment_lab) ?></td>
+                            <td><?= h($EquipmentItems->equipment_discipline) ?></td>
+                            <td><?= h($EquipmentItems->equipment_details) ?></td>
+                            <td><?= h($EquipmentItems->equipment_media) ?></td>
+                            <td><?= h($EquipmentItems->equipment_whs) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id)]) ?>
-                                <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id]) ?> <!-- Lab Booking Button -->
+                                <?= $this->Html->link(__('View'), ['action' => 'view', $EquipmentItems->equipment_id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $EquipmentItems->equipment_id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $EquipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $EquipmentItems->equipment_id)]) ?>
+                                <?= $this->Form->postLink(__('Book'), ['action' => 'book', $EquipmentItems->equipment_id]) ?> <!-- Lab Booking Button -->
                             </td>
                         </tr>
                     <?php endif; ?>
@@ -104,7 +104,7 @@ $this->Html->scriptEnd()
         echo $this->Form->text('booking_date', ['class' => 'datepicker', 'placeholder' => 'Booking Date']);
         echo $this->Form->text('date_return', ['class' => 'datepicker', 'placeholder' => 'Return Date']);
     ?>
-    <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id]) ?>
+    <?= $this->Form->postLink(__('Book'), ['action' => 'book', $EquipmentItems->equipment_id]) ?>
     <?= $this->Form->end() ?>
 </div>
 -->
