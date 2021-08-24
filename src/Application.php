@@ -80,19 +80,6 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             // and make an error page/response
             ->add(new ErrorHandlerMiddleware(Configure::read('Error')))
 
-            ->add(function (
-                \Psr\Http\Message\ServerRequestInterface $request,
-                \Psr\Http\Server\RequestHandlerInterface $handler
-            ) {
-                try {
-                    // continue with the next middleware
-                    return $handler->handle($request);
-                } catch (\Cake\Http\Exception\InvalidCsrfTokenException $exception) {
-                    // handle the catched exception
-                    return Router::url('/users/login');
-                }
-            })
-
             // Handle plugin/theme assets like CakePHP normally does.
             ->add(new AssetMiddleware([
                 'cacheTime' => Configure::read('Asset.cacheTime'),
