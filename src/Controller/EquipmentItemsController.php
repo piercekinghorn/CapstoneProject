@@ -177,6 +177,7 @@ class EquipmentItemsController extends AppController
 
     public function filterByCampus($filter)
     {
+        $this->Authorization->skipAuthorization();
         $campusFilter = null;             
         $campuslist = $this->listCampus();
         $campusFilter = $campuslist[$filter];
