@@ -110,7 +110,12 @@ insert into students values
   );
 
   insert into msds values
-    (1, 'Material Safety Data Sheets', 'https://www-msds-com-au.ezproxy.cqu.edu.au/DefaultMSDS.aspx?ReturnUrl=%2f');
+    (1, 'Material Safety Data Sheets', 'https://www-msds-com-au.ezproxy.cqu.edu.au/DefaultMSDS.aspx?ReturnUrl=%2f'),
+    (2, 'First Aid', 'https://www.healthdirect.gov.au/first-aid'),
+    (3, 'Health Information Partners', 'https://www.healthdirect.gov.au/information-partners'),
+    (4, 'Emergency Services', 'https://info.australia.gov.au/information-and-services/public-safety-and-law/emergency-services'),
+    (5, 'Fire Safety', 'https://www.studyinaustralia.gov.au/english/live-in-australia/health-and-safety/fire')
+    ;
 
 
 create table users
