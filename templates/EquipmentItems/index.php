@@ -59,7 +59,7 @@ $this->Html->scriptEnd()
                     <th><?= $this->Paginator->sort('equipment_details') ?></th>
                     <th><?= $this->Paginator->sort('equipment_media') ?></th>
                     <th><?= $this->Paginator->sort('equipment_whs') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class="actions"><?= __('Options') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -73,14 +73,12 @@ $this->Html->scriptEnd()
                             <!--<td><?= h($equipmentItems->equipment_discipline) ?></td>-->
                             <td><?= h($equipmentItems->equipment_details) ?></td>
                             <td><?= h($equipmentItems->equipment_media) ?></td>
-                            <!-- Fix this <td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>-->
-                           <td> <?php 
+                           <!--<td> <?php 
                                     if (is_null($equipmentItems->equipment_whs))
-                                echo "This is null";
-                                else ($this->Html->link(h($equipmentItems->equipment_whs)))
-                            ?></td>
-                            <!--<td><?= $this->Html->link(h($equipmentItems->equipment_whs))?></td>-->                      
-                            <!--<td><?= h($equipmentItems->equipment_whs) ?></td>-->
+                                echo "";
+                                //else ($this->Html->link(h($equipmentItems->equipment_whs)))
+                            ?></td>-->
+                            <td><?= h($equipmentItems->equipment_whs) ?></td>                    
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>

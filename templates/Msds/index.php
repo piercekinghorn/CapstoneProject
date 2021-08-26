@@ -5,7 +5,7 @@
  */
 ?>
 <div class="msds index content">
-    <?= $this->Html->link(__('New Document'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    
     <h3><?= __('Material Safety Data Sheets') ?></h3>
     <p>MSDS.com.au provides the Safety Data Sheets about chemical products (which may be a hazardous substance and/or dangerous good) required for compliance with OH&S and legislative obligations related to the storage and handling of chemicals through the automated creation of chemical registers (inventories), Dangerous Goods manifests, risk assessments and other documentation required to be maintained. Pesticide information is included and information is kept up to date.
         <br>
@@ -13,8 +13,8 @@
         <br><br>
         Other safety documentation can be found below.
     </p>
-    <br>
     <div class="table-responsive">
+    <?= $this->Html->link(__('New Document'), ['action' => 'add'], ['class' => 'button float-right']) ?>
         <table>
             <thead>
                 <tr>
