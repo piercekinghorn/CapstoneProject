@@ -8,6 +8,10 @@ class MsdsTable extends Table
 {
     public function initialize(array $config): void
     {
-        $this->addBehavior('Timestamp');
+        parent::initialize($config);
+
+        $this->setTable('msds');
+        $this->setDisplayField('doc_id');
+        $this->setPrimaryKey('doc_id');
     }
 }

@@ -6,14 +6,20 @@ class MsdsController extends AppController
 {
     public function index()
     {
-        $this->loadComponent('Paginator');
-        $msds = $this->Paginator->paginate($this->Msds->find());
+        $this->Authorization->skipAuthorization();
+        $this->loadModel('Msds');
+        $msds = $this->paginate($this->Msds);
         $this->set(compact('msds'));
     }
 
-    public function view($slug = null)
+    public function view($id = null)
     {
-        $msds = $this->Msds->findBySlug($slug)->firstOrFail();
+        $this->Authorization->skipAuthorization();
+        $this->loadModel('Msds');
+        $msds = $this->Msds->get($id, [
+            'contain' => [],
+        ]);
         $this->set(compact('msds'));
     }
+        
 }
