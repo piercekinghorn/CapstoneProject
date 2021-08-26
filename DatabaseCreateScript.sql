@@ -102,6 +102,15 @@ insert into students values
   (12009874, 'Maria Fox', 'maria.fox@cqumail.com'),
   (12097543, 'Stan Johnston', 'stanjohnston@cqumail.com');
 
+  create table msds
+  (
+    doc_id int unsigned not null auto_increment primary key,
+    doc_url varchar(100) not null
+  );
+
+  insert into msds values
+    (1, 'https://www-msds-com-au.ezproxy.cqu.edu.au/DefaultMSDS.aspx?ReturnUrl=%2f');
+
 
 create table users
 (
