@@ -105,11 +105,12 @@ insert into students values
   create table msds
   (
     doc_id int unsigned not null auto_increment primary key,
+    doc_name varchar(50) not null,
     doc_url varchar(100) not null
   );
 
   insert into msds values
-    (1, 'https://www-msds-com-au.ezproxy.cqu.edu.au/DefaultMSDS.aspx?ReturnUrl=%2f');
+    (1, 'Material Safety Data Sheets', 'https://www-msds-com-au.ezproxy.cqu.edu.au/DefaultMSDS.aspx?ReturnUrl=%2f');
 
 
 create table users
