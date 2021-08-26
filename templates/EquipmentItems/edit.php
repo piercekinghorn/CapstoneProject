@@ -7,13 +7,13 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
+            <h4 class="heading"><?= __('Options') ?></h4>
             <?= $this->Form->postLink(
-                __('Delete'),
+                __('Delete Item'),
                 ['action' => 'delete', $equipmentItems->equipment_id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id), 'class' => 'side-nav-item']
             ) ?>
-            <?= $this->Html->link(__('List Equipment Items'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Equipment List'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
@@ -32,7 +32,7 @@
                     echo $this->Form->control('equipment_status');
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Edit')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

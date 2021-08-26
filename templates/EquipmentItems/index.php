@@ -23,7 +23,7 @@ $this->Html->scriptEnd()
     echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
     echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Search']);
     echo $this->Form->hidden('filterType', array('value' => 'EF'));
-    echo $this->Form->button('Submit');
+    echo $this->Form->button('Search');
     echo $this->form->end();
 ?>
 
@@ -35,7 +35,7 @@ $this->Html->scriptEnd()
     echo $this->Form->select('campusFilter', $campuslist , array('value' => $campuslist));
     //Determine if its campus filter
     echo $this->Form->hidden('filterType', array('value' => 'CF'));
-    echo $this->Form->button('Submit');
+    echo $this->Form->button('Filter');
     echo $this->Form->end();
 
 ?>
@@ -43,7 +43,7 @@ $this->Html->scriptEnd()
 <!-- Default stuff -->
 
 <div class="EquipmentItems index content">
-    <?= $this->Html->link(__('New Equipment Item'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('New Equipment'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Equipment Items') ?></h3>
 
 
@@ -51,11 +51,11 @@ $this->Html->scriptEnd()
         <table>
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('equipment_id') ?></th>
+                    <!--<th><?= $this->Paginator->sort('equipment_id') ?></th>-->
                     <th><?= $this->Paginator->sort('equipment_name') ?></th>
                     <th><?= $this->Paginator->sort('equipment_campus') ?></th>
                     <th><?= $this->Paginator->sort('equipment_lab') ?></th>
-                    <th><?= $this->Paginator->sort('equipment_discipline') ?></th>
+                    <!--<th><?= $this->Paginator->sort('equipment_discipline') ?></th>-->
                     <th><?= $this->Paginator->sort('equipment_details') ?></th>
                     <th><?= $this->Paginator->sort('equipment_media') ?></th>
                     <th><?= $this->Paginator->sort('equipment_whs') ?></th>
@@ -66,14 +66,21 @@ $this->Html->scriptEnd()
                 <?php foreach ($equipmentItems as $equipmentItems): ?>
                     <?php if ($equipmentItems->equipment_status == '1'): ?>
                         <tr>
-                            <td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>
+                            <!--<td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>-->
                             <td><?= h($equipmentItems->equipment_name) ?></td>
                             <td><?= h($equipmentItems->equipment_campus) ?></td>
                             <td><?= h($equipmentItems->equipment_lab) ?></td>
-                            <td><?= h($equipmentItems->equipment_discipline) ?></td>
+                            <!--<td><?= h($equipmentItems->equipment_discipline) ?></td>-->
                             <td><?= h($equipmentItems->equipment_details) ?></td>
                             <td><?= h($equipmentItems->equipment_media) ?></td>
-                            <td><?= h($equipmentItems->equipment_whs) ?></td>
+                            <!-- Fix this <td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>-->
+                           <td> <?php 
+                                    if (is_null($equipmentItems->equipment_whs))
+                                echo "This is null";
+                                else ($this->Html->link(h($equipmentItems->equipment_whs)))
+                            ?></td>
+                            <!--<td><?= $this->Html->link(h($equipmentItems->equipment_whs))?></td>-->                      
+                            <!--<td><?= h($equipmentItems->equipment_whs) ?></td>-->
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
