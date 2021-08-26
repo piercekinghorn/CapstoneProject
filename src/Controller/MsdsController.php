@@ -18,6 +18,7 @@ class MsdsController extends AppController
      */
     public function index()
     {
+        $this->Authorization->skipAuthorization();
         $msds = $this->paginate($this->Msds);
 
         $this->set(compact('msds'));
@@ -32,6 +33,7 @@ class MsdsController extends AppController
      */
     public function view($id = null)
     {
+        $this->Authorization->skipAuthorization();
         $msd = $this->Msds->get($id, [
             'contain' => [],
         ]);
@@ -46,6 +48,7 @@ class MsdsController extends AppController
      */
     public function add()
     {
+        $this->Authorization->skipAuthorization();
         $msd = $this->Msds->newEmptyEntity();
         if ($this->request->is('post')) {
             $msd = $this->Msds->patchEntity($msd, $this->request->getData());
@@ -68,6 +71,7 @@ class MsdsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->Authorization->skipAuthorization();
         $msd = $this->Msds->get($id, [
             'contain' => [],
         ]);
@@ -92,6 +96,7 @@ class MsdsController extends AppController
      */
     public function delete($id = null)
     {
+        $this->Authorization->skipAuthorization();
         $this->request->allowMethod(['post', 'delete']);
         $msd = $this->Msds->get($id);
         if ($this->Msds->delete($msd)) {
