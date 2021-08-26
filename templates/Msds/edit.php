@@ -22,6 +22,7 @@
             <fieldset>
                 <legend><?= __('Edit Msd') ?></legend>
                 <?php
+                echo $this->Form->control('doc_name');
                     echo $this->Form->control('doc_url');
                 ?>
             </fieldset>

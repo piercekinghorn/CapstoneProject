@@ -23,6 +23,7 @@ class Msd extends Entity
      * @var array
      */
     protected $_accessible = [
+        'doc_name' => true,
         'doc_url' => true,
     ];
 }

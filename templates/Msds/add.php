@@ -17,6 +17,7 @@
             <fieldset>
                 <legend><?= __('Add Msd') ?></legend>
                 <?php
+                echo $this->Form->control('doc_name');
                     echo $this->Form->control('doc_url');
                 ?>
             </fieldset>

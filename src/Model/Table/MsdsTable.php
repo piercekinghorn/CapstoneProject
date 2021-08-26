@@ -55,6 +55,12 @@ class MsdsTable extends Table
             ->allowEmptyString('doc_id', null, 'create');
 
         $validator
+        ->scalar('doc_name')
+        ->maxLength('doc_name', 50)
+        ->requirePresence('doc_name', 'create')
+        ->notEmptyString('doc_name');
+
+        $validator
             ->scalar('doc_url')
             ->maxLength('doc_url', 100)
             ->requirePresence('doc_url', 'create')
