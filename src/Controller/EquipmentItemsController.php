@@ -23,7 +23,7 @@ class EquipmentItemsController extends AppController
 
         $this->loadModel('LabBookings');
         $labBookings = $this->LabBookings->newEmptyEntity();
-        
+
         //$this->Authorization->authorize($labBookings);
 
         $labBookings->equipment_id = $id;
@@ -54,20 +54,20 @@ class EquipmentItemsController extends AppController
                     ->select(['equipment_campus'])
                     ->distinct(['equipment_campus'])
                     ->where(['equipment_status' => 1]);
-                    
-        $this->set(compact('query'));             
+
+        $this->set(compact('query'));
         $campuslist = array();
         array_push($campuslist, 'Display All');
         foreach ($query->all() as $equipmentItems) {
             array_push($campuslist, $equipmentItems->equipment_campus);
-        } 
+        }
         return $campuslist;
 
     }
 
     public function index()
     {
-        
+
         $this->Authorization->skipAuthorization();
 
         //After Post Request
@@ -91,7 +91,14 @@ class EquipmentItemsController extends AppController
             if($filterType == 'CF'){
                 $filter = $selectedFilter->campusFilter;
                 $filter = $this->filterByCampus($filter);
-                $settings = ['conditions' => array('EquipmentItems.equipment_campus LIKE' => "%$filter%")];
+                $settings = ['conditions' => array(
+                  "OR" => array('EquipmentItems.equipment_name LIKE' => "%$filter%",
+                    'EquipmentItems.equipment_campus LIKE' => "%$filter%",
+                    'EquipmentItems.equipment_lab LIKE' => "%$filter%",
+                    'EquipmentItems.equipment_discipline LIKE' => "%$filter%",
+                    'EquipmentItems.equipment_details LIKE' => "%$filter%",
+                    'EquipmentItems.equipment_media LIKE' => "%$filter%",
+                    'EquipmentItems.equipment_whs LIKE' => "%$filter%"))];
                 $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
                 $this->set(compact('equipmentItems'));
             }
@@ -113,7 +120,7 @@ class EquipmentItemsController extends AppController
 
         //Retrieve Campus List
         $campuslist = $this->listCampus();
-        $this->set(compact('campuslist'));       
+        $this->set(compact('campuslist'));
     }
 
     public function view($id = null)
@@ -132,7 +139,7 @@ class EquipmentItemsController extends AppController
         $this->Authorization->skipAuthorization();
 
         $equipmentItems = $this->EquipmentItems->newEmptyEntity();
-        
+
         //$this->Authorization->authorize($equipmentItems);
 
         if ($this->request->is('post')) {
@@ -177,7 +184,7 @@ class EquipmentItemsController extends AppController
 
         $this->request->allowMethod(['post', 'delete']);
         $equipmentItems = $this->EquipmentItems->get($id);
-        
+
         //$this->Authorization->authorize($equipmentItems);
 
         $equipmentItems->equipment_status = '0';
@@ -198,15 +205,15 @@ class EquipmentItemsController extends AppController
 
     public function filterByCampus($filter)
     {
-        $campusFilter = null;             
+        $campusFilter = null;
         $campuslist = $this->listCampus();
         $campusFilter = $campuslist[$filter];
-                    
+
         if($campusFilter == 'Display All')
         {
             $campusFilter = null;
         }
 
         return $campusFilter;
-    }  
+    }
 }

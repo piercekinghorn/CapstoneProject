@@ -41,7 +41,8 @@ $cakeDescription = 'Development';
             <a class="logo" href="<?= $this->Url->build('/') ?>">CQUniversity</a>
         </div>
         <div class="top-nav-links">
-            <a class="logo" href="equipment-items">Equipment Items</a>    
+            <a class="logo" href="equipment-items">Lab Equipment</a>    
+            <a class="logo" href="msds">Material Safety</a>  
             <a class="logo" target="_blank" rel="noopener" href="https://my.cqu.edu.au/">MyCQU</a>
             <a class="logo" href="lab-bookings">Admin</a>
         </div>

@@ -7,15 +7,15 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Lab Equipment'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <h4 class="heading"><?= __('Options') ?></h4>
+            <?= $this->Html->link(__('Equipment List'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
         <div class="equipmentItems form content">
             <?= $this->Form->create($equipmentItems) ?>
             <fieldset>
-                <legend><?= __('Add Equipment Item') ?></legend>
+                <legend><?= __('New Equipment Item') ?></legend>
                 <?php
                     echo $this->Form->control('equipment_name');
                     echo $this->Form->control('equipment_campus');
@@ -27,7 +27,7 @@
                     echo $this->Form->control('equipment_status');
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Add')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

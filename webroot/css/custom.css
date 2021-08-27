@@ -20,3 +20,8 @@
     color: #003057 !important;
     text-decoration: none !important;
 }
+
+/*Limits the search bar and drop down menu width */
+.txtArea { width:150px; height:50px; }
+
+select{width:30% !important;}
