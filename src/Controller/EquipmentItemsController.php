@@ -80,25 +80,25 @@ class EquipmentItemsController extends AppController
 
             //Run filter type function
             //Filter by equipment
+            //
             if($filterType == 'EF'){
                 $filter = $selectedFilter->equipmentFilter;
-                $settings = ['conditions' => array('EquipmentItems.equipment_name LIKE' => "%$filter%")];
+                $settings = ['conditions' => array(
+                  "OR" => array('EquipmentItems.equipment_name LIKE' => "%$filter%",
+                  'EquipmentItems.equipment_campus LIKE' => "%$filter%",
+                  'EquipmentItems.equipment_lab LIKE' => "%$filter%",
+                  'EquipmentItems.equipment_discipline LIKE' => "%$filter%",
+                  'EquipmentItems.equipment_details LIKE' => "%$filter%",
+                  'EquipmentItems.equipment_media LIKE' => "%$filter%",
+                  'EquipmentItems.equipment_whs LIKE' => "%$filter%"))];
                 $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
                 $this->set(compact('equipmentItems'));
-
             }
             //Filter By Campus
             if($filterType == 'CF'){
                 $filter = $selectedFilter->campusFilter;
                 $filter = $this->filterByCampus($filter);
-                $settings = ['conditions' => array(
-                  "OR" => array('EquipmentItems.equipment_name LIKE' => "%$filter%",
-                    'EquipmentItems.equipment_campus LIKE' => "%$filter%",
-                    'EquipmentItems.equipment_lab LIKE' => "%$filter%",
-                    'EquipmentItems.equipment_discipline LIKE' => "%$filter%",
-                    'EquipmentItems.equipment_details LIKE' => "%$filter%",
-                    'EquipmentItems.equipment_media LIKE' => "%$filter%",
-                    'EquipmentItems.equipment_whs LIKE' => "%$filter%"))];
+                $settings = ['conditions' => array('EquipmentItems.equipment_campus LIKE' => "%$filter%")];
                 $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
                 $this->set(compact('equipmentItems'));
             }
