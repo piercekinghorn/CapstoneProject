@@ -21,7 +21,7 @@ $this->Html->scriptEnd()
 <h3>Filter By Search</h3>
 <?php
     echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
-    echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Search']);
+    echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Search', 'label' =>'']);
     echo $this->Form->hidden('filterType', array('value' => 'EF'));
     echo $this->Form->button('Search');
     echo $this->form->end();
@@ -57,8 +57,8 @@ $this->Html->scriptEnd()
                     <th><?= $this->Paginator->sort('equipment_lab') ?></th>
                     <!--<th><?= $this->Paginator->sort('equipment_discipline') ?></th>-->
                     <th><?= $this->Paginator->sort('equipment_details') ?></th>
-                    <th><?= $this->Paginator->sort('equipment_media') ?></th>
-                    <th><?= $this->Paginator->sort('equipment_whs') ?></th>
+                    <!--<th><?= $this->Paginator->sort('equipment_media') ?></th>-->
+                    <!--<th><?= $this->Paginator->sort('equipment_whs') ?></th>-->
                     <th class="actions"><?= __('Options') ?></th>
                 </tr>
             </thead>
@@ -72,13 +72,13 @@ $this->Html->scriptEnd()
                             <td><?= h($equipmentItems->equipment_lab) ?></td>
                             <!--<td><?= h($equipmentItems->equipment_discipline) ?></td>-->
                             <td><?= h($equipmentItems->equipment_details) ?></td>
-                            <td><?= h($equipmentItems->equipment_media) ?></td>
+                            <!--<td><?= h($equipmentItems->equipment_media) ?></td>-->
                            <!--<td> <?php 
                                     if (is_null($equipmentItems->equipment_whs))
                                 echo "";
                                 //else ($this->Html->link(h($equipmentItems->equipment_whs)))
                             ?></td>-->
-                            <td><?= h($equipmentItems->equipment_whs) ?></td>                    
+                            <!--<td><?= h($equipmentItems->equipment_whs) ?></td>-->                    
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
