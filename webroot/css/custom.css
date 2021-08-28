@@ -21,7 +21,21 @@
     text-decoration: none !important;
 }
 
+
+.card1 {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+
+  .card2 {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+
 /*Limits the search bar and drop down menu width */
 .txtArea { width:150px; height:50px; }
 
-select{width:30% !important;}
+/*select{width:50% !important;}*/
+
