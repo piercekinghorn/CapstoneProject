@@ -67,7 +67,6 @@ class EquipmentItemsController extends AppController
 
     public function index()
     {
-
         $this->Authorization->skipAuthorization();
 
         //After Post Request
