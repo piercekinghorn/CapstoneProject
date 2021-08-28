@@ -1,4 +1,4 @@
-# Capstone Project - Test
+# Capstone Project
 
 ### Resources Directory
 
