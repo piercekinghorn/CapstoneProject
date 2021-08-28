@@ -18,7 +18,8 @@ class UserPolicy
      * @param \App\Model\Entity\User $resource
      * @return bool
      */
-    public function canAdd(IdentityInterface $user, User $resource)
+    
+     public function canAdd(IdentityInterface $user, User $resource)
     {
         // All users can register a new user.
         return true;

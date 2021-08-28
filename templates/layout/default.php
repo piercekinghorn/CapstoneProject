@@ -14,6 +14,8 @@
  * @var \App\View\AppView $this
  */
 
+use Cake\Core\Configure;
+
 $cakeDescription = 'Development';
 ?>
 <!DOCTYPE html>
@@ -43,9 +45,26 @@ $cakeDescription = 'Development';
         <div class="top-nav-links">
             <a class="logo" href="equipment-items">Lab Equipment</a>
             <a class="logo" href="msds">Material Safety</a>
-            <a class="logo" target="_blank" rel="noopener" href="https://my.cqu.edu.au/">MyCQU</a>
-            <a class="logo" href="lab-bookings">Admin</a>
-            <a class="logo" href="users/logout">Logout</a>
+            
+            
+            
+            <?php
+                Configure::restore('signed_in', 'default');
+                $signed_in = Configure::read('signed_in');
+                Configure::restore('is_staff', 'default');
+                $is_staff = Configure::read('is_staff');
+            ?>
+
+            <?php if ($signed_in == true): ?>
+                <?php if ($is_staff == true): ?>
+                    <a class="logo" href="lab-bookings">Lab Bookings</a>
+                    <a class="logo" href="users">Users</a>
+                <?php endif; ?>
+                <a class="logo" href="users/logout">Logout</a>
+            <?php else: ?>
+                <a class="logo" href="users/login">Sign in</a>
+            <?php endif; ?>
+
         </div>
     </nav>
     <main class="main">
