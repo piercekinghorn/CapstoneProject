@@ -43,14 +43,14 @@ $this->Html->scriptEnd()
 <!-- Default stuff -->
 
 <div class="EquipmentItems index content">
-    <?= $this->Html->link(__('New Equipment'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Equipment Items') ?></h3>
+    <?= $this->Html->link(__('New Equipment'), ['action' => 'add'], ['class' => 'button']) ?>
+    <!--<h3><?= __('Equipment Items') ?></h3>-->
 
 
     <div class="table-responsive">
         <table>
-            <thead>
-                <tr>
+            <!--<thead>-->
+                <tr class = "card1">
                     <!--<th><?= $this->Paginator->sort('equipment_id') ?></th>-->
                     <th><?= $this->Paginator->sort('equipment_name') ?></th>
                     <th><?= $this->Paginator->sort('equipment_campus') ?></th>
@@ -61,7 +61,7 @@ $this->Html->scriptEnd()
                     <!--<th><?= $this->Paginator->sort('equipment_whs') ?></th>-->
                     <th class="actions"><?= __('Options') ?></th>
                 </tr>
-            </thead>
+            <!--</thead>-->
             <tbody>
                 <?php foreach ($equipmentItems as $equipmentItems): ?>
                     <?php if ($equipmentItems->equipment_status == '1'): ?>

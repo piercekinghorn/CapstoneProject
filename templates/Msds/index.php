@@ -14,7 +14,7 @@
         Other safety documentation can be found below.
     </p>
     <div class="table-responsive">
-    <?= $this->Html->link(__('New Document'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('New Document'), ['action' => 'add'], ['class' => 'button']) ?>
         <table>
             <thead>
                 <tr>
