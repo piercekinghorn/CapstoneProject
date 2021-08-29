@@ -18,24 +18,24 @@ $this->Html->scriptEnd()
 
 
 <!-- Filter By Name -->
-<h3>Filter By Search</h3>
+<h3>Search for Equipment</h3>
 <?php
     echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
-    echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Search', 'label' =>'']);
+    echo $this->Form->control('equipmentFilter', ['placeholder' => 'Equipment keyword', 'label' =>'']);
     echo $this->Form->hidden('filterType', array('value' => 'EF'));
-    echo $this->Form->button('Search');
+    echo $this->Form->button('Search', array('id'=> 'button'));
     echo $this->form->end();
 ?>
 
 
 <!-- Filter By Campus -->
-<h3>Filter By Campus</h3>
+<h3>Select Campus</h3>
 <?php
     echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
     echo $this->Form->select('campusFilter', $campuslist , array('value' => $campuslist));
     //Determine if its campus filter
     echo $this->Form->hidden('filterType', array('value' => 'CF'));
-    echo $this->Form->button('Filter');
+    echo $this->Form->button('Filter', array('id'=> 'button'));
     echo $this->Form->end();
 
 ?>
@@ -51,14 +51,10 @@ $this->Html->scriptEnd()
         <table>
             <!--<thead>-->
                 <tr class = "card1">
-                    <!--<th><?= $this->Paginator->sort('equipment_id') ?></th>-->
-                    <th><?= $this->Paginator->sort('equipment_name') ?></th>
-                    <th><?= $this->Paginator->sort('equipment_campus') ?></th>
-                    <th><?= $this->Paginator->sort('equipment_lab') ?></th>
-                    <!--<th><?= $this->Paginator->sort('equipment_discipline') ?></th>-->
-                    <th><?= $this->Paginator->sort('equipment_details') ?></th>
-                    <!--<th><?= $this->Paginator->sort('equipment_media') ?></th>-->
-                    <!--<th><?= $this->Paginator->sort('equipment_whs') ?></th>-->
+                    <th><?= $this->Paginator->sort('equipment_name', 'Equipment') ?></th>
+                    <th><?= $this->Paginator->sort('equipment_campus', 'Campus') ?></th>
+                    <th><?= $this->Paginator->sort('equipment_lab', 'Lab') ?></th>
+                    <th><?= $this->Paginator->sort('equipment_details', 'Details') ?></th>
                     <th class="actions"><?= __('Options') ?></th>
                 </tr>
             <!--</thead>-->
@@ -66,24 +62,15 @@ $this->Html->scriptEnd()
                 <?php foreach ($equipmentItems as $equipmentItems): ?>
                     <?php if ($equipmentItems->equipment_status == '1'): ?>
                         <tr>
-                            <!--<td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>-->
                             <td><?= h($equipmentItems->equipment_name) ?></td>
                             <td><?= h($equipmentItems->equipment_campus) ?></td>
                             <td><?= h($equipmentItems->equipment_lab) ?></td>
-                            <!--<td><?= h($equipmentItems->equipment_discipline) ?></td>-->
-                            <td><?= h($equipmentItems->equipment_details) ?></td>
-                            <!--<td><?= h($equipmentItems->equipment_media) ?></td>-->
-                           <!--<td> <?php 
-                                    if (is_null($equipmentItems->equipment_whs))
-                                echo "";
-                                //else ($this->Html->link(h($equipmentItems->equipment_whs)))
-                            ?></td>-->
-                            <!--<td><?= h($equipmentItems->equipment_whs) ?></td>-->                    
+                            <td><?= h($equipmentItems->equipment_details) ?></td>       
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id)]) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>                        
                                 <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id]) ?> <!-- Lab Booking Button -->
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id)]) ?>
                             </td>
                         </tr>
                     <?php endif; ?>
@@ -102,8 +89,6 @@ $this->Html->scriptEnd()
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>
-<!--
-<div class="card-panel teal lighten-2">
     <?= $this->Form->create($labBookings) ?>
     <?php
         echo $this->Form->text('booking_date', ['class' => 'datepicker', 'placeholder' => 'Booking Date']);
@@ -111,5 +96,3 @@ $this->Html->scriptEnd()
     ?>
     <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id]) ?>
     <?= $this->Form->end() ?>
-</div>
--->

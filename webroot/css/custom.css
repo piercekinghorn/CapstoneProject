@@ -19,8 +19,13 @@
 .logo {
     color: #003057 !important;
     text-decoration: none !important;
+    padding-right: 1em;
 }
 
+#button{
+  background-color: #5f8aff;
+  border: 0.1rem solid black;
+}
 
 .card1 {
     /* Add shadows to create the "card" effect */

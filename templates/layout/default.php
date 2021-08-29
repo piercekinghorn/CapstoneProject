@@ -41,10 +41,10 @@ $cakeDescription = 'Development';
             <a class="logo" href="<?= $this->Url->build('/') ?>">CQUniversity</a>
         </div>
         <div class="top-nav-links">
-            <a class="logo float-right" href="equipment-items">Lab Equipment</a>    
-            <a class="logo float-right" href="msds">Material Safety</a>  
-            <a class="logo float-right" target="_blank" rel="noopener" href="https://my.cqu.edu.au/">MyCQU</a>
-            <a class="logo float-right" href="lab-bookings">Admin</a>
+            <?= $this->Html->link(__('Lab Equipment'), ['controller' => 'EquipmentItems','action' => 'index']) ?>
+            <?= $this->Html->link(__('Material Safety'), ['controller' => 'Msds','action' => 'index']) ?>
+            <a target="_blank" rel="noopener" href="https://my.cqu.edu.au/">MyCQU</a>
+            <?= $this->Html->link(__('Admin'), ['controller' => 'LabBookings','action' => 'index']) ?>
         </div>
     </nav>
     <main class="main">

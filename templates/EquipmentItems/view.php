@@ -19,7 +19,7 @@
             <h3><?= h($equipmentItems->equipment_id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Item') ?></th>
+                    <th><?= __('Equipment Item') ?></th>
                     <td><?= h($equipmentItems->equipment_name) ?></td>
                 </tr>
                 <tr>
