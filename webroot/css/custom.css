@@ -19,23 +19,29 @@
 .logo {
     color: #003057 !important;
     text-decoration: none !important;
+    padding-right: 1em;
 }
 
+#button{
+  background-color: #5f8aff;
+  border: 0.1rem solid black;
+}
 
-.card1 {
-    /* Add shadows to create the "card" effect */
+.tr1 {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
   }
 
-  .card2 {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-  }
+.td1 {
+  font-weight: bold;
+}
+
+.tr2 {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+  transition: 0.1s;
+ }
+
 
 /*Limits the search bar and drop down menu width */
 .txtArea { width:150px; height:50px; }
-
-/*select{width:50% !important;}*/
 

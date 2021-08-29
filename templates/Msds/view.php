@@ -19,15 +19,15 @@
             <h3><?= h($msd->doc_id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Document Name') ?></th>
+                    <th><?= __('Document') ?></th>
                     <td><?= h($msd->doc_name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Document Url') ?></th>
+                    <th><?= __('Url') ?></th>
                     <td><?= $this->Html->link(__($msd->doc_url))?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Document Id') ?></th>
+                    <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($msd->doc_id) ?></td>
                 </tr>
             </table>

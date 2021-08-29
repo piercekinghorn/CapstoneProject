@@ -13,6 +13,7 @@
         <br><br>
         Other safety documentation can be found below.
     </p>
+    <br>
     <div class="table-responsive">
     <?= $this->Html->link(__('New Document'), ['action' => 'add'], ['class' => 'button']) ?>
         <table>

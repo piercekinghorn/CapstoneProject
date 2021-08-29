@@ -9,6 +9,10 @@ use Cake\ORM\Locator\LocatorAwareTrait;
 
 class EquipmentItemsController extends AppController
 {
+    public $paginate = [
+        'limit' => 1000,
+    ];
+
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);

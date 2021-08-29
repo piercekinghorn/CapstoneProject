@@ -43,11 +43,10 @@ $cakeDescription = 'Development';
             <a class="logo" href="<?= $this->Url->build('/') ?>">CQUniversity</a>
         </div>
         <div class="top-nav-links">
-            <a class="logo" href="equipment-items">Lab Equipment</a>
-            <a class="logo" href="msds">Material Safety</a>
-            
-            
-            
+
+            <?= $this->Html->link(__('Lab Equipment'), ['controller' => 'EquipmentItems','action' => 'index']) ?>
+            <?= $this->Html->link(__('Material Safety'), ['controller' => 'Msds','action' => 'index']) ?>
+                        
             <?php
                 Configure::restore('signed_in', 'default');
                 $signed_in = Configure::read('signed_in');
@@ -57,12 +56,12 @@ $cakeDescription = 'Development';
 
             <?php if ($signed_in == true): ?>
                 <?php if ($is_staff == true): ?>
-                    <a class="logo" href="lab-bookings">Lab Bookings</a>
-                    <a class="logo" href="users">Users</a>
+                    <?= $this->Html->link(__('Lab Bookings'), ['controller' => 'LabBookings','action' => 'index']) ?>
+                    <?= $this->Html->link(__('User'), ['controller' => 'Users','action' => 'index']) ?>
                 <?php endif; ?>
-                <a class="logo" href="users/logout">Logout</a>
+                <?= $this->Html->link(__('User'), ['controller' => 'Users','action' => 'logout']) ?>
             <?php else: ?>
-                <a class="logo" href="users/login">Sign in</a>
+                <?= $this->Html->link(__('User'), ['controller' => 'Users','action' => 'login']) ?>
             <?php endif; ?>
 
         </div>
