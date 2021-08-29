@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Core\Configure;
+
 class UsersController extends AppController
 {
     public function beforeFilter(\Cake\Event\EventInterface $event)
@@ -21,6 +23,14 @@ class UsersController extends AppController
         // regardless of POST or GET, redirect if user is logged in
         if ($result->isValid()) {
             // redirect to /articles after login success
+            $user_id = $this->Authentication->getResult()->getData()->user_id;
+            $user = $this->Users->get($user_id);
+            if ($user->is_staff) {
+                Configure::write('is_staff', true);
+                Configure::store('is_staff', 'default');
+            }
+            Configure::write('signed_in', true);
+            Configure::store('signed_in', 'default');
             $redirect = $this->request->getQuery('redirect', [
                 'controller' => 'EquipmentItems',
                 'action' => 'index',
@@ -40,6 +50,10 @@ class UsersController extends AppController
         $result = $this->Authentication->getResult();
         // regardless of POST or GET, redirect if user is logged in
         if ($result->isValid()) {
+            Configure::write('signed_in', false);
+            Configure::store('signed_in', 'default');
+            Configure::write('is_staff', false);
+            Configure::store('is_staff', 'default');
             $this->Authentication->logout();
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
