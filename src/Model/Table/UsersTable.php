@@ -65,6 +65,11 @@ class UsersTable extends Table
             ->maxLength('password', 40)
             ->allowEmptyString('password');
 
+        $validator
+            ->boolean('is_staff')
+            ->requirePresence('is_staff', 'create')
+            ->notEmptyString('is_staff');
+
         return $validator;
     }
 
