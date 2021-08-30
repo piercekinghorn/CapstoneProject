@@ -15,29 +15,18 @@ echo "document.addEventListener('DOMContentLoaded', function() {
   });";
 $this->Html->scriptEnd()
 ?>
-
-
 <!-- Filter By Name -->
-<h3>Filter By Search</h3>
+<h3>Filter</h3>
 <?php
     echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
     echo $this->Form->control('equipmentFilter', ['placeholder' => 'Enter Search']);
-    echo $this->Form->hidden('filterType', array('value' => 'EF'));
-    echo $this->Form->button('Submit');
-    echo $this->form->end();
 ?>
-
-
 <!-- Filter By Campus -->
 <h3>Filter By Campus</h3>
 <?php
-    echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
     echo $this->Form->select('campusFilter', $campuslist , array('value' => $campuslist));
-    //Determine if its campus filter
-    echo $this->Form->hidden('filterType', array('value' => 'CF'));
     echo $this->Form->button('Submit');
     echo $this->Form->end();
-
 ?>
 
 <!-- Default stuff -->
