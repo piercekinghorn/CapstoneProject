@@ -44,7 +44,7 @@ class EquipmentItemsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    //Create an array of the distinct campus's
+    //Create an array of the distinct campus'
     public function listCampus()
     {
         $this->Authorization->skipAuthorization();
@@ -64,10 +64,46 @@ class EquipmentItemsController extends AppController
         return $campuslist;
 
     }
+    //Create an array of the distinct labs
+    public function listLab()
+    {
+        $this->Authorization->skipAuthorization();
+
+        $query = $this->getTableLocator()->get('EquipmentItems')
+                    ->find()
+                    ->select(['equipment_lab'])
+                    ->distinct(['equipment_lab'])
+                    ->where(['equipment_status' => 1]);
+
+        $this->set(compact('query'));
+        $lablist = array();
+        array_push($lablist, 'Display All');
+        foreach ($query->all() as $equipmentItems) {
+            array_push($lablist, $equipmentItems->equipment_lab);
+        }
+        return $campuslab;
+
+    }
 
     public function filter($filterData)
     {
+      //Set general filter
+      $filterE = $filterData->equipmentFilter;
+      //Set campus filter
+      $filterC = $filterData->campusFilter;
+      $filterC = $this->filterByCampus($filterC);
+      //Apply filter
+      $settings = ['conditions' => array(
+        "OR" => array('EquipmentItems.equipment_name LIKE' => "%$filterE%",
+          'EquipmentItems.equipment_campus LIKE' => "%$filterE%",
+          'EquipmentItems.equipment_lab LIKE' => "%$filterE%",
+          'EquipmentItems.equipment_discipline LIKE' => "%$filterE%",
+          'EquipmentItems.equipment_details LIKE' => "%$filterE%",
+          'EquipmentItems.equipment_media LIKE' => "%$filterE%",
+          'EquipmentItems.equipment_whs LIKE' => "%$filterE%"),
+        'EquipmentItems.equipment_campus LIKE' => "%$filterC%")];
 
+        return $settings;
     }
 
     public function index()
@@ -82,22 +118,8 @@ class EquipmentItemsController extends AppController
             $filterData = $this->EquipmentItems->newEmptyEntity();
             $filterData = $this->EquipmentItems->patchEntity($filterData, $this->request->getData());
 
-            //Set general filter
-            $filterE = $filterData->equipmentFilter;
-            //Set campus filter
-            $filterC = $filterData->campusFilter;
-            $filterC = $this->filterByCampus($filterC);
+            filter($filterData);
 
-            //Apply filter
-            $settings = ['conditions' => array(
-                "OR" => array('EquipmentItems.equipment_name LIKE' => "%$filterE%",
-                    'EquipmentItems.equipment_campus LIKE' => "%$filterE%",
-                    'EquipmentItems.equipment_lab LIKE' => "%$filterE%",
-                    'EquipmentItems.equipment_discipline LIKE' => "%$filterE%",
-                    'EquipmentItems.equipment_details LIKE' => "%$filterE%",
-                    'EquipmentItems.equipment_media LIKE' => "%$filterE%",
-                    'EquipmentItems.equipment_whs LIKE' => "%$filterE%"),
-                'EquipmentItems.equipment_campus LIKE' => "%$filterC%")];
             $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
             $this->set(compact('equipmentItems'));
             $this->LabBookings = TableRegistry::get('LabBookings');
