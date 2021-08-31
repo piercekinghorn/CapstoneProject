@@ -5,7 +5,7 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-class EquipmentItems extends Entity
+class EquipmentItem extends Entity
 {
     protected $_accessible = [
         'equipment_name' => true,

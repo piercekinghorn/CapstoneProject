@@ -20,11 +20,19 @@ class LabBookingPolicy
      */
     public function canAdd(IdentityInterface $user, LabBooking $labBooking)
     {
-        // Can book if user is logged in.
-        if ($user->user_id != null)
-            return true;
-        else
-            return false;
+        return true;
+    }
+
+    /**
+     * Check if $user can add LabBooking
+     *
+     * @param \Authorization\IdentityInterface $user The user.
+     * @param \App\Model\Entity\LabBooking $labBooking
+     * @return bool
+     */
+    public function canBook(IdentityInterface $user, LabBooking $labBooking) 
+    {
+        return true;
     }
 
     /**
@@ -36,8 +44,7 @@ class LabBookingPolicy
      */
     public function canEdit(IdentityInterface $user, LabBooking $labBooking)
     {
-        // Can edit booking if booking id is same as lab booking student id.
-        return $user->user_id === $labBooking->student_id;
+        return $user->is_staff;
     }
 
     /**
@@ -49,7 +56,6 @@ class LabBookingPolicy
      */
     public function canDelete(IdentityInterface $user, LabBooking $labBooking)
     {
-        // Can edit if the user is staff.
         return $user->is_staff;
     }
 
@@ -62,7 +68,6 @@ class LabBookingPolicy
      */
     public function canView(IdentityInterface $user, LabBooking $labBooking)
     {
-        // All users can view bookings.
         return true;
     }
 }

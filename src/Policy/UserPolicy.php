@@ -22,7 +22,7 @@ class UserPolicy
      public function canAdd(IdentityInterface $user, User $resource)
     {
         // All users can register a new user.
-        return true;
+        return false;
     }
 
     /**

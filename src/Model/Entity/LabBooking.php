@@ -5,7 +5,7 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-class LabBookings extends Entity
+class LabBooking extends Entity
 {
     protected $_accessible = [
         'equipment_id' => true,
