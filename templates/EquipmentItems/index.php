@@ -22,19 +22,13 @@ $this->Html->scriptEnd()
 <?php
     echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
     echo $this->Form->control('equipmentFilter', ['placeholder' => 'Equipment keyword', 'label' =>'']);
-    echo $this->Form->hidden('filterType', array('value' => 'EF'));
-    echo $this->Form->button('Search', array('id'=> 'button'));
-    echo $this->form->end();
 ?>
 
 
 <!-- Filter By Campus -->
 <h3>Select Campus</h3>
 <?php
-    echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
     echo $this->Form->select('campusFilter', $campuslist , array('value' => $campuslist));
-    //Determine if its campus filter
-    echo $this->Form->hidden('filterType', array('value' => 'CF'));
     echo $this->Form->button('Filter', array('id'=> 'button'));
     echo $this->Form->end();
 
@@ -65,10 +59,10 @@ $this->Html->scriptEnd()
                             <td class = "td1"><?= $this->Html->link(__(h($equipmentItems->equipment_name)), ['action' => 'view', $equipmentItems->equipment_id]) ?></td> <!-- Turns all items to links to 'View' -->
                             <td><?= h($equipmentItems->equipment_campus) ?></td>
                             <td><?= h($equipmentItems->equipment_lab) ?></td>
-                            <td><?= h($equipmentItems->equipment_details) ?></td>       
+                            <td><?= h($equipmentItems->equipment_details) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>                        
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id)]) ?>
                             </td>
