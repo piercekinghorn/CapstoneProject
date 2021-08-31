@@ -54,13 +54,13 @@ $cakeDescription = 'Development';
                 $is_staff = Configure::read('is_staff');
                 if ($signed_in == true) {
                     if ($is_staff == true) {
-                        $this->Html->link(__('Lab Bookings'), ['controller' => 'LabBookings','action' => 'index']);
-                        $this->Html->link(__('User'), ['controller' => 'Users','action' => 'index']);
+                        echo $this->Html->link(__('Lab Bookings'), ['controller' => 'LabBookings','action' => 'index']);
+                        echo $this->Html->link(__('Users'), ['controller' => 'Users','action' => 'index']);
                     }
-                    $this->Html->link(__('User'), ['controller' => 'Users','action' => 'logout']);
+                    echo $this->Html->link(__('Logout'), ['controller' => 'Users','action' => 'logout']);
                 }
                 else {
-                    $this->Html->link(__('User'), ['controller' => 'Users','action' => 'login']);
+                    echo $this->Html->link(__('Login'), ['controller' => 'Users','action' => 'login']);
                 }
             ?>
 
