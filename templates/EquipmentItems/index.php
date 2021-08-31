@@ -83,10 +83,3 @@ $this->Html->scriptEnd()
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>
-    <?= $this->Form->create($labBookings) ?>
-    <?php
-        echo $this->Form->text('booking_date', ['class' => 'datepicker', 'placeholder' => 'Booking Date']);
-        echo $this->Form->text('date_return', ['class' => 'datepicker', 'placeholder' => 'Return Date']);
-    ?>
-    <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id]) ?>
-    <?= $this->Form->end() ?>

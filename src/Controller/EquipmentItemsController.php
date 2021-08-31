@@ -132,7 +132,7 @@ class EquipmentItemsController extends AppController
     {
         //$this->Authorization->skipAuthorization();
         $this->loadModel('Users');
-        $user = $this->Users->get($id, [
+        $user = $this->Users->get(1, [
             'contain' => [],
         ]);
 
