@@ -52,18 +52,16 @@ $cakeDescription = 'Development';
                 $signed_in = Configure::read('signed_in');
                 Configure::restore('is_staff', 'default');
                 $is_staff = Configure::read('is_staff');
-            ?>
-
-            <?php if ($signed_in == true) {
-                if ($is_staff == true) {
-                    $this->Html->link(__('Lab Bookings'), ['controller' => 'LabBookings','action' => 'index']);
-                    $this->Html->link(__('User'), ['controller' => 'Users','action' => 'index']);
+                if ($signed_in == true) {
+                    if ($is_staff == true) {
+                        $this->Html->link(__('Lab Bookings'), ['controller' => 'LabBookings','action' => 'index']);
+                        $this->Html->link(__('User'), ['controller' => 'Users','action' => 'index']);
+                    }
+                    $this->Html->link(__('User'), ['controller' => 'Users','action' => 'logout']);
                 }
-                $this->Html->link(__('User'), ['controller' => 'Users','action' => 'logout']);
-            }
-            else {
-                $this->Html->link(__('User'), ['controller' => 'Users','action' => 'login']);
-            }
+                else {
+                    $this->Html->link(__('User'), ['controller' => 'Users','action' => 'login']);
+                }
             ?>
 
         </div>
