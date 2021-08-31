@@ -92,7 +92,7 @@ class EquipmentItemsController extends AppController
       //Set campus filter
       $filterC = $filterData->campusFilter;
       $filterC = $this->filterByCampus($filterC);
-      //Apply filter
+      //Apply filter settings
       $settings = ['conditions' => array(
         "OR" => array('EquipmentItems.equipment_name LIKE' => "%$filterE%",
           'EquipmentItems.equipment_campus LIKE' => "%$filterE%",
@@ -110,6 +110,7 @@ class EquipmentItemsController extends AppController
     {
 
         $this->Authorization->skipAuthorization();
+        $settings = [];
 
         //After Post Request
         if ($this->request->is('post')){
@@ -118,24 +119,15 @@ class EquipmentItemsController extends AppController
             $filterData = $this->EquipmentItems->newEmptyEntity();
             $filterData = $this->EquipmentItems->patchEntity($filterData, $this->request->getData());
 
-            filter($filterData);
+            $settings = filter($filterData);
+          }
 
-            $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
-            $this->set(compact('equipmentItems'));
-            $this->LabBookings = TableRegistry::get('LabBookings');
-            $labBookings = $this->LabBookings->newEmptyEntity();
-            $this->set('LabBookings');
-        }
-        //On initial Page Startup
-        else
-        {
-            $equipmentItems = $this->paginate($this->EquipmentItems);
-            $this->set(compact('equipmentItems'));
+        $equipmentItems = $this->paginate($this->EquipmentItems, $settings);
+        $this->set(compact('equipmentItems'));
 
-            $this->LabBookings = TableRegistry::get('LabBookings');
-            $this->set('LabBookings');
-            $labBookings = $this->LabBookings->newEmptyEntity();
-        }
+        $this->LabBookings = TableRegistry::get('LabBookings');
+        $this->set('LabBookings');
+        $labBookings = $this->LabBookings->newEmptyEntity();
 
         //Retrieve Campus List
         $campuslist = $this->listCampus();
