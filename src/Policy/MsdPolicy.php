@@ -20,6 +20,7 @@ class MsdPolicy
      */
     public function canAdd(IdentityInterface $user, Msd $msd)
     {
+        return $user->is_staff;
     }
 
     /**
@@ -31,6 +32,7 @@ class MsdPolicy
      */
     public function canEdit(IdentityInterface $user, Msd $msd)
     {
+        return $user->is_staff;
     }
 
     /**
@@ -42,6 +44,7 @@ class MsdPolicy
      */
     public function canDelete(IdentityInterface $user, Msd $msd)
     {
+        return $user->is_staff;
     }
 
     /**
@@ -53,5 +56,6 @@ class MsdPolicy
      */
     public function canView(IdentityInterface $user, Msd $msd)
     {
+        return true;
     }
 }

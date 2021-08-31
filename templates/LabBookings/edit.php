@@ -22,9 +22,9 @@
             <fieldset>
                 <legend><?= __('Edit Lab Booking') ?></legend>
                 <?php
-                    echo $this->Form->control('equipment_id', ['type' => 'number']);
-                    echo $this->Form->control('staff_id', ['type' => 'number']);
-                    echo $this->Form->control('student_id', ['type' => 'number']);
+                    echo $this->Form->control('equipment_id', ['type' => 'number', 'label' => 'Equipment ID']);
+                    echo $this->Form->control('staff_id', ['type' => 'number', 'label' => 'Staff ID']);
+                    echo $this->Form->control('student_id', ['type' => 'number', 'label' => 'Student ID']);
                     echo $this->Form->control('booking_date');
                     echo $this->Form->control('date_return');
                     echo $this->Form->control('booking_status', ['type' => 'number']);

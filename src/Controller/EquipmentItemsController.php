@@ -139,11 +139,6 @@ class EquipmentItemsController extends AppController
     public function add()
     {
         //$this->Authorization->skipAuthorization();
-        $this->loadModel('Users');
-        $user = $this->Users->get($id, [
-            'contain' => [],
-        ]);
-        
         $equipmentItems = $this->EquipmentItems->newEmptyEntity();
         $this->Authorization->authorize($equipmentItems);
 
