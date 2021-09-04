@@ -163,7 +163,10 @@ class EquipmentItemsController extends AppController
             if($fName)
                 $media->moveTo($targetPath);
                 $equipmentItems->media = $fName;
-         
+
+                //debug($media);
+                //exit;
+            
             }
            
             if ($this->EquipmentItems->save($equipmentItems)) {

@@ -13,7 +13,7 @@
     </aside>
     <div class="column-responsive column-80">
         <div class="equipmentItems form content">
-            <?= $this->Form->create($equipmentItems) ?>
+            <?= $this->Form->create($equipmentItems, ['type'=>'file']) ?>
             <fieldset>
                 <legend><?= __('New Equipment Item') ?></legend>
                 <?php
