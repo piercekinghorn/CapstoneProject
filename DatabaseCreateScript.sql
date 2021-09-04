@@ -12,7 +12,7 @@ create table equipment_items
   equipment_lab varchar(25) not null,
   equipment_discipline varchar(25) null,
   equipment_details varchar(25) null,
-  equipment_media varchar(50) null, 
+  equipment_media varchar(150) null, 
   equipment_whs varchar(200) null,
   equipment_status int(1) not null
 );

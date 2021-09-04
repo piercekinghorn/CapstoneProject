@@ -67,13 +67,24 @@ class EquipmentItemsTable extends Table
 
         $validator
             ->scalar('equipment_media')
-            ->maxLength('equipment_media', 50)
+            ->maxLength('equipment_media', 150)
             ->allowEmptyString('equipment_media');
 
-        $validator
+        /*$validator
             ->scalar('equipment_whs')
             ->maxLength('equipment_whs', 200)
-            ->allowEmptyString('equipment_whs');
+            ->allowEmptyString('equipment_whs')
+            ->allowEmptyFile('image')
+            ->add( 'image', [
+            'mimeType' => [
+                'rule' => [ 'mimeType', [ 'image/jpg', 'image/png', 'image/jpeg' ] ],
+                'message' => 'Please upload only jpg and png.',
+            ],
+            'fileSize' => [
+                'rule' => [ 'fileSize', '<=', '3MB' ],
+                'message' => 'Image file size must be less than 3MB.',
+            ],
+        ] );*/
 
         $validator
             ->boolean('equipment_status')
