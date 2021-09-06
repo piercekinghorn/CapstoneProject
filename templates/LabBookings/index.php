@@ -11,12 +11,11 @@
         <table>
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('booking_id') ?></th>
-                    <th><?= $this->Paginator->sort('equipment_id') ?></th>
-                    <th><?= $this->Paginator->sort('staff_id') ?></th>
-                    <th><?= $this->Paginator->sort('student_id') ?></th>
+                    <th><?= $this->Paginator->sort('booking_id', 'Booking ID') ?></th>
+                    <th><?= $this->Paginator->sort('equipment_id', 'Equipment ID') ?></th>
+                    <th><?= $this->Paginator->sort('staff_id', 'Staff ID') ?></th>
+                    <th><?= $this->Paginator->sort('student_id', 'Student ID') ?></th>
                     <th><?= $this->Paginator->sort('booking_date') ?></th>
-                    <th><?= $this->Paginator->sort('date_return') ?></th>
                     <th><?= $this->Paginator->sort('booking_status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -27,10 +26,17 @@
                     <td><?= $this->Number->format($labBookings->booking_id) ?></td>
                     <td><?= $this->Number->format($labBookings->equipment_id) ?></td>
                     <td><?= $this->Number->format($labBookings->staff_id) ?></td>
-                    <td><?= $this->Number->format($labBookings->student_id) ?></td>
-                    <td><?= h($labBookings->booking_date) ?></td>
-                    <td><?= h($labBookings->date_return) ?></td>
-                    <td><?= h($labBookings->booking_status) ?></td>
+                    <td><?= $labBookings->student_id ?></td>
+                    <td><?= h($labBookings->booking_date->i18nFormat('dd/MM/yyyy')) ?></td>
+                    <td>
+                        <?php
+                            if($labBookings->booking_status) {
+                                echo "Booked";
+                            } else {
+                                echo "Available";
+                            }
+                        ?>
+                    </td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $labBookings->booking_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $labBookings->booking_id]) ?>
