@@ -15,17 +15,14 @@
         <div class="users form content">
             <?= $this->Form->create($user) ?>
             <fieldset>
-                <legend><?= __('Add User') ?></legend>
+                <legend><?= __('Register User') ?></legend>
                 <?php
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
+                    echo $this->Form->control('student_id', ['type' => 'number', 'label' => 'Student ID']);
+                    echo $this->Form->hidden('is_staff');
+                    echo $this->Form->hidden('is_admin');
                 ?>
-                <div class="switch">
-                    <label>
-                        <?= $this->Form->control('is_staff', ['type' => 'checkbox', 'label' => 'Staff']) ?>
-                        <span class="lever"></span>
-                    </label>
-                </div>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>

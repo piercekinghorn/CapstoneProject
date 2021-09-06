@@ -11,7 +11,9 @@ class User extends Entity
     protected $_accessible = [
         'username' => true,
         'password' => true,
+        'student_id' => true,
         'is_staff' => true,
+        'is_admin' => true,
     ];
 
     protected $_hidden = [

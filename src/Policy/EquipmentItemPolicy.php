@@ -20,7 +20,7 @@ class EquipmentItemPolicy
      */
     public function canAdd(IdentityInterface $user, EquipmentItem $equipmentItem)
     {
-        return $user->is_staff;
+        return $user->is_admin;
     }
 
 
@@ -33,7 +33,7 @@ class EquipmentItemPolicy
      */
     public function canEdit(IdentityInterface $user, EquipmentItem $equipmentItem)
     {
-        return $user->is_staff;
+        return $user->is_admin;
     }
 
     /**
@@ -45,7 +45,7 @@ class EquipmentItemPolicy
      */
     public function canDelete(IdentityInterface $user, EquipmentItem $equipmentItem)
     {
-        return $user->is_staff;
+        return $user->is_admin;
     }
 
     /**

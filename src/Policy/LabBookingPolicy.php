@@ -44,7 +44,7 @@ class LabBookingPolicy
      */
     public function canEdit(IdentityInterface $user, LabBooking $labBooking)
     {
-        return $user->is_staff;
+        return $user->is_admin;
     }
 
     /**
@@ -56,7 +56,7 @@ class LabBookingPolicy
      */
     public function canDelete(IdentityInterface $user, LabBooking $labBooking)
     {
-        return $user->is_staff;
+        return $user->is_admin;
     }
 
     /**

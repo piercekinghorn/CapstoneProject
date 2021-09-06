@@ -24,10 +24,17 @@
                 <?php
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
+                    echo $this->Form->control('student_id', ['type' => 'number', 'label' => 'Student ID']);
                 ?>
                 <div class="switch">
                     <label>
                         <?= $this->Form->control('is_staff', ['type' => 'checkbox', 'label' => 'Staff']) ?>
+                        <span class="lever"></span>
+                    </label>
+                </div>
+                <div class="switch">
+                    <label>
+                        <?= $this->Form->control('is_admin', ['type' => 'checkbox', 'label' => 'Admin']) ?>
                         <span class="lever"></span>
                     </label>
                 </div>

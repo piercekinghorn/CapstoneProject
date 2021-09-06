@@ -31,7 +31,15 @@
                     <td><?= $this->Number->format($user->user_id) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Student Id') ?></th>
+                    <td><?= $this->Number->format($user->student_id) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Staff') ?></th>
+                    <td><?= $this->Number->format($user->is_staff) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Admin') ?></th>
                     <td><?= $this->Number->format($user->is_staff) ?></td>
                 </tr>
             </table>

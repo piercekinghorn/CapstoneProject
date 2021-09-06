@@ -15,6 +15,7 @@
                     <th><?= $this->Paginator->sort('username') ?></th>
                     <th><?= $this->Paginator->sort('password') ?></th>
                     <th><?= $this->Paginator->sort('is_staff') ?></th>
+                    <th><?= $this->Paginator->sort('is_admin') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <td><?= h($user->username) ?></td>
                     <td><?= h($user->password) ?></td>
                     <td><?= h($user->is_staff) ?></td>
+                    <td><?= h($user->is_admin) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id]) ?>
