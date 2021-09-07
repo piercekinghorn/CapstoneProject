@@ -155,17 +155,19 @@ class EquipmentItemsController extends AppController
         if ($this->request->is('post')) {
             $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
            
-            if(!$equipmentItems->getErrors){
+            if(!$equipmentItems->getErrors) {
                 $media = $this->request->getData('equipment_media');
                 $fName = $media->getClientFilename();
                 $targetPath = WWW_ROOT.'img'.DS.$fName;
 
-            if($fName)
-                $media->moveTo($targetPath);
-                $equipmentItems->media = $fName;
+                if($fName) {
+                    $media->moveTo($targetPath);
+                }
 
-                //debug($media);
-                //exit;
+                $equipmentItems->equipment_media = $fName;
+
+                //debug($equipmentItems);
+                //exit();
             
             }
            
@@ -197,12 +199,13 @@ class EquipmentItemsController extends AppController
                 $fName = $media->getClientFilename();
                 $targetPath = WWW_ROOT.'img'.DS.$fName;
 
-            if($fName)
-                $media->moveTo($targetPath);
-                $equipmentItems->media = $fName;
+                if($fName) {
+                    $media->moveTo($targetPath);
+                }
+                $equipmentItems->equipment_media = $fName;
 
-                //debug($media);
-                //exit;
+                //debug($equipmentItems);
+                //exit();
             
             }
 
