@@ -11,7 +11,7 @@
         <table>
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('user_id') ?></th>
+                    <th><?= $this->Paginator->sort('user_id', 'User ID') ?></th>
                     <th><?= $this->Paginator->sort('username') ?></th>
                     <th><?= $this->Paginator->sort('password') ?></th>
                     <th><?= $this->Paginator->sort('is_staff') ?></th>
@@ -25,7 +25,15 @@
                     <td><?= $this->Number->format($user->user_id) ?></td>
                     <td><?= h($user->username) ?></td>
                     <td><?= h($user->password) ?></td>
-                    <td><?= h($user->is_staff) ?></td>
+                    <td>
+                        <?php
+                            if($user->is_staff == 1) {
+                                echo "True";
+                            } else {
+                                echo "False";
+                            }
+                        ?>
+                    </td>
                     <td><?= h($user->is_admin) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
