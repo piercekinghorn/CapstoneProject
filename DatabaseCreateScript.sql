@@ -122,8 +122,12 @@ create table users
   user_id int(10) unsigned not null auto_increment primary key,
   username varchar(20) not null,
   password varchar(255),
-  is_staff boolean default false not null
+  student_id int(20) unsigned,
+  is_staff boolean default false not null,
+  is_admin boolean default false not null
 );
 
 insert into users values 
-  (NULL, 'jack', 'test', false);
+  (NULL, 12109625, 'jason', 'password', true, false),
+  (NULL, 12109626, 'jack', 'test', false, false),
+  (NULL, 12109627, 'reese', 'password', true, true);
