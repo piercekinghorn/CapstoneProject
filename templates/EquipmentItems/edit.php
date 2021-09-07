@@ -18,7 +18,7 @@
     </aside>
     <div class="column-responsive column-80">
         <div class="equipmentItems form content">
-            <?= $this->Form->create($equipmentItems) ?>
+            <?= $this->Form->create($equipmentItems, ['type'=>'file']) ?>
             <fieldset>
                 <legend><?= __('Edit Lab Equipment') ?></legend>
                 <?php
@@ -27,7 +27,7 @@
                     echo $this->Form->control('equipment_lab');
                     echo $this->Form->control('equipment_discipline');
                     echo $this->Form->control('equipment_details');
-                    echo $this->Form->control('equipment_media');
+                    echo $this->Form->control('equipment_media', ['type'=>'file']);
                     echo $this->Form->control('equipment_whs');
                     echo $this->Form->control('equipment_status');
                 ?>
