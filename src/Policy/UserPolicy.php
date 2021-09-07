@@ -34,8 +34,8 @@ class UserPolicy
      */
     public function canEdit(IdentityInterface $user, User $resource)
     {
-        // Can edit if the user is staff.
-        return $user->is_staff;
+        // Can edit if the user is admin.
+        return $user->is_admin;
     }
 
     /**
@@ -47,8 +47,8 @@ class UserPolicy
      */
     public function canDelete(IdentityInterface $user, User $resource)
     {
-        // Can delete if the user is staff.
-        return $user->is_staff;
+        // Can delete if the user is admin.
+        return $user->is_admin;
     }
 
     /**
@@ -60,7 +60,7 @@ class UserPolicy
      */
     public function canView(IdentityInterface $user, User $resource)
     {
-        // Can view if the user is staff.
-        return $user->is_staff;
+        // Can view if the user is admin.
+        return $user->is_admin;
     }
 }

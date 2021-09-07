@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <th><?= __('Media') ?></th>
-                    <td><?= h($equipmentItems->equipment_media) ?></td>
+                    <td><?= $this->Html->image($equipmentItems->equipment_media, ['style' => '']) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Work, Health & Safety') ?></th>

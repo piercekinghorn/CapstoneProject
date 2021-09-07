@@ -154,6 +154,23 @@ class EquipmentItemsController extends AppController
 
         if ($this->request->is('post')) {
             $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
+           
+            if(!$equipmentItems->getErrors) {
+                $media = $this->request->getData('equipment_media');
+                $fName = $media->getClientFilename();
+                $targetPath = WWW_ROOT.'img'.DS.$fName;
+
+                if($fName) {
+                    $media->moveTo($targetPath);
+                }
+
+                $equipmentItems->equipment_media = $fName;
+
+                //debug($equipmentItems);
+                //exit();
+            
+            }
+           
             if ($this->EquipmentItems->save($equipmentItems)) {
                 $this->Flash->success(__('The labequipment has been saved.'));
 
@@ -176,6 +193,22 @@ class EquipmentItemsController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
+
+            if(!$equipmentItems->getErrors){
+                $media = $this->request->getData('equipment_media');
+                $fName = $media->getClientFilename();
+                $targetPath = WWW_ROOT.'img'.DS.$fName;
+
+                if($fName) {
+                    $media->moveTo($targetPath);
+                }
+                $equipmentItems->equipment_media = $fName;
+
+                //debug($equipmentItems);
+                //exit();
+            
+            }
+
             if ($this->EquipmentItems->save($equipmentItems)) {
                 $this->Flash->success(__('The equipment item has been saved.'));
 
