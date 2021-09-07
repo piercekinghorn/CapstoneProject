@@ -128,6 +128,6 @@ create table users
 );
 
 insert into users values 
-  (NULL, 12109625, 'jason', 'password', true, false),
-  (NULL, 12109626, 'jack', 'test', false, false),
-  (NULL, 12109627, 'reese', 'password', true, true);
+  (NULL, 'jason', 'password', 12109625, true, false),
+  (NULL, 'jack', 'test', 12109626, false, false),
+  (NULL, 'reese', 'password', 12109627, true, true);
