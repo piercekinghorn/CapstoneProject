@@ -41,6 +41,7 @@ class LabBookingsController extends AppController
         //$this->Authorization->authorize($labBookings);
         if ($this->request->is('post')) {
             $labBookings = $this->LabBookings->patchEntity($labBookings, $this->request->getData());
+
             if ($this->LabBookings->save($labBookings)) {
                 $this->Flash->success(__('Your lab booking has been saved.'));
 
@@ -64,6 +65,7 @@ class LabBookingsController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $labBookings = $this->LabBookings->patchEntity($labBookings, $this->request->getData());
+         
             if ($this->LabBookings->save($labBookings)) {
                 $this->Flash->success(__('Your lab booking has been saved.'));
 
