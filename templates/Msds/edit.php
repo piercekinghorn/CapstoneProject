@@ -22,8 +22,8 @@
             <fieldset>
                 <legend><?= __('Edit Document') ?></legend>
                 <?php
-                    echo $this->Form->control('doc_name', ['label' => 'Name']);
-                    echo $this->Form->control('doc_url', ['label' => 'URL Link']);
+                    echo $this->Form->control('doc_name', ['placeholder' => 'Name (Required)', 'label' =>'Name']);
+                    echo $this->Form->control('doc_url', ['placeholder' => 'Link (Required)', 'label' =>'URL link']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Edit')) ?>

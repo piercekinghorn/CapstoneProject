@@ -22,17 +22,18 @@
             <fieldset>
                 <legend><?= __('Edit Lab Equipment') ?></legend>
                 <?php
-                    echo $this->Form->control('equipment_name');
-                    echo $this->Form->control('equipment_campus');
-                    echo $this->Form->control('equipment_lab');
-                    echo $this->Form->control('equipment_discipline');
-                    echo $this->Form->control('equipment_details');
-                    echo $this->Form->control('equipment_media', ['type'=>'file']);
-                    echo $this->Form->control('equipment_whs');
-                    echo $this->Form->control('equipment_status');
+                    echo $this->Form->control('equipment_name', ['placeholder' => 'Name (Required)', 'label' =>'Name']);
+                    echo $this->Form->control('equipment_campus', ['placeholder' => 'Campus (Required)', 'label' =>'Campus']);
+                    echo $this->Form->control('equipment_lab', ['placeholder' => 'Laboratory (Required)', 'label' =>'Laboratory']);
+                    echo $this->Form->control('equipment_discipline', ['placeholder' => 'Not Required', 'label' =>'Discipline']);
+                    echo $this->Form->control('equipment_details', ['placeholder' => 'Category Tags (Not Required)', 'label' =>'Details']);
+                    echo $this->Form->control('equipment_media', ['type'=>'file', 'label' =>'Upload jpg/png']);
+                    echo $this->Form->control('equipment_whs', ['placeholder' => 'No Required', 'label' =>'Work Health & Safety']);
+                    echo $this->Form->control('equipment_status', ['placeholder' => '0 = false, 1 = true', 'label' =>'Booking Status']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Edit')) ?>
+            <?= $this->Form->button(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_media], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_media)])?>
             <?= $this->Form->end() ?>
         </div>
     </div>
