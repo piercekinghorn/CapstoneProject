@@ -16,6 +16,7 @@
                     <th><?= $this->Paginator->sort('staff_id', 'Staff ID') ?></th>
                     <th><?= $this->Paginator->sort('student_id', 'Student ID') ?></th>
                     <th><?= $this->Paginator->sort('booking_date') ?></th>
+                    <th><?= $this->Paginator->sort('return_date') ?></th>
                     <th><?= $this->Paginator->sort('booking_status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -28,6 +29,7 @@
                     <td><?= $this->Number->format($labBookings->staff_id) ?></td>
                     <td><?= $labBookings->student_id ?></td>
                     <td><?= h($labBookings->booking_date->i18nFormat('dd/MM/yyyy')) ?></td>
+                    <td><?= h($labBookings->return_date->i18nFormat('dd/MM/yyyy')) ?></td>
                     <td>
                         <?php
                             if($labBookings->booking_status) {

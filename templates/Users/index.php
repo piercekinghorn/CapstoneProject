@@ -14,8 +14,9 @@
                     <th><?= $this->Paginator->sort('user_id', 'User ID') ?></th>
                     <th><?= $this->Paginator->sort('username') ?></th>
                     <th><?= $this->Paginator->sort('password') ?></th>
-                    <th><?= $this->Paginator->sort('is_staff') ?></th>
-                    <th><?= $this->Paginator->sort('is_admin') ?></th>
+                    <th><?= $this->Paginator->sort('student_id', 'Student id') ?></th>
+                    <th><?= $this->Paginator->sort('is_staff', 'Staff') ?></th>
+                    <th><?= $this->Paginator->sort('is_admin', 'Admin') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <td><?= $this->Number->format($user->user_id) ?></td>
                     <td><?= h($user->username) ?></td>
                     <td><?= h($user->password) ?></td>
+                    <td><?= $user->student_id ?></td>
                     <td>
                         <?php
                             if($user->is_staff == 1) {
@@ -34,7 +36,15 @@
                             }
                         ?>
                     </td>
-                    <td><?= h($user->is_admin) ?></td>
+                    <td>
+                        <?php
+                            if($user->is_admin == 1 || $user->is_admin == true) {
+                                echo "True";
+                            } else {
+                                echo "False";
+                            }
+                        ?>
+                    </td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id]) ?>

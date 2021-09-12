@@ -20,7 +20,7 @@ $this->Html->scriptEnd()
 <!-- Filter By Name -->
 <h3>Search for Equipment</h3>
 <?php
-    echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
+    echo $this->Form->create($equipmentItems, ['action' => '', 'type' => 'POST']);
     echo $this->Form->control('equipmentFilter', ['placeholder' => 'Equipment keyword', 'label' =>'']);
 ?>
 
@@ -81,5 +81,14 @@ $this->Html->scriptEnd()
             <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+    </div>
+
+    <div>
+        <?php
+            echo $this->Form->create($labBookings, ['action' => 'lab-bookings', 'type' => 'POST']);
+            echo $this->Form->control('equipmentFilter', ['placeholder' => 'Equipment keyword', 'label' =>'']);
+            echo $this->Form->button('booking', array('id'=> 'button'));
+            echo $this->Form->end();
+        ?>
     </div>
 </div>

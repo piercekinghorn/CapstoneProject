@@ -61,7 +61,7 @@ create table lab_bookings
   staff_id int not null references staff(staff_id),
   student_id int null references student(student_id),
   booking_date TIMESTAMP not null,
-  return_date TIMESTAMP null,
+  return_date TIMESTAMP default current_timestamp,
   booking_status boolean default false not null
 );
 

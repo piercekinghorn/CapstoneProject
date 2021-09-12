@@ -14,6 +14,16 @@ class LabBookingsController extends AppController
     public function index()
     {
         $this->Authorization->skipAuthorization();
+
+        //After Post Request
+        if ($this->request->is('post')) {
+
+            //Get data for equipment and campus filters
+            $filterData = $this->request->getData();
+            debug($filterData);
+            exit();
+        }
+
         $this->loadModel('LabBookings');
         $labBookings = $this->paginate($this->LabBookings);
         $this->set(compact('labBookings'));
@@ -93,5 +103,12 @@ class LabBookingsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    
+    public function booking($bookingData) {
+        $this->Authorization->skipAuthorization();
+        debug($bookingData);
+        exit();
     }
 }
