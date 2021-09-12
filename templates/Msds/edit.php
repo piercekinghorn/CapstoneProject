@@ -22,8 +22,8 @@
             <fieldset>
                 <legend><?= __('Edit Document') ?></legend>
                 <?php
-                    echo $this->Form->control('doc_name');
-                    echo $this->Form->control('doc_url');
+                    echo $this->Form->control('doc_name', ['label' => 'Name']);
+                    echo $this->Form->control('doc_url', ['label' => 'URL Link']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Edit')) ?>

@@ -35,11 +35,11 @@
                     <td><?= $this->Number->format($labBookings->student_id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Booking Date ') ?></th>
+                    <th><?= __('Booking Date - Start') ?></th>
                     <td><?= h($labBookings->booking_date) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Return Date') ?></th>
+                    <th><?= __('Booking Date - Finish') ?></th>
                     <td><?= h($labBookings->date_return) ?></td>
                 </tr>
                 <tr>

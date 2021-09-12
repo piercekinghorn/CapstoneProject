@@ -7,7 +7,7 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
+            <h4 class="heading"><?= __('Options') ?></h4>
             <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $labBookings->booking_id],
@@ -25,8 +25,8 @@
                     echo $this->Form->control('equipment_id', ['type' => 'number', 'label' => 'Equipment ID']);
                     echo $this->Form->control('staff_id', ['type' => 'number', 'label' => 'Staff ID']);
                     echo $this->Form->control('student_id', ['type' => 'number', 'label' => 'Student ID']);
-                    echo $this->Form->control('booking_date');
-                    echo $this->Form->control('date_return');
+                    echo $this->Form->control('booking_date', ['label' => 'Booking Date - Start']);
+                    echo $this->Form->control('date_return', ['label' => 'Booking Date - Finish']);
                     echo $this->Form->control('booking_status', ['type' => 'number']);
                 ?>
             </fieldset>
