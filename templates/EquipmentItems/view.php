@@ -27,7 +27,7 @@
                     <td><?= h($equipmentItems->equipment_campus) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Lab') ?></th>
+                    <th><?= __('Laboratory') ?></th>
                     <td><?= h($equipmentItems->equipment_lab) ?></td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                     <td><?= h($equipmentItems->equipment_details) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Media') ?></th>
+                    <th><?= __('Image') ?></th>
                     <td><?= $this->Html->image($equipmentItems->equipment_media) ?></td>
                 </tr>
                 <tr>

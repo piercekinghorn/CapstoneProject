@@ -17,7 +17,7 @@
                     <th><?= $this->Paginator->sort('student_id', 'Student ID') ?></th>
                     <th><?= $this->Paginator->sort('booking_date') ?></th>
                     <th><?= $this->Paginator->sort('booking_status') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class="actions"><?= __('Options') ?></th>
                 </tr>
             </thead>
             <tbody>

@@ -16,7 +16,7 @@
                     <th><?= $this->Paginator->sort('password') ?></th>
                     <th><?= $this->Paginator->sort('is_staff') ?></th>
                     <th><?= $this->Paginator->sort('is_admin') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class="actions"><?= __('Options') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +34,15 @@
                             }
                         ?>
                     </td>
-                    <td><?= h($user->is_admin) ?></td>
+                    <td> 
+                        <?php
+                            if($user->is_admin == 1) {
+                                echo "True";
+                            } else {
+                                echo "False";
+                            }
+                        ?>
+                    </td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id]) ?>
