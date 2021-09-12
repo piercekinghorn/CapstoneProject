@@ -33,7 +33,7 @@
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Edit')) ?>
-            <?= $this->Form->button(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_media], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_media)])?>
+            <?= $this->Form->button(__('Delete Image'), ['action' => 'delete', $equipmentItems->equipment_media], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_media)])?>
             <?= $this->Form->end() ?>
         </div>
     </div>
