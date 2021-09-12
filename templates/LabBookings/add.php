@@ -17,11 +17,11 @@
             <fieldset>
                 <legend><?= __('Add Lab Booking') ?></legend>
                 <?php
-                    echo $this->Form->control('equipment_id', ['type' => 'number', 'label' => 'Equipment ID']);
-                    echo $this->Form->control('staff_id', ['type' => 'number', 'label' => 'Staff ID']);
-                    echo $this->Form->control('student_id', ['type' => 'number', 'label' => 'Student ID']);
-                    echo $this->Form->control('booking_date');
-                    echo $this->Form->control('date_return');
+                    echo $this->Form->control('equipment_id', ['type' => 'number', 'placeholder' => 'ID (Required)', 'label' => 'Equipment ID']);
+                    echo $this->Form->control('staff_id', ['type' => 'number', 'placeholder' => 'ID (Required)', 'label' => 'Staff ID']);
+                    echo $this->Form->control('student_id', ['type' => 'number', 'placeholder' => 'ID (Not Required)', 'label' => 'Student ID']);
+                    echo $this->Form->control('booking_date', ['label' => 'Booking Date - Start']);
+                    echo $this->Form->control('date_return', ['label' => 'Booking Date - Finish']);
                     echo $this->Form->control('booking_status', ['type' => 'number']);
                 ?>
             </fieldset>

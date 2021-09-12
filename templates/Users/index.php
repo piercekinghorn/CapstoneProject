@@ -16,7 +16,7 @@
                     <th><?= $this->Paginator->sort('password') ?></th>
                     <th><?= $this->Paginator->sort('is_staff') ?></th>
                     <th><?= $this->Paginator->sort('is_admin') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class="actions"><?= __('Options') ?></th>
                 </tr>
             </thead>
             <tbody>

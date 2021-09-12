@@ -7,7 +7,7 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
+            <h4 class="heading"><?= __('Options') ?></h4>
             <?= $this->Html->link(__('Edit Lab Booking'), ['action' => 'edit', $labBookings->booking_id], ['class' => 'side-nav-item']) ?>
             <?= $this->Form->postLink(__('Delete Lab Booking'), ['action' => 'delete', $labBookings->booking_id], ['confirm' => __('Are you sure you want to delete # {0}?', $labBookings->booking_id), 'class' => 'side-nav-item']) ?>
             <?= $this->Html->link(__('List Lab Bookings'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
