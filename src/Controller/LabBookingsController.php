@@ -11,6 +11,10 @@ namespace App\Controller;
  */
 class LabBookingsController extends AppController
 {
+    public $paginate = [
+        'limit' => 1000,
+    ];
+    
     public function index()
     {
         $this->Authorization->skipAuthorization();
