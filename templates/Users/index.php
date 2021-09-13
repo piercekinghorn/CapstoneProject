@@ -25,6 +25,7 @@
                     <td><?= $this->Number->format($user->user_id) ?></td>
                     <td><?= h($user->username) ?></td>
                     <td><?= h($user->password) ?></td>
+                    <td><?= $user->student_id ?></td>
                     <td>
                         <?php
                             if($user->is_staff == 1) {
@@ -52,15 +53,5 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>

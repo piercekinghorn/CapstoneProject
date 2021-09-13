@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <th><?= __('Booking Date - Finish') ?></th>
-                    <td><?= h($labBookings->date_return) ?></td>
+                    <td><?= h($labBookings->return_date) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Booking Status') ?></th>

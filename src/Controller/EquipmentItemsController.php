@@ -31,7 +31,7 @@ class EquipmentItemsController extends AppController
 
         $labBookings->equipment_id = $id;
         $labBookings->staff_id = 1234;
-        $labBookings->student_id = $this->request->getAttribute('identity')->getIdentifier();
+        $labBookings->student_id = $this->request->getAttribute('identity')->getStudentID();
         $labBookings->booking_date = FrozenTime::now();
         $labBookings->booking_status = true;
         if ($this->request->is('post')) {
@@ -66,6 +66,7 @@ class EquipmentItemsController extends AppController
         $this->LabBookings = TableRegistry::get('LabBookings');
         $this->set('LabBookings');
         $labBookings = $this->LabBookings->newEmptyEntity();
+        $this->set('labBookings');
 
         //Retrieve Campus List
         $campuslist = $this->listCampus();
