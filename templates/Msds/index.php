@@ -18,7 +18,7 @@
     <?= $this->Html->link(__('New Document'), ['action' => 'add'], ['class' => 'button']) ?>
         <table>
             <thead>
-                <tr>
+                <tr class = "tr1">
                     <!-- Document Ids are hidden -->
                     <th><?= $this->Paginator->sort('Document') ?></th>
                     <!--<th><?= $this->Paginator->sort('Name') ?></th>-->
@@ -28,10 +28,10 @@
             </thead>
             <tbody>
                 <?php foreach ($msds as $msd): ?>
-                <tr>
+                <tr class = "tr2">
                     <!--<a class="logo" target="_blank" rel="noopener" href="https://my.cqu.edu.au/">MyCQU</a>-->
                     <!--<td><?= $this->Number->format($msd->doc_id) ?></td>-->
-                    <td><?= h($msd->doc_name) ?></td>
+                    <td  class = "td1"><?= h($msd->doc_name) ?></td>
                     <td>
                         <?= $this->Html->link(__($msd->doc_url))?>
                     </td>

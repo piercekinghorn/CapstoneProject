@@ -23,11 +23,11 @@
                     <td><?= h($msd->doc_name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Url') ?></th>
+                    <th><?= __('URL Link') ?></th>
                     <td><?= $this->Html->link(__($msd->doc_url))?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($msd->doc_id) ?></td>
                 </tr>
             </table>

@@ -49,6 +49,18 @@ class EquipmentItemPolicy
     }
 
     /**
+     * Check if $user can delete EquipmentItem
+     *
+     * @param \Authorization\IdentityInterface $user The user.
+     * @param \App\Model\Entity\EquipmentItem $equipmentItem
+     * @return bool
+     */
+    public function canDeleteMedia(IdentityInterface $user, EquipmentItem $equipmentItem)
+    {
+        return $user->is_admin;
+    }
+
+    /**
      * Check if $user can view EquipmentItem
      *
      * @param \Authorization\IdentityInterface $user The user.

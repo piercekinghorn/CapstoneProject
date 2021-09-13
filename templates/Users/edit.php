@@ -7,9 +7,9 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
+            <h4 class="heading"><?= __('Options') ?></h4>
             <?= $this->Form->postLink(
-                __('Delete'),
+                __('Delete User'),
                 ['action' => 'delete', $user->user_id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $user->user_id), 'class' => 'side-nav-item']
             ) ?>

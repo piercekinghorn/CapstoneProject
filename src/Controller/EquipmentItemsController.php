@@ -244,4 +244,29 @@ class EquipmentItemsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function deleteMedia($id = null) {
+        // The delete function now unlists the equipment item rather then deleting it.
+        // The index page only shows equipment that have a status of 1, pressing delete sets it to zero.
+        //$this->Authorization->skipAuthorization();
+
+        $this->request->allowMethod(['post', 'delete']);
+        $equipmentItems = $this->EquipmentItems->get($id);
+        $this->Authorization->authorize($equipmentItems);
+
+        $equipmentItems->equipment_media = '';
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            //$equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
+            if ($this->EquipmentItems->save($equipmentItems)) {
+                $this->Flash->success(__('The equipment item has been deleted.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The equipment item could not be deleted. Please, try again.'));
+        }
+        $this->set(compact('equipmentItems'));
+
+        return $this->redirect(['action' => 'index']);
+    }
 }
