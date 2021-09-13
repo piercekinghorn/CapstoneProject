@@ -296,6 +296,7 @@ return [
             'timezone' => 'UTC',
             'host' => 'localhost',
             'username' => 'root',
+            'password' => 'test',
             'database' => 'cqulabmanager',
 
             /*
