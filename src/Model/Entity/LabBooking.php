@@ -13,5 +13,6 @@ class LabBooking extends Entity
         'student_id' => true,
         'booking_date' => true,
         'booking_status' => true,
+        'booking_induction' => true,
     ];
 }

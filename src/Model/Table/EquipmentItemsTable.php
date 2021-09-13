@@ -91,7 +91,7 @@ class EquipmentItemsTable extends Table
             ->boolean('equipment_status')
             ->requirePresence('equipment_status', 'create')
             ->notEmptyString('equipment_status');
-
+            
         return $validator;
     }
 
@@ -99,7 +99,7 @@ class EquipmentItemsTable extends Table
     /*function filter($equipment_campus = null)
     {
         $query = $this->equipment_items->find();
-        foreach ($query->all() as $article) 
+        foreach ($query->all() as $article)
         {
             ->where(['equipment_campus' = 'Bundaberg']);
         }

@@ -12,7 +12,7 @@ create table equipment_items
   equipment_lab varchar(25) not null,
   equipment_discipline varchar(25) null,
   equipment_details varchar(25) null,
-  equipment_media varchar(200) null, 
+  equipment_media varchar(200) null,
   equipment_whs varchar(200) null,
   equipment_status int(1) not null
 );
@@ -84,7 +84,7 @@ create table staff
 insert into staff values
   (0099, 'Jamie Shield', 'Cairns', 'j.shield@cqu.edu.au'),
   (0100, 'Travis Frame', 'Cairns', 't.frame@cqu.edu.au'),
-  (0101, 'Michael', 'Melbourne', 'michael@cqu.edu.au'); 
+  (0101, 'Michael', 'Melbourne', 'michael@cqu.edu.au');
 
 create table students
 (
@@ -127,7 +127,7 @@ create table users
   is_admin boolean default false not null
 );
 
-insert into users values 
+insert into users values
   (NULL, 'jason', 'password', 12109625, true, false),
   (NULL, 'jack', 'test', 12109626, false, false),
   (NULL, 'reese', 'password', 12109627, true, true);

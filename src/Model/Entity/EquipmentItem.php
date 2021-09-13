@@ -16,5 +16,6 @@ class EquipmentItem extends Entity
         'equipment_media' => true,
         'equipment_whs' => true,
         'equipment_status' => true,
+        'equipment_needinduction' => true,
     ];
 }
