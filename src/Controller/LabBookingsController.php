@@ -24,6 +24,8 @@ class LabBookingsController extends AppController
 
             //Get data for equipment and campus filters
             $filterData = $this->request->getData();
+            $filterData['studentID'] = $this->request->getAttribute('identity')->getStudentID();
+            $filterData['booking_status'] = true;
             debug($filterData);
             exit();
         }
@@ -107,12 +109,5 @@ class LabBookingsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }
-
-    
-    public function booking($bookingData) {
-        $this->Authorization->skipAuthorization();
-        debug($bookingData);
-        exit();
     }
 }
