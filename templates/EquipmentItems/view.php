@@ -56,10 +56,6 @@
                     <th><?= __('Item Id') ?></th>
                     <td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Booking Status') ?></th>
-                    <td><?= $this->Number->format($equipmentItems->equipment_status) ?></td>
-                </tr>
             </table>
         </div>
     </div>

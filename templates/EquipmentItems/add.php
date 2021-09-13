@@ -25,7 +25,7 @@
                     echo $this->Form->control('equipment_details', ['placeholder' => 'Category Tags (Not Required)', 'label' =>'Details']);
                     echo $this->Form->control('equipment_media', ['type'=>'file', 'label' =>'Upload jpg/png']);
                     echo $this->Form->control('equipment_whs', ['placeholder' => 'No Required', 'label' =>'Work Health & Safety']);
-                    echo $this->Form->control('equipment_status', ['placeholder' => '0 = false, 1 = true', 'label' =>'Booking Status']);
+                    echo $this->Form->hidden('equipment_status', ['value' => '1']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Add')) ?>
