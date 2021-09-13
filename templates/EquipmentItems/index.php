@@ -5,14 +5,26 @@
  */
 
 $this->Html->scriptStart(['block' => true]);
-echo "document.addEventListener('DOMContentLoaded', function() {
-    function selected(date) {
-        console.log(date);
-    }
-    var options = {format:'dd mm yyyy', onSelect: selected};
-    var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, options);
-  });";
+echo "
+var modal = document.getElementById('myModal');
+
+var btn = document.getElementById('myBtn');
+
+var span = document.getElementsByClassName('close')[0];
+
+btn.onclick = function() {
+  modal.style.display = 'block';
+}
+
+span.onclick = function() {
+  modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}";
 $this->Html->scriptEnd()
 ?>
 
@@ -20,7 +32,7 @@ $this->Html->scriptEnd()
 <!-- Filter By Name -->
 <h3>Search for Equipment</h3>
 <?php
-    echo $this->Form->create($equipmentItems, ['action' => 'equipment-items', 'type' => 'POST']);
+    echo $this->Form->create($equipmentItems, ['action' => '', 'type' => 'POST']);
     echo $this->Form->control('equipmentFilter', ['placeholder' => 'Equipment keyword', 'label' =>'']);
 ?>
 
@@ -72,14 +84,18 @@ $this->Html->scriptEnd()
             </tbody>
         </table>
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+
+    <!--
+    <div>
+        <?php
+            //echo $this->Form->create($labBookings, ['action' => 'lab-bookings', 'type' => 'POST']);
+            //echo $this->Form->hidden('equipment_id', ['value' => '']);
+            //echo $this->Form->control('staff_id', ['label' => 'Staff ID', 'placeholder' => 'Staff ID','type' => 'text']);
+            //echo $this->Form->control('booking_date', ['label' =>'Booking Date', 'type' => 'date']);
+            //echo $this->Form->control('return_date', ['label' =>'Return Date', 'type' => 'date']);
+            //echo $this->Form->button('Book', array('id'=> 'button'));
+            //echo $this->Form->end();
+        ?>
     </div>
+    -->
 </div>

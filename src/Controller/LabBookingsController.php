@@ -11,9 +11,25 @@ namespace App\Controller;
  */
 class LabBookingsController extends AppController
 {
+    public $paginate = [
+        'limit' => 1000,
+    ];
+    
     public function index()
     {
         $this->Authorization->skipAuthorization();
+
+        //After Post Request
+        if ($this->request->is('post')) {
+
+            //Get data for equipment and campus filters
+            $filterData = $this->request->getData();
+            $filterData['studentID'] = $this->request->getAttribute('identity')->getStudentID();
+            $filterData['booking_status'] = true;
+            debug($filterData);
+            exit();
+        }
+
         $this->loadModel('LabBookings');
         $labBookings = $this->paginate($this->LabBookings);
         $this->set(compact('labBookings'));
@@ -41,6 +57,7 @@ class LabBookingsController extends AppController
         //$this->Authorization->authorize($labBookings);
         if ($this->request->is('post')) {
             $labBookings = $this->LabBookings->patchEntity($labBookings, $this->request->getData());
+
             if ($this->LabBookings->save($labBookings)) {
                 $this->Flash->success(__('Your lab booking has been saved.'));
 
@@ -64,6 +81,7 @@ class LabBookingsController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $labBookings = $this->LabBookings->patchEntity($labBookings, $this->request->getData());
+         
             if ($this->LabBookings->save($labBookings)) {
                 $this->Flash->success(__('Your lab booking has been saved.'));
 

@@ -12,6 +12,7 @@ class LabBooking extends Entity
         'staff_id' => true,
         'student_id' => true,
         'booking_date' => true,
+        'return_date' => true,
         'booking_status' => true,
         'booking_induction' => true,
     ];

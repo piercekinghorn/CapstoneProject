@@ -66,9 +66,17 @@ class UsersTable extends Table
             ->allowEmptyString('password');
 
         $validator
+            ->nonNegativeInteger('student_id');
+
+        $validator
             ->boolean('is_staff')
             ->requirePresence('is_staff', 'create')
             ->notEmptyString('is_staff');
+
+        $validator
+            ->boolean('is_admin')
+            ->requirePresence('is_admin', 'create')
+            ->notEmptyString('is_admin');
 
         return $validator;
     }
