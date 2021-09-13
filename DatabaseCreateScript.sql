@@ -1,6 +1,5 @@
 drop database if exists cquLabManager;
 create database cquLabManager;
-CREATE USER 'webauth'@'localhost' IDENTIFIED BY 'PASSWORD';
 GRANT ALL PRIVILEGES ON cqulabmanager.* TO 'webauth'@'localhost' WITH GRANT OPTION;
 use cquLabManager;
 
@@ -61,17 +60,18 @@ create table lab_bookings
   equipment_id int not null references equipment_items(equipment_id),
   staff_id int not null references staff(staff_id),
   student_id int null references student(student_id),
-  booking_date TIMESTAMP not null default current_timestamp,
+  booking_date TIMESTAMP not null,
+  return_date TIMESTAMP default current_timestamp,
   booking_status boolean default false not null
 );
 
 insert into lab_bookings values
-  (1, 1, 0099, 12097012, current_timestamp, true),
-  (2, 2, 0099, 12097012, current_timestamp, true),
-  (3, 7, 0100, 12087651, current_timestamp, true),
-  (4, 9, 0100, 12087651, current_timestamp, true),
-  (5, 11, 0101, 12009874, current_timestamp, true),
-  (6, 13, 0101, 12097543, current_timestamp, true);
+  (1, 1, 0099, 12097012, current_timestamp, current_timestamp, true),
+  (2, 2, 0099, 12097012, current_timestamp, current_timestamp, true),
+  (3, 7, 0100, 12087651, current_timestamp, current_timestamp, true),
+  (4, 9, 0100, 12087651, current_timestamp, current_timestamp, true),
+  (5, 11, 0101, 12009874, current_timestamp, current_timestamp, true),
+  (6, 13, 0101, 12097543, current_timestamp, current_timestamp, true);
 
 create table staff
 (
