@@ -32,9 +32,9 @@
                     echo $this->Form->control('equipment_status', ['placeholder' => '0 = false, 1 = true', 'label' =>'Booking Status']);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Edit')) ?>
-            <?= $this->Form->button(__('Delete Image'), ['action' => 'delete', $equipmentItems->equipment_media], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_media)])?>
+            <?= $this->Form->button(__('Edit')) ?>  
             <?= $this->Form->end() ?>
+            <?= $this->Form->postLink(__('Delete Media'), ['action' => 'deleteMedia', $equipmentItems->equipment_id])?>
         </div>
     </div>
 </div>

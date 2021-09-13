@@ -40,7 +40,13 @@
                 </tr>
                 <tr>
                     <th><?= __('Image') ?></th>
-                    <td><?= $this->Html->image($equipmentItems->equipment_media) ?></td>
+                    <td>
+                        <?php
+                            if (!empty($equipmentItems->equipment_media)) {
+                                echo $this->Html->image($equipmentItems->equipment_media);
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <th><?= __('Work, Health & Safety') ?></th>
