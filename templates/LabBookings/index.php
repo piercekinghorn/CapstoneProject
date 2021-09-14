@@ -42,7 +42,7 @@
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $labBookings->booking_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $labBookings->booking_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $labBookings->booking_id], ['confirm' => __('Are you sure you want to delete # {0}?', $labBookings->booking_id)]) ?> 
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $labBookings->booking_id], ['confirm' => __('Are you sure you want to delete # {0}?', $labBookings->booking_id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

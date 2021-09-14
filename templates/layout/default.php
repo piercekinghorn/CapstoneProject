@@ -46,7 +46,7 @@ $cakeDescription = 'Development';
 
             <?= $this->Html->link(__('Lab Equipment'), ['controller' => 'EquipmentItems','action' => 'index']) ?>
             <?= $this->Html->link(__('Material Safety'), ['controller' => 'Msds','action' => 'index']) ?>
-                        
+
             <?php
                 Configure::restore('signed_in', 'default');
                 $signed_in = Configure::read('signed_in');
@@ -74,5 +74,6 @@ $cakeDescription = 'Development';
     </main>
     <footer>
     </footer>
+    <?= $this->fetch('script') ?>
 </body>
 </html>

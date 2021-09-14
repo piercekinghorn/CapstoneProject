@@ -47,6 +47,20 @@ class EquipmentItemsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    public function modal()
+    {
+      $this->request->allowMethod(['post']);
+      $equipmentItems = $this->EquipmentItems->get($id);
+      $this->Authorization->authorize($equipmentItems);
+
+      $equipmentItems = $this->EquipmentItems->get($id, [
+          'contain' => [],
+      ]);
+
+      $this->set(compact('equipmentItems'));
+      return $this->redirect(['action' => 'index']);
+    }
+
     public function index()
     {
         $this->Authorization->skipAuthorization();
@@ -155,7 +169,7 @@ class EquipmentItemsController extends AppController
 
         if ($this->request->is('post')) {
             $equipmentItems = $this->EquipmentItems->patchEntity($equipmentItems, $this->request->getData());
-           
+
             if(!$equipmentItems->getErrors) {
                 $media = $this->request->getData('equipment_media');
                 $fName = $media->getClientFilename();
@@ -169,9 +183,9 @@ class EquipmentItemsController extends AppController
 
                 //debug($equipmentItems);
                 //exit();
-            
+
             }
-           
+
             if ($this->EquipmentItems->save($equipmentItems)) {
                 $this->Flash->success(__('The labequipment has been saved.'));
 
@@ -207,7 +221,7 @@ class EquipmentItemsController extends AppController
 
                 //debug($equipmentItems);
                 //exit();
-            
+
             }
 
             if ($this->EquipmentItems->save($equipmentItems)) {
