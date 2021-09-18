@@ -75,7 +75,7 @@ $this->Html->scriptEnd()
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
-                                <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id]) ?>
+                                <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id])?>
                                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id)])?>
                             </td>  
                         </tr>

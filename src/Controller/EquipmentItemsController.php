@@ -30,21 +30,14 @@ class EquipmentItemsController extends AppController
         $this->Authorization->authorize($labBookings);
 
         $labBookings->equipment_id = $id;
-        $labBookings->staff_id = 1234;
+        $labBookings->staff_id = 0;
         $labBookings->student_id = $this->request->getAttribute('identity')->getStudentID();
-        $labBookings->booking_date = FrozenTime::now();
+        $labBookings->booking_date = FrozenTime::tomorrow()->toDateTimeString();
+        $labBookings->return_date = FrozenTime::tomorrow()->addHour()->toDateTimeString();
         $labBookings->booking_status = true;
-        if ($this->request->is('post')) {
-            if ($this->LabBookings->save($labBookings)) {
-                $this->Flash->success(__('The booking has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The booking could not be saved. Please, try again. Labbooking: ' . $labBookings));
-        }
         $this->set(compact('labBookings'));
         $this->autoRender = false;
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller'=> 'LabBookings', 'action' => 'add', '?' => ['equipment_id' => $labBookings->equipment_id, 'staff_id' => $labBookings->staff_id, 'student_id' => $labBookings->student_id, 'booking_date' => $labBookings->booking_date, 'return_date' => $labBookings->return_date]]);
     }
 
     public function index()

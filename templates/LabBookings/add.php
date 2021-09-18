@@ -17,12 +17,12 @@
             <fieldset>
                 <legend><?= __('Add Lab Booking') ?></legend>
                 <?php
-                    echo $this->Form->control('equipment_id', ['type' => 'number', 'placeholder' => 'ID (Required)', 'label' => 'Equipment ID']);
-                    echo $this->Form->control('staff_id', ['type' => 'number', 'placeholder' => 'ID (Required)', 'label' => 'Staff ID']);
-                    echo $this->Form->control('student_id', ['type' => 'number', 'placeholder' => 'ID (Not Required)', 'label' => 'Student ID']);
-                    echo $this->Form->control('booking_date', ['label' => 'Booking Date - Start']);
-                    echo $this->Form->control('return_date', ['label' => 'Booking Date - Finish']);             
-                    echo $this->Form->control('booking_status', ['type' => 'number']);
+                    echo $this->Form->control('equipment_id', ['type' => 'number', 'placeholder' => 'ID (Required)', 'label' => 'Equipment ID', 'value' => $labBookings->equipment_id]);
+                    echo $this->Form->control('staff_id', ['type' => 'number', 'placeholder' => 'ID (Required)', 'label' => 'Staff ID', 'value' => $labBookings->staff_id]);
+                    echo $this->Form->control('student_id', ['type' => 'number', 'placeholder' => 'ID (Not Required)', 'label' => 'Student ID', 'value' => $labBookings->student_id]);
+                    echo $this->Form->control('booking_date', ['label' => 'Booking Date - Start', 'value' => $labBookings->booking_date]);
+                    echo $this->Form->control('return_date', ['label' => 'Booking Date - Finish', 'value' => $labBookings->return_date]);             
+                    echo $this->Form->hidden('booking_status', ['type' => 'number', 'value' => '1']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

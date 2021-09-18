@@ -14,6 +14,7 @@
                     <th><?= $this->Paginator->sort('user_id', 'User ID') ?></th>
                     <th><?= $this->Paginator->sort('username') ?></th>
                     <th><?= $this->Paginator->sort('password') ?></th>
+                    <th><?= $this->Paginator->sort('student_id', 'Student ID') ?></th>
                     <th><?= $this->Paginator->sort('is_staff') ?></th>
                     <th><?= $this->Paginator->sort('is_admin') ?></th>
                     <th class="actions"><?= __('Options') ?></th>
@@ -25,7 +26,7 @@
                     <td><?= $this->Number->format($user->user_id) ?></td>
                     <td><?= h($user->username) ?></td>
                     <td><?= h($user->password) ?></td>
-                    <td><?= $user->student_id ?></td>
+                    <td><?= h($user->student_id) ?></td>
                     <td>
                         <?php
                             if($user->is_staff == 1) {
