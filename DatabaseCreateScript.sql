@@ -6,7 +6,7 @@ use cquLabManager;
 create table equipment_items
 (
   equipment_id int unsigned not null auto_increment primary key,
-  equipment_name varchar(50) not null,
+  equipment_name varchar(75) not null,
   equipment_campus varchar(50) not null,
   equipment_lab varchar(25) not null,
   equipment_discipline varchar(25) null,

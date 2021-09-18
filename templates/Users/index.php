@@ -15,8 +15,8 @@
                     <th><?= $this->Paginator->sort('username') ?></th>
                     <th><?= $this->Paginator->sort('password') ?></th>
                     <th><?= $this->Paginator->sort('student_id', 'Student ID') ?></th>
-                    <th><?= $this->Paginator->sort('is_staff') ?></th>
-                    <th><?= $this->Paginator->sort('is_admin') ?></th>
+                    <th><?= $this->Paginator->sort('is_staff', 'Staff') ?></th>
+                    <th><?= $this->Paginator->sort('is_admin', 'Administrator') ?></th>
                     <th class="actions"><?= __('Options') ?></th>
                 </tr>
             </thead>

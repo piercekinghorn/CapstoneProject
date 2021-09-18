@@ -17,4 +17,9 @@ class EquipmentItem extends Entity
         'equipment_whs' => true,
         'equipment_status' => true,
     ];
+
+    public function getName()
+    {
+        return $this->equipment_name;
+    }
 }

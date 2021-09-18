@@ -33,12 +33,12 @@ $this->Html->scriptEnd()
 <h3>Search for Equipment</h3>
 <?php
     echo $this->Form->create($equipmentItems, ['action' => '', 'type' => 'POST']);
-    echo $this->Form->control('equipmentFilter', ['placeholder' => 'Equipment keyword', 'label' =>'']);
+    echo $this->Form->control('equipmentFilter', ['placeholder' => 'Keyword Search', 'label' =>'']);
 ?>
 
 
 <!-- Filter By Campus -->
-<h3>Select Campus</h3>
+<h3>Filter by Campus</h3>
 <?php
     echo $this->Form->select('campusFilter', $campuslist , array('value' => $campuslist));
     echo $this->Form->button('Filter', array('id'=> 'button'));
