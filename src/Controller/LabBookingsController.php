@@ -78,13 +78,21 @@ class LabBookingsController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $labBookings = $this->LabBookings->patchEntity($labBookings, $this->request->getData());
-         
-            if ($this->LabBookings->save($labBookings)) {
+
+            //Check booking and return dates.
+            $bookdate = $labBookings['booking_date'];
+            $returndate = $labBookings['return_date'];
+
+            //If return date is earlier then booking date dont save.
+            if ( $bd < $rd){
+
+                if ($this->LabBookings->save($labBookings)) {
                 $this->Flash->success(__('Your lab booking has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('You lab booking could not be saved. Please, try again.'));
+                }
+            }                   
+            $this->Flash->error(__('Your lab booking could not be saved. Please, try again.'));
         }
         $this->set(compact('labBookings'));
     }
