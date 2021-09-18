@@ -61,6 +61,7 @@ $this->Html->scriptEnd()
                     <th><?= $this->Paginator->sort('equipment_campus', 'Campus') ?></th>
                     <th><?= $this->Paginator->sort('equipment_lab', 'Lab') ?></th>
                     <th><?= $this->Paginator->sort('equipment_details', 'Details') ?></th>
+                    <th><?= $this->Paginator->sort('equipment_location', 'Location') ?></th>
                     <th class="actions"><?= __('Options') ?></th>
                 </tr>
             <!--</thead>-->
@@ -72,6 +73,7 @@ $this->Html->scriptEnd()
                             <td><?= h($equipmentItems->equipment_campus) ?></td>
                             <td><?= h($equipmentItems->equipment_lab) ?></td>
                             <td><?= h($equipmentItems->equipment_details) ?></td>
+                            <td><?= h($equipmentItems->equipment_location) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>

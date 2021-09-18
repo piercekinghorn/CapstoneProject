@@ -35,6 +35,10 @@
                     <td><?= h($equipmentItems->equipment_discipline) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Item Location') ?></th>
+                    <td><?= h($equipmentItems->equipment_location) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Details') ?></th>
                     <td><?= h($equipmentItems->equipment_details) ?></td>
                 </tr>
