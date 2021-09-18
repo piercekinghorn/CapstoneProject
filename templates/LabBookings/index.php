@@ -5,8 +5,8 @@
  */
 ?>
 <div class="labBookings index content">
-    <?= $this->Html->link(__('New Lab Booking'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Lab Bookings') ?></h3>
+    <?= $this->Html->link(__('New Lab Booking'), ['action' => 'add'], ['class' => 'button']) ?>
     <div class="table-responsive">
         <table>
             <thead>
