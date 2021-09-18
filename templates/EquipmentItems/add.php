@@ -22,6 +22,7 @@
                     echo $this->Form->control('equipment_campus', ['placeholder' => 'Campus (Required)', 'label' =>'Campus']);
                     echo $this->Form->control('equipment_lab', ['placeholder' => 'Laboratory (Required)', 'label' =>'Laboratory']);
                     echo $this->Form->control('equipment_discipline', ['placeholder' => 'Not Required', 'label' =>'Discipline']);
+                    echo $this->Form->control('equipment_location', ['placeholder' => 'Not Required', 'label' =>'Location']);
                     echo $this->Form->control('equipment_details', ['placeholder' => 'Category Tags (Not Required)', 'label' =>'Details']);
                     echo $this->Form->control('equipment_media', ['type'=>'file', 'label' =>'Upload jpg/png']);
                     echo $this->Form->control('equipment_whs', ['placeholder' => 'No Required', 'label' =>'Work Health & Safety']);

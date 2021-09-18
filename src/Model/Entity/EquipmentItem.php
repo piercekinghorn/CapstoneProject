@@ -12,6 +12,7 @@ class EquipmentItem extends Entity
         'equipment_campus' => true,
         'equipment_lab' => true,
         'equipment_discipline' => true,
+        'equipment_location' => true,
         'equipment_details' => true,
         'equipment_media' => true,
         'equipment_whs' => true,

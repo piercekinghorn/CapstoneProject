@@ -35,6 +35,10 @@
                     <td><?= h($equipmentItems->equipment_discipline) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Item Location') ?></th>
+                    <td><?= h($equipmentItems->equipment_location) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Details') ?></th>
                     <td><?= h($equipmentItems->equipment_details) ?></td>
                 </tr>
@@ -43,7 +47,7 @@
                     <td>
                         <?php
                             if (!empty($equipmentItems->equipment_media)) {
-                                echo $this->Html->image($equipmentItems->equipment_media);
+                                echo $this->Html->image($equipmentItems->equipment_media, ['height' => 500, 'width' => 500]);
                             }
                         ?>
                     </td>

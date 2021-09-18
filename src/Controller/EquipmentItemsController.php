@@ -80,6 +80,7 @@ class EquipmentItemsController extends AppController
             'EquipmentItems.equipment_campus LIKE' => "%$filterE%",
             'EquipmentItems.equipment_lab LIKE' => "%$filterE%",
             'EquipmentItems.equipment_discipline LIKE' => "%$filterE%",
+            'EquipmentItems.equipment_location LIKE' => "%$filterE%",
             'EquipmentItems.equipment_details LIKE' => "%$filterE%",
             'EquipmentItems.equipment_media LIKE' => "%$filterE%",
             'EquipmentItems.equipment_whs LIKE' => "%$filterE%"),

@@ -60,6 +60,11 @@ class EquipmentItemsTable extends Table
             ->maxLength('equipment_discipline', 25)
             ->allowEmptyString('equipment_discipline');
 
+            $validator
+            ->scalar('equipment_location')
+            ->maxLength('equipment_location', 25)
+            ->allowEmptyString('equipment_location');
+
         $validator
             ->scalar('equipment_details')
             ->maxLength('equipment_details', 25)
