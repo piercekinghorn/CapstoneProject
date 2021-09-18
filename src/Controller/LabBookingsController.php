@@ -84,7 +84,7 @@ class LabBookingsController extends AppController
             $returndate = $labBookings['return_date'];
 
             //If return date is earlier then booking date dont save.
-            if ( $bd < $rd){
+            if ( $bookdate < $returndate){
 
                 if ($this->LabBookings->save($labBookings)) {
                 $this->Flash->success(__('Your lab booking has been saved.'));
