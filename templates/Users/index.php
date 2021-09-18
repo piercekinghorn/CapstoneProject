@@ -5,8 +5,8 @@
  */
 ?>
 <div class="users index content">
-    <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Users') ?></h3>
+    <?= $this->Html->link(__('Create New User'), ['action' => 'add'], ['class' => 'button']) ?>
     <div class="table-responsive">
         <table>
             <thead>
@@ -15,8 +15,8 @@
                     <th><?= $this->Paginator->sort('username') ?></th>
                     <th><?= $this->Paginator->sort('password') ?></th>
                     <th><?= $this->Paginator->sort('student_id', 'Student ID') ?></th>
-                    <th><?= $this->Paginator->sort('is_staff') ?></th>
-                    <th><?= $this->Paginator->sort('is_admin') ?></th>
+                    <th><?= $this->Paginator->sort('is_staff', 'Staff') ?></th>
+                    <th><?= $this->Paginator->sort('is_admin', 'Administrator') ?></th>
                     <th class="actions"><?= __('Options') ?></th>
                 </tr>
             </thead>
