@@ -47,7 +47,7 @@
                     <td>
                         <?php
                             if (!empty($equipmentItems->equipment_media)) {
-                                echo $this->Html->image($equipmentItems->equipment_media);
+                                echo $this->Html->image($equipmentItems->equipment_media, ['height' => 500, 'width' => 500]);
                             }
                         ?>
                     </td>
