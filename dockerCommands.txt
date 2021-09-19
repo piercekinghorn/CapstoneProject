@@ -1,3 +1,2 @@
-docker build -t capstoneproject .
 docker compose up
 docker compose down
