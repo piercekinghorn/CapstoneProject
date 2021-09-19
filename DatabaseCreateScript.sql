@@ -1,20 +1,58 @@
-drop database if exists cquLabManager;
-create database cquLabManager;
-GRANT ALL PRIVILEGES ON cqulabmanager.* TO 'webauth'@'localhost' WITH GRANT OPTION;
-use cquLabManager;
+CREATE USER webauth WITH superuser PASSWORD 'PASSWORD';
 
 create table equipment_items
 (
-  equipment_id int unsigned not null auto_increment primary key,
-  equipment_name varchar(75) not null,
-  equipment_campus varchar(50) not null,
-  equipment_lab varchar(25) not null,
-  equipment_location varchar(25) null,
-  equipment_discipline varchar(25) null,
-  equipment_details varchar(150) null,
-  equipment_media varchar(200) null, 
-  equipment_whs varchar(200) null,
-  equipment_status int(1) not null  
+  equipment_id SERIAL primary key,
+  equipment_name varchar not null,
+  equipment_campus varchar not null,
+  equipment_lab varchar not null,
+  equipment_location varchar not null,
+  equipment_discipline varchar null,
+  equipment_details varchar null,
+  equipment_media varchar null, 
+  equipment_whs varchar null,
+  equipment_status int not null
+);
+
+create table staff
+(
+  staff_id int not null primary key,
+  staff_name varchar not null,
+  staff_campus varchar not null,
+  staff_contact varchar not null
+);
+
+create table students
+(
+  student_id int not null primary key,
+  student_name varchar not null,
+  student_contact varchar not null
+);
+
+create table msds
+(
+  doc_id SERIAL primary key,
+  doc_name varchar not null,
+  doc_url varchar not null
+);
+
+create table users
+(
+  user_id SERIAL primary key,
+  username varchar not null,
+  password varchar,
+  is_staff boolean default false not null
+);
+
+create table lab_bookings
+(
+  booking_id SERIAL primary key,
+  equipment_id int not null references equipment_items(equipment_id),
+  staff_id int not null references staff(staff_id),
+  student_id int null references students(student_id),
+  booking_date TIMESTAMP not null default current_timestamp,
+  return_date TIMESTAMP not null default current_timestamp,
+  booking_status boolean default false not null
 );
 
 insert into equipment_items values
@@ -52,46 +90,14 @@ insert into equipment_items values
   (32, 'Up box 3D printer', 'Melbourne', 'Room 3.22','Cab2-S6', 'Mechanical', '', null, null, 1),
   (33, 'UP box 3D printer mini', 'Melbourne', 'Room 3.22','Cab3-S1', 'Mechanical', '', null, null, 1),
   (34, 'Mitre saw', 'Melbourne', 'Room 3.22','Cab3-S4', 'Mechanical', '', null, null, 1),
-  (35, 'portable lader', 'Melbourne', 'Room 3.22','Cab2-S8', 'Mechanical', '', null, null, 1);
-
-create table lab_bookings
-(
-  booking_id int unsigned not null auto_increment primary key,
-  equipment_id int not null references equipment_items(equipment_id),
-  staff_id int not null references staff(staff_id),
-  student_id int null references student(student_id),
-  booking_date TIMESTAMP not null default current_timestamp,
-  return_date TIMESTAMP not null default current_timestamp,
-  booking_status boolean default false not null
-);
-
-insert into lab_bookings values
-  (1, 1, 0099, 12097012, current_timestamp, current_timestamp, true),
-  (2, 2, 0099, 12097012, current_timestamp, current_timestamp, true),
-  (3, 7, 0100, 12087651, current_timestamp, current_timestamp, true),
-  (4, 9, 0100, 12087651, current_timestamp, current_timestamp, true),
-  (5, 11, 0101, 12009874, current_timestamp, current_timestamp, true),
-  (6, 13, 0101, 12097543, current_timestamp, current_timestamp, true);
-
-create table staff
-(
-  staff_id int(10) not null primary key,
-  staff_name varchar(50) not null,
-  staff_campus varchar(50) not null,
-  staff_contact varchar(30) not null
-);
+  (35, 'portable lader', 'Melbourne', 'Room 3.22','Cab2-S8', 'Mechanical', '', null, null, 1)
+;
 
 insert into staff values
   (0099, 'Jamie Shield', 'Cairns', 'j.shield@cqu.edu.au'),
   (0100, 'Travis Frame', 'Cairns', 't.frame@cqu.edu.au'),
-  (0101, 'Michael', 'Melbourne', 'michael@cqu.edu.au'); 
-
-create table students
-(
-  student_id int(10) not null primary key,
-  student_name varchar(50) not null,
-  student_contact varchar(30) not null
-);
+  (0101, 'Michael', 'Melbourne', 'michael@cqu.edu.au')
+;
 
 insert into students values
   (12097012, 'John Doe', 'john.doe@cqumail.com'),
@@ -99,36 +105,26 @@ insert into students values
   (13254610, 'Grace Peay', 'grace.peay@cqumail.com'),
   (12087651, 'Jed Pena', 'jed.pena@cqumail.com'),
   (12009874, 'Maria Fox', 'maria.fox@cqumail.com'),
-  (12097543, 'Stan Johnston', 'stanjohnston@cqumail.com');
+  (12097543, 'Stan Johnston', 'stanjohnston@cqumail.com')
+;
 
-  create table msds
-  (
-    doc_id int unsigned not null auto_increment primary key,
-    doc_name varchar(50) not null,
-    doc_url varchar(100) not null
-  );
+insert into msds values
+  (1, 'Material Safety Data Sheets', 'https://www-msds-com-au.ezproxy.cqu.edu.au/DefaultMSDS.aspx?ReturnUrl=%2f'),
+  (2, 'First Aid', 'https://www.healthdirect.gov.au/first-aid'),
+  (3, 'Health Information Partners', 'https://www.healthdirect.gov.au/information-partners'),
+  (4, 'Emergency Services', 'https://info.australia.gov.au/information-and-services/public-safety-and-law/emergency-services'),
+  (5, 'Fire Safety', 'https://www.studyinaustralia.gov.au/english/live-in-australia/health-and-safety/fire')
+;
 
-  insert into msds values
-    (1, 'Material Safety Data Sheets', 'https://www-msds-com-au.ezproxy.cqu.edu.au/DefaultMSDS.aspx?ReturnUrl=%2f'),
-    (2, 'First Aid', 'https://www.healthdirect.gov.au/first-aid'),
-    (3, 'Health Information Partners', 'https://www.healthdirect.gov.au/information-partners'),
-    (4, 'Emergency Services', 'https://info.australia.gov.au/information-and-services/public-safety-and-law/emergency-services'),
-    (5, 'Fire Safety', 'https://www.studyinaustralia.gov.au/english/live-in-australia/health-and-safety/fire')
-    ;
+INSERT INTO users(username, password, is_staff)
+VALUES ('jack', 'test', false)
+;
 
-
-create table users
-(
-  user_id int(10) unsigned not null auto_increment primary key,
-  username varchar(20) not null,
-  password varchar(255),
-  student_id int(20) unsigned,
-  is_staff boolean default false not null,
-  is_admin boolean default false not null
-);
-
-insert into users values 
-  (NULL, 'jason', 'password', 12109625, true, false),
-  (NULL, 'jack', 'test', 12109626, false, false),
-  (NULL, 'reese', 'password', 12109627, true, true),
-  (NULL, 'myles', 'myles', 12109627, true, true);
+insert into lab_bookings values
+  (1, 1, 0099, 12097012, current_timestamp, true),
+  (2, 2, 0099, 12097012, current_timestamp, true),
+  (3, 7, 0100, 12087651, current_timestamp, true),
+  (4, 9, 0100, 12087651, current_timestamp, true),
+  (5, 11, 0101, 12009874, current_timestamp, true),
+  (6, 13, 0101, 12097543, current_timestamp, true)
+;
