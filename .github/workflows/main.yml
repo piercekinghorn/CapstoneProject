@@ -16,4 +16,4 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.KEY }}
-          script: sudo cd ${{ secrets.PROJECT_PATH }} && git pull && docker-compose up
+          script: cd ${{ secrets.PROJECT_PATH }} && sudo git pull && sudo docker-compose up
