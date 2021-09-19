@@ -18,7 +18,7 @@
     <?= $this->Html->link(__('New Document'), ['action' => 'add'], ['class' => 'button']) ?>
         <table>
             <thead>
-                <tr>
+                <tr class = "tr1">
                     <!-- Document Ids are hidden -->
                     <th><?= $this->Paginator->sort('Document') ?></th>
                     <!--<th><?= $this->Paginator->sort('Name') ?></th>-->
@@ -28,10 +28,10 @@
             </thead>
             <tbody>
                 <?php foreach ($msds as $msd): ?>
-                <tr>
+                <tr class = "tr2">
                     <!--<a class="logo" target="_blank" rel="noopener" href="https://my.cqu.edu.au/">MyCQU</a>-->
                     <!--<td><?= $this->Number->format($msd->doc_id) ?></td>-->
-                    <td><?= h($msd->doc_name) ?></td>
+                    <td  class = "td1"><?= h($msd->doc_name) ?></td>
                     <td>
                         <?= $this->Html->link(__($msd->doc_url))?>
                     </td>
@@ -44,15 +44,5 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>

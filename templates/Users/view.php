@@ -7,7 +7,7 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
+            <h4 class="heading"><?= __('Options') ?></h4>
             <?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->user_id], ['class' => 'side-nav-item']) ?>
             <?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->user_id), 'class' => 'side-nav-item']) ?>
             <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
@@ -31,7 +31,15 @@
                     <td><?= $this->Number->format($user->user_id) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Student Id') ?></th>
+                    <td><?= $this->Number->format($user->student_id) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Staff') ?></th>
+                    <td><?= $this->Number->format($user->is_staff) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Admin') ?></th>
                     <td><?= $this->Number->format($user->is_staff) ?></td>
                 </tr>
             </table>

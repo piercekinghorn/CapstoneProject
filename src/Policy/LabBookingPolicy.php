@@ -36,6 +36,19 @@ class LabBookingPolicy
     }
 
     /**
+     * Check if $user can add LabBooking
+     *
+     * @param \Authorization\IdentityInterface $user The user.
+     * @param \App\Model\Entity\LabBooking $labBooking
+     * @return bool
+     */
+    public function canBook2(IdentityInterface $user, LabBooking $labBooking) 
+    {
+        return true;
+    }
+
+
+    /**
      * Check if $user can edit LabBooking
      *
      * @param \Authorization\IdentityInterface $user The user.
@@ -44,7 +57,7 @@ class LabBookingPolicy
      */
     public function canEdit(IdentityInterface $user, LabBooking $labBooking)
     {
-        return $user->is_staff;
+        return $user->is_admin;
     }
 
     /**
@@ -56,7 +69,7 @@ class LabBookingPolicy
      */
     public function canDelete(IdentityInterface $user, LabBooking $labBooking)
     {
-        return $user->is_staff;
+        return $user->is_admin;
     }
 
     /**

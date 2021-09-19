@@ -52,8 +52,12 @@ class LabBookingsTable extends Table
             ->allowEmptyString('student_id');
 
         $validator
-            ->date('booking_date')
+            ->allowEmptyDateTime('booking_date')
             ->notEmptyDate('booking_date');
+
+        $validator
+            ->allowEmptyDateTime('return_date')
+            ->notEmptyDate('return_date');
 
         $validator
             ->boolean('booking_status')

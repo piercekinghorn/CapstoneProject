@@ -11,6 +11,10 @@ namespace App\Controller;
  */
 class MsdsController extends AppController
 {
+    public $paginate = [
+        'limit' => 1000,
+    ];
+    
     /**
      * Index method
      *

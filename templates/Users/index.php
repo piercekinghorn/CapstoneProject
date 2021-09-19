@@ -5,8 +5,8 @@
  */
 ?>
 <div class="users index content">
-    <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Users') ?></h3>
+    <?= $this->Html->link(__('Create New User'), ['action' => 'add'], ['class' => 'button']) ?>
     <div class="table-responsive">
         <table>
             <thead>
@@ -14,8 +14,10 @@
                     <th><?= $this->Paginator->sort('user_id', 'User ID') ?></th>
                     <th><?= $this->Paginator->sort('username') ?></th>
                     <th><?= $this->Paginator->sort('password') ?></th>
-                    <th><?= $this->Paginator->sort('is_staff') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th><?= $this->Paginator->sort('student_id', 'Student ID') ?></th>
+                    <th><?= $this->Paginator->sort('is_staff', 'Staff') ?></th>
+                    <th><?= $this->Paginator->sort('is_admin', 'Administrator') ?></th>
+                    <th class="actions"><?= __('Options') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -24,9 +26,19 @@
                     <td><?= $this->Number->format($user->user_id) ?></td>
                     <td><?= h($user->username) ?></td>
                     <td><?= h($user->password) ?></td>
+                    <td><?= h($user->student_id) ?></td>
                     <td>
                         <?php
                             if($user->is_staff == 1) {
+                                echo "True";
+                            } else {
+                                echo "False";
+                            }
+                        ?>
+                    </td>
+                    <td> 
+                        <?php
+                            if($user->is_admin == 1) {
                                 echo "True";
                             } else {
                                 echo "False";
@@ -42,15 +54,5 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>

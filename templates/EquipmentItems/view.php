@@ -27,7 +27,7 @@
                     <td><?= h($equipmentItems->equipment_campus) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Lab') ?></th>
+                    <th><?= __('Laboratory') ?></th>
                     <td><?= h($equipmentItems->equipment_lab) ?></td>
                 </tr>
                 <tr>
@@ -35,12 +35,22 @@
                     <td><?= h($equipmentItems->equipment_discipline) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Item Location') ?></th>
+                    <td><?= h($equipmentItems->equipment_location) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Details') ?></th>
                     <td><?= h($equipmentItems->equipment_details) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Media') ?></th>
-                    <td><?= h($equipmentItems->equipment_media) ?></td>
+                    <th><?= __('Image') ?></th>
+                    <td>
+                        <?php
+                            if (!empty($equipmentItems->equipment_media)) {
+                                echo $this->Html->image($equipmentItems->equipment_media, ['height' => 500, 'width' => 500]);
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <th><?= __('Work, Health & Safety') ?></th>
@@ -49,10 +59,6 @@
                 <tr>
                     <th><?= __('Item Id') ?></th>
                     <td><?= $this->Number->format($equipmentItems->equipment_id) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Booking Status') ?></th>
-                    <td><?= $this->Number->format($equipmentItems->equipment_status) ?></td>
                 </tr>
             </table>
         </div>

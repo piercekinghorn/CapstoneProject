@@ -17,8 +17,8 @@
             <fieldset>
                 <legend><?= __('New safety documentation') ?></legend>
                 <?php
-                    echo $this->Form->control('doc_name');
-                    echo $this->Form->control('doc_url');
+                    echo $this->Form->control('doc_name', ['placeholder' => 'Name (Required)', 'label' =>'Name']);
+                    echo $this->Form->control('doc_url', ['placeholder' => 'Link (Required)', 'label' =>'URL link']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Add')) ?>

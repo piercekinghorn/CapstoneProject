@@ -51,6 +51,7 @@ create table lab_bookings
   staff_id int not null references staff(staff_id),
   student_id int null references students(student_id),
   booking_date TIMESTAMP not null default current_timestamp,
+  return_date TIMESTAMP not null default current_timestamp,
   booking_status boolean default false not null
 );
 
@@ -91,7 +92,7 @@ insert into equipment_items values
   (34, 'Mitre saw', 'Melbourne', 'Room 3.22','Cab3-S4', 'Mechanical', '', null, null, 1),
   (35, 'portable lader', 'Melbourne', 'Room 3.22','Cab2-S8', 'Mechanical', '', null, null, 1)
 ;
-  
+
 insert into staff values
   (0099, 'Jamie Shield', 'Cairns', 'j.shield@cqu.edu.au'),
   (0100, 'Travis Frame', 'Cairns', 't.frame@cqu.edu.au'),
