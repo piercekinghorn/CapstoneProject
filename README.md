@@ -13,8 +13,6 @@
 10. Re-run the "docker compose up" command to confirm changes are working.
 11. 9. Database and any other changes are automatically deployed to the server when a change is pushed to the repositry main branch.
 
-test
-
 ### Resources Directory
 
 [Documentation](https://cqu365-my.sharepoint.com/:f:/g/personal/jack_rolfe_cqumail_com/EtysiLwBA1NOqG0zRGE6OJMBX_W6052omkSvq99B6_lfXA?e=rdQcFr) (Reports, design specs etc)
