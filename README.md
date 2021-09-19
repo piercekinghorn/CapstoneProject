@@ -13,6 +13,7 @@
 10. Re-run the "docker compose up" command to confirm changes are working.
 11. 9. Database and any other changes are automatically deployed to the server when a change is pushed to the repositry main branch.
 
+test
 
 ### Resources Directory
 
