@@ -20,4 +20,3 @@ RUN composer install --prefer-dist
 RUN rm -rf /etc/apache2/sites-enabled/000-default.conf
 RUN a2enmod rewrite
 RUN service apache2 restart
-CMD tail -f /dev/null
