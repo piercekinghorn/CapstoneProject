@@ -15,7 +15,7 @@ return [
      * Development Mode:
      * true: Errors and warnings shown.
      */
-    'debug' => true,
+    'debug' => false,
 
     /*
      * Security and encryption configuration
