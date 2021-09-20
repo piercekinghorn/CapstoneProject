@@ -92,11 +92,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
 
             ->add(new AuthorizationMiddleware($this))
 
-            ->add(new BodyParserMiddleware())
-
-            ->add(new CsrfProtectionMiddleware([
-                'httponly' => true,
-            ]));
+            ->add(new BodyParserMiddleware());
 
         return $middlewareQueue;
     }
