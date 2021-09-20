@@ -1,5 +1,7 @@
 # Capstone Project
 
+Server IP: 54.206.103.30
+
 ### Project Installation Instructions
 1. Follow the Docker getting started guide to install docker: https://www.docker.com/get-started
 2. If on a windows machine, install WSL2: https://docs.docker.com/desktop/windows/wsl/
