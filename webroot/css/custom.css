@@ -1,11 +1,23 @@
 .top-nav-bar {
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #C1D600;
+  max-width: 100%;
+  padding: 2rem;
+  margin: 0 auto 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .top-nav-bar {
+    display: block;
     align-items: center;
     justify-content: space-between;
     background-color: #C1D600;
     max-width: 100%;
     padding: 2rem;
     margin: 0 auto 2rem;
+  }
 }
 
 .container-new {
