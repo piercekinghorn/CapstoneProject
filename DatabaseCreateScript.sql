@@ -41,7 +41,8 @@ create table users
   user_id SERIAL primary key,
   username varchar not null,
   password varchar,
-  is_staff boolean default false not null
+  is_staff boolean default false not null,
+  is_admin boolean default false not null
 );
 
 create table lab_bookings
