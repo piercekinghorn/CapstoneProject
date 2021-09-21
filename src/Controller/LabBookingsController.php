@@ -14,7 +14,7 @@ class LabBookingsController extends AppController
     public $paginate = [
         'limit' => 1000,
     ];
-    
+
     public function index()
     {
         $this->Authorization->skipAuthorization();
@@ -51,21 +51,39 @@ class LabBookingsController extends AppController
         $this->Authorization->skipAuthorization();
 
         $this->loadModel('LabBookings');
-                
+
         $labBookings = $this->LabBookings->newEmptyEntity();
 
         //$this->Authorization->authorize($labBookings);
         if ($this->request->is('post')) {
-            $labBookings = $this->LabBookings->patchEntity($labBookings, $this->request->getData());
+          $data = $this->request->getData();
+
+            $labBookings = $this->LabBookings->patchEntity($labBookings, $data);
 
             if ($this->LabBookings->save($labBookings)) {
-                $this->Flash->success(__('Your lab booking has been saved.'));
+              $check = false;//whsCheck($data[1]);
+              if (! $check){
+                $this->Flash->success(__('Your lab booking has been saved.'));}
+                else {
+                  $this->Flash->success(__('Your lab booking has been saved. Please review lab induction material.'));
+                }
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('Your lab booking could not be saved. Please, try again.'));
         }
         $this->set(compact('labBookings'));
+    }
+
+    public function whsCheck($id)
+    {
+        $query = $this->getTableLocator()->get('EquipmentItems')
+                    ->find()
+                    ->where(['equipment_id' => $id])
+                    ->select(['equipment_whs']);
+        if ($query[0] == ''){
+        return false;}
+        else {return true;}
     }
 
     public function edit($id = null)
@@ -76,12 +94,12 @@ class LabBookingsController extends AppController
         $labBookings = $this->LabBookings->get($id, [
             'contain' => [],
         ]);
-        
+
         //$this->Authorization->authorize($labBookings);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $labBookings = $this->LabBookings->patchEntity($labBookings, $this->request->getData());
-         
+
             if ($this->LabBookings->save($labBookings)) {
                 $this->Flash->success(__('Your lab booking has been saved.'));
 
@@ -95,9 +113,9 @@ class LabBookingsController extends AppController
     public function delete($id = null)
     {
         $this->Authorization->skipAuthorization();
-        
+
         $this->loadModel('LabBookings');
-        
+
         //$this->request->allowMethod(['post', 'delete']);
 
         $labBookings = $this->LabBookings->get($id);

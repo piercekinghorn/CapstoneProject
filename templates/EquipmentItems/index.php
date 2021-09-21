@@ -75,7 +75,10 @@ for (var i=0; i < show.length; i++) {
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
-                                <?= $this->Html->link(__('Book'),  ['class' => 'modal-link']) ?>
+                                <?php
+                                if ($equipmentItems->equipment_whs == ''){
+                                echo $this->form->postLink(__('Book'),  ['action' => 'book']);}
+                                else {echo $this->Form->postLink(__('Book'), ['action' => 'book'], ['confirm' => __("Have you completed the required induction for {0}?\n{1}", $equipmentItems->equipment_name, $equipmentItems->equipment_whs)]);} ?>
                                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete {0}?', $equipmentItems->equipment_name)])?>
                             </td>
                         </tr>
