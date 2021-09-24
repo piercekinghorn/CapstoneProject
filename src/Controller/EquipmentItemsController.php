@@ -11,6 +11,7 @@ class EquipmentItemsController extends AppController
 {
     public $paginate = [
         'limit' => 1000,
+        'order' => ['EquipmentItems.equipment_name' => 'asc']
     ];
 
     public function beforeFilter(\Cake\Event\EventInterface $event)
