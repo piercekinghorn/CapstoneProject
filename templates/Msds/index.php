@@ -33,7 +33,7 @@
                     <!--<td><?= $this->Number->format($msd->doc_id) ?></td>-->
                     <td  class = "td1"><?= h($msd->doc_name) ?></td>
                     <td>
-                        <?= $this->Html->link(__($msd->doc_url))?>
+                        <?= $this->Html->link($msd->doc_url, $msd->doc_url,['target'=>'_blank','_full'=> true])?>
                     </td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $msd->doc_id]) ?>

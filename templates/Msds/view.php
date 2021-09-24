@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <th><?= __('URL Link') ?></th>
-                    <td><?= $this->Html->link(__($msd->doc_url))?></td>
+                    <td><?= $this->Html->link($msd->doc_url, $msd->doc_url,['target'=>'_blank','_full'=> true])?></td>
                 </tr>
                 <tr>
                     <th><?= __('ID') ?></th>
