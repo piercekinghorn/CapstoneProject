@@ -40,7 +40,12 @@ create table users
 (
   user_id SERIAL primary key,
   username varchar not null,
-  password varchar,
+  password varchar not null,
+  student_id int null default null,
+  staff_id int null default null,
+  name varchar not null,
+  contact varchar not null,
+  campus varchar not null,
   is_staff boolean default false not null,
   is_admin boolean default false not null
 );
@@ -49,8 +54,8 @@ create table lab_bookings
 (
   booking_id SERIAL primary key,
   equipment_id int not null references equipment_items(equipment_id),
-  staff_id int not null references staff(staff_id),
-  student_id int null references students(student_id),
+  staff_id int not null,
+  student_id int not null,
   booking_date TIMESTAMP not null,
   return_date TIMESTAMP not null,
   booking_status boolean default false not null
@@ -117,8 +122,8 @@ insert into msds values
   (5, 'Fire Safety', 'https://www.studyinaustralia.gov.au/english/live-in-australia/health-and-safety/fire')
 ;
 
-INSERT INTO users(username, password, is_staff)
-VALUES ('jack', 'test', false)
+INSERT INTO users(username, password, is_staff, name, contact, campus)
+VALUES ('jack', 'test', false, 'jack', 'jack@gmail.com', 'Rockhampton')
 ;
 
 insert into lab_bookings values

@@ -30,17 +30,41 @@
                     <th><?= __('User Id') ?></th>
                     <td><?= $this->Number->format($user->user_id) ?></td>
                 </tr>
+                <?php if ($user->is_staff == 1): ?>
+                    <tr>
+                        <th><?= __('Staff Id') ?></th>
+                        <td><?= $this->Number->format($user->staff_id) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= __('Admin') ?></th>
+                        <td><?php
+                                if($user->is_admin == 1) {
+                                    echo "True";
+                                } else {
+                                    echo "False";
+                                }
+                            ?>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+                <?php if ($user->is_staff == 0): ?>
+                    <tr>
+                        <th><?= __('Student Id') ?></th>
+                        <td><?= $this->Number->format($user->student_id) ?></td>
+                    </tr>
+                <?php endif; ?>
+                
                 <tr>
-                    <th><?= __('Student Id') ?></th>
-                    <td><?= $this->Number->format($user->student_id) ?></td>
+                    <th><?= __('Name') ?></th>
+                    <td><?= $this->Number->format($user->name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Staff') ?></th>
-                    <td><?= $this->Number->format($user->is_staff) ?></td>
+                    <th><?= __('Campus') ?></th>
+                    <td><?= $this->Number->format($user->campus) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Admin') ?></th>
-                    <td><?= $this->Number->format($user->is_staff) ?></td>
+                    <th><?= __('Email') ?></th>
+                    <td><?= $this->Number->format($user->contact) ?></td>
                 </tr>
             </table>
         </div>

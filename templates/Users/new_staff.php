@@ -8,11 +8,6 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Options') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete User'),
-                ['action' => 'delete', $user->user_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->user_id), 'class' => 'side-nav-item']
-            ) ?>
             <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
@@ -20,17 +15,27 @@
         <div class="users form content">
             <?= $this->Form->create($user) ?>
             <fieldset>
-                <legend><?= __('Edit User') ?></legend>
+                <legend><?= __('Register Staff User') ?></legend>
                 <?php
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('student_id', ['type' => 'number', 'label' => 'Student ID']);
+                    echo $this->Form->control('staff_id', ['type' => 'number', 'label' => 'Staff ID']);
                     echo $this->Form->control('name', ['type' => 'text', 'label' => 'Name']);
                     echo $this->Form->control('campus', ['type' => 'text', 'label' => 'Campus']);
                     echo $this->Form->control('contact', ['type' => 'text', 'label' => 'Email']);
-                    echo $this->Form->hidden('is_staff');
-                    echo $this->Form->hidden('is_admin');
                 ?>
+                <div class="switch">
+                    <label>
+                        <?= $this->Form->control('is_staff', ['type' => 'checkbox', 'label' => 'Staff']) ?>
+                        <span class="lever"></span>
+                    </label>
+                </div>
+                <div class="switch">
+                    <label>
+                        <?= $this->Form->control('is_admin', ['type' => 'checkbox', 'label' => 'Admin']) ?>
+                        <span class="lever"></span>
+                    </label>
+                </div>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>

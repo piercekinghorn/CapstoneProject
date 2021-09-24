@@ -69,6 +69,9 @@ class UsersTable extends Table
             ->nonNegativeInteger('student_id');
 
         $validator
+            ->nonNegativeInteger('staff_id');
+
+        $validator
             ->boolean('is_staff')
             ->requirePresence('is_staff', 'create')
             ->notEmptyString('is_staff');
@@ -77,6 +80,21 @@ class UsersTable extends Table
             ->boolean('is_admin')
             ->requirePresence('is_admin', 'create')
             ->notEmptyString('is_admin');
+
+        $validator
+            ->scalar('name')
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
+
+        $validator
+            ->scalar('contact')
+            ->requirePresence('contact', 'create')
+            ->notEmptyString('contact');
+
+        $validator
+            ->scalar('campus')
+            ->requirePresence('campus', 'create')
+            ->notEmptyString('campus');
 
         return $validator;
     }
