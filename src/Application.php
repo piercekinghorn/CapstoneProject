@@ -110,6 +110,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         $authenticationService = new AuthenticationService([
             'unauthenticatedRedirect' => Router::url('/users/login'),
             'queryParam' => 'redirect',
+            'loginRedirect' => Router::url('/'),
         ]);
 
         // Load identifiers, ensure we check username and password fields

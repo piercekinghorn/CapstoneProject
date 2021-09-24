@@ -36,6 +36,10 @@ class User extends Entity implements IdentityInterface
         'student_id' => true,
         'is_staff' => true,
         'is_admin' => true,
+        'name' => true,
+        'contact' => true,
+        'campus' => true,
+        'staff_id' => true,
     ];
 
     protected $_hidden = [
