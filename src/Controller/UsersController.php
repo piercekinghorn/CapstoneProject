@@ -35,12 +35,17 @@ class UsersController extends AppController
             }
             Configure::write('signed_in', true);
             Configure::store('signed_in', 'default');
-            $redirect = $this->request->getQuery('redirect', [
-                'controller' => 'EquipmentItems',
-                'action' => 'index',
-            ]);
 
-            return $this->redirect($redirect);
+            //Edit Note: For some reason attempting to login immediately after creating a new user would set the redirect to /users. Even after setting the redirect settings this was the case. As such a relative url was used instead.
+
+            // $redirect = $this->request->getQuery('redirect', [
+            //     'controller' => 'EquipmentItems',
+            //     'action' => 'index',
+            // ]);
+            // $redirect = $redirect;
+            // debug($redirect);
+
+            return $this->redirect('/equipment-items');
         }
         // display error if user submitted and authentication failed
         if ($this->request->is('post') && !$result->isValid()) {
