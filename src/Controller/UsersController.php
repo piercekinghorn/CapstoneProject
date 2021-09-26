@@ -36,16 +36,12 @@ class UsersController extends AppController
             Configure::write('signed_in', true);
             Configure::store('signed_in', 'default');
 
-            //Edit Note: For some reason attempting to login immediately after creating a new user would set the redirect to /users. Even after setting the redirect settings this was the case. As such a relative url was used instead.
+            $redirect = $this->request->getQuery('redirect', [
+                'controller' => 'EquipmentItems',
+                'action' => 'index',
+            ]);
 
-            // $redirect = $this->request->getQuery('redirect', [
-            //     'controller' => 'EquipmentItems',
-            //     'action' => 'index',
-            // ]);
-            // $redirect = $redirect;
-            // debug($redirect);
-
-            return $this->redirect('/equipment-items');
+            return $this->redirect($redirect);
         }
         // display error if user submitted and authentication failed
         if ($this->request->is('post') && !$result->isValid()) {
@@ -75,7 +71,10 @@ class UsersController extends AppController
         $user = $this->Users->get(1, [
             'contain' => [],
         ]);
+
+        //Checks if student staff or admin
         $this->Authorization->authorize($user);
+        
         $this->set(compact('users'));
     }
 
@@ -97,7 +96,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'login']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
