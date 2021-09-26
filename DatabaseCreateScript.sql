@@ -126,11 +126,13 @@ INSERT INTO users(username, password, is_staff, name, contact, campus)
 VALUES ('jack', 'test', false, 'jack', 'jack@gmail.com', 'Rockhampton')
 ;
 
-insert into lab_bookings values
-  (1, 1, 0099, 12097012, current_timestamp, current_timestamp, true),
-  (2, 2, 0099, 12097012, current_timestamp, current_timestamp, true),
-  (3, 7, 0100, 12087651, current_timestamp, current_timestamp, true),
-  (4, 9, 0100, 12087651, current_timestamp, current_timestamp, true),
-  (5, 11, 0101, 12009874, current_timestamp, current_timestamp, true),
-  (6, 13, 0101, 12097543, current_timestamp, current_timestamp, true)
+insert into lab_bookings (equipment_id, staff_id, student_id, booking_date, return_date, booking_status)
+values
+  (1, 0099, 12097012, current_timestamp, current_timestamp, true),
+  (2, 0099, 12097012, current_timestamp, current_timestamp, true),
+  (7, 0100, 12087651, current_timestamp, current_timestamp, true),
+  (9, 0100, 12087651, current_timestamp, current_timestamp, true),
+  (11, 0101, 12009874, current_timestamp, current_timestamp, true),
+  (13, 0101, 12097543, current_timestamp, current_timestamp, true)
 ;
+
