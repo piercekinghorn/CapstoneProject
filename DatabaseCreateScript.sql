@@ -73,7 +73,7 @@ insert into equipment_items values
   (9, 'Funmat HT 3D Printer (FDM)', 'Melbourne', '6.25','Cab1-S4', 'Multi Purpose', '3D printing', null, 'https://www.intamsys.com/funmat-ht-3d-printer/', 1),
   (10, 'Formbot Trex 3 (FDM)', 'Melbourne', '6.25','Cab4-S3', 'Multi Purpose', '3D printing', null, 'https://www.formbot3d.com/vivedino-t-rex-30-multi-function-big-size-3d-printer-p0062.html', 1),
   (11, 'Formlabs 2 (SLA)', 'Melbourne', '6.25','Cab1-S2', 'Multi Purpose', 'measurements', null, 'https://formlabs.com/3d-printers/form-2/', 1),
-  (12, 'Tenma Programmable Power Supply 0-30V 10Amps', 'Melbourne', '6.25','Cab2-S4', 'remote control, power', null,'http://www.farnell.com/datasheets/2805374.pdf', 1),
+  (12, 'Tenma Programmable Power Supply 0-30V 10Amps', 'Melbourne', '6.25','Cab2-S4', '','remote control, power', null,'http://www.farnell.com/datasheets/2805374.pdf', 1),
   (13, 'FESTO / LabVolt 8006 Power & Machines Trainers (qty 3)', 'Melbourne', '6.25','Cab3-S5', 'Electrical', 'power', null,'https://www.labvolt.com/solutions/6_electricity_and_new_energy/59-8006-10_computer_assisted_0_2_kw_electromechanical_training_system', 1),
   (14, 'Oscilloscopes', 'Rockhampton', 'ROK 28/2.13','Cab1-S2', 'Multi Purpose', 'GUI, electrical signal', null, 'Standard lab induction', 1),
   (15, 'Oscillators', 'Rockhampton', 'ROK 28/2.13','Cab2-S1', 'Multi Purpose', 'power, current conversion', null, 'Standard lab induction', 1),
