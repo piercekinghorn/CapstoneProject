@@ -60,19 +60,6 @@ create table lab_bookings
   return_date TIMESTAMP not null,
   booking_status boolean default false not null
 );
-create table equipment_items
-(
-  equipment_id SERIAL primary key,
-  equipment_name varchar not null,
-  equipment_campus varchar not null,
-  equipment_lab varchar not null,
-  equipment_location varchar not null,
-  equipment_discipline varchar null,
-  equipment_details varchar null,
-  equipment_media varchar null, 
-  equipment_whs varchar null,
-  equipment_status int not null
-);
 
 insert into equipment_items (equipment_name, equipment_campus, equipment_lab, equipment_location, equipment_discipline,
 equipment_details, equipment_media, equipment_whs, equipment_status) 

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\ORM\TableRegistry;
+
 /**
  * Labbooking Controller
  *
@@ -55,14 +57,25 @@ class LabBookingsController extends AppController
             $this->Flash->error(__('Your lab booking could not be saved. Please, try again.'));
         }
 
+        $options = array();
+
         if ($this->request->is('get')) {
+            $this->Users = TableRegistry::get('Users');
+
+            $query = $this->Users->find('all')
+                        ->where(['Users.is_staff =' => true]);
+
+            foreach ($query as $row) {
+                $options[$row->staff_id] = $row->name;
+            }
+
             $labBookings->equipment_id = $this->request->getQuery('equipment_id');
-            $labBookings->staff_id = $this->request->getQuery('staff_id');
             $labBookings->student_id = $this->request->getQuery('student_id');
             $labBookings->booking_date = $this->request->getQuery('booking_date');
             $labBookings->return_date = $this->request->getQuery('return_date');
         }
         $this->set(compact('labBookings'));
+        $this->set(compact('options'));
     }
 
     public function edit($id = null)
@@ -98,7 +111,7 @@ class LabBookingsController extends AppController
                 }
             }
 
-            $this->Flash->error(__('The return date can not be before the booking date.'));
+            $this->Flash->error(__('The return date cannot be before the booking date.'));        
         }
         $this->set(compact('labBookings'));
     }

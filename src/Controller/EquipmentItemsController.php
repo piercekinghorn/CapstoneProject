@@ -31,7 +31,6 @@ class EquipmentItemsController extends AppController
         $this->Authorization->authorize($labBookings);
 
         $labBookings->equipment_id = $id;
-        $labBookings->staff_id = 0;
         $labBookings->student_id = $this->request->getAttribute('identity')->getStudentID();
         $labBookings->booking_date = FrozenTime::tomorrow()->toDateTimeString();
         $labBookings->return_date = FrozenTime::tomorrow()->addHour()->toDateTimeString();
