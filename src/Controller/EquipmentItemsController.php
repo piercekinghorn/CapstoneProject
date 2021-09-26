@@ -242,8 +242,6 @@ class EquipmentItemsController extends AppController
     }
 
     public function deleteMedia($id = null) {
-        // The delete function now unlists the equipment item rather then deleting it.
-        // The index page only shows equipment that have a status of 1, pressing delete sets it to zero.
         //$this->Authorization->skipAuthorization();
 
         $this->request->allowMethod(['post', 'delete']);

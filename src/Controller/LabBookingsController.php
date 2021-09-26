@@ -91,8 +91,14 @@ class LabBookingsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
                 }
-            }                   
-            $this->Flash->error(__('Your lab booking could not be saved. Please, try again.'));
+                else
+                {
+                $this->Flash->error(__('Your lab booking could not be saved. Please, try again.'));
+
+                }
+            }
+
+            $this->Flash->error(__('The return date can not be before the booking date.'));
         }
         $this->set(compact('labBookings'));
     }
