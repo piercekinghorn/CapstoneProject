@@ -90,7 +90,16 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
 
             ->add(new AuthenticationMiddleware($this))
 
-            ->add(new AuthorizationMiddleware($this))
+            ->add(new AuthorizationMiddleware($this, [
+                'unauthorizedHandler' => [
+                    'className' => 'Authorization.Redirect',
+                    'url' => '/users/logout',
+                    'queryParam' => 'redirectUrl',
+                    'exceptions' => [
+                        \Authorization\Exception\ForbiddenException::class,
+                    ],
+                ],
+            ]))
 
             ->add(new BodyParserMiddleware());
 
