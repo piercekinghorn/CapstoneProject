@@ -9,7 +9,7 @@ create table equipment_items
   equipment_location varchar not null,
   equipment_discipline varchar null,
   equipment_details varchar null,
-  equipment_media varchar null, 
+  equipment_media varchar null,
   equipment_whs varchar null,
   equipment_status int not null
 );
@@ -62,7 +62,7 @@ create table lab_bookings
 );
 
 insert into equipment_items (equipment_name, equipment_campus, equipment_lab, equipment_location, equipment_discipline,
-equipment_details, equipment_media, equipment_whs, equipment_status) 
+equipment_details, equipment_media, equipment_whs, equipment_status)
 values
   ('Automatic Level', 'Cairns', 'ROK 28/LG.01', 'Cab1-S4', 'Civil', 'leveling', null, null, 1),
   ('Automatic Level tripod', 'Cairns', 'ROK 28/LG.01', 'Cab1-S2', 'Civil', 'leveling', null, null, 1),
@@ -138,4 +138,3 @@ values
   (11, 0101, 12009874, current_timestamp, current_timestamp, true),
   (13, 0101, 12097543, current_timestamp, current_timestamp, true)
 ;
-

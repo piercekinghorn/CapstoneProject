@@ -3,31 +3,31 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\EquipmentItems[]|\Cake\Collection\CollectionInterface $equipmentItems
  */
+ $this->Html->scriptStart(['block' => true]);
+ echo "var modal = document.getElementById('modalDiv');
 
-$this->Html->scriptStart(['block' => true]);
-echo "
-var modal = document.getElementById('myModal');
+ var show = document.getElementsByClassName('modal-link');
 
-var btn = document.getElementById('myBtn');
+ var span = document.getElementsByClassName('close')[0];
 
-var span = document.getElementsByClassName('close')[0];
-
-btn.onclick = function() {
-  modal.style.display = 'block';
-}
-
-span.onclick = function() {
-  modal.style.display = 'none';
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = 'none';
+for (var i=0; i < show.length; i++) {
+  show[i].onclick = function() {
+    modal.style.display = 'block';
+    return i;
   }
-}";
-$this->Html->scriptEnd()
-?>
+}
 
+ span.onclick = function() {
+   modal.style.display = 'none';
+ }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+ }";
+ $this->Html->scriptEnd()
+ ?>
 
 <!-- Filter By Name -->
 <h3>Search for Equipment</h3>
@@ -77,16 +77,29 @@ $this->Html->scriptEnd()
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $equipmentItems->equipment_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $equipmentItems->equipment_id]) ?>
-                                <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id])?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id)])?>
-                            </td>  
+                                <?php
+                                if ($equipmentItems->equipment_whs == ''){
+                                echo $this->form->postLink(__('Book'),  ['action' => 'book']);}
+                                else {echo $this->Form->postLink(__('Book'), ['action' => 'book'], ['confirm' => __("Have you completed the required induction for {0}?\n{1}", $equipmentItems->equipment_name, $equipmentItems->equipment_whs)]);} ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete {0}?', $equipmentItems->equipment_name)])?>
+                            </td>
                         </tr>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
+    <!-- Booking Modal -->
+    <div id="modalDiv" class="modal">
 
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Have you completed Lab Induction for <?= $equipmentItems->equipment_name?>?<br><?= $equipmentItems->equipment_whs?><br></p>
+        <?= $this->Form->postLink(__('Book'), ['action' => 'book', $equipmentItems->equipment_id], ['class' => 'button'])?>
+      </div>
+
+    </div>
     <!--
     <div>
         <?php

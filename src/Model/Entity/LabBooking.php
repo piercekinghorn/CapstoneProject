@@ -15,6 +15,7 @@ class LabBooking extends Entity
         'booking_date' => true,
         'return_date' => true,
         'booking_status' => true,
+        'booking_induction' => true,
     ];
 
     public function getEquipmentName() {
