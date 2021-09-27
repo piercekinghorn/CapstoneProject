@@ -11,7 +11,7 @@
             <?= $this->Form->postLink(
                 __('Delete Item'),
                 ['action' => 'delete', $equipmentItems->equipment_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id), 'class' => 'side-nav-item']
+                ['confirm' => __('Are you sure you want to delete {0}?', $equipmentItems->equipment_name), 'class' => 'side-nav-item']
             ) ?>
             <?= $this->Html->link(__('Equipment List'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
@@ -32,7 +32,7 @@
                     echo $this->Form->control('equipment_whs', ['placeholder' => 'Not Required', 'label' =>'Work Health & Safety']);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Edit')) ?>  
+            <?= $this->Form->button(__('Edit')) ?>
             <?= $this->Form->end() ?>
             <?= $this->Form->postLink(__('Delete Media'), ['action' => 'deleteMedia', $equipmentItems->equipment_id])?>
         </div>

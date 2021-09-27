@@ -3,15 +3,23 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\EquipmentItems $equipmentItems
  */
+ use Cake\Core\Configure;
 ?>
 <div class="row">
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Options') ?></h4>
-            <?= $this->Html->link(__('Edit Item'), ['action' => 'edit', $equipmentItems->equipment_id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Item'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmentItems->equipment_id), 'class' => 'side-nav-item']) ?>
+
+            <?php
+            Configure::restore('signed_in', 'default');
+            Configure::restore('is_staff', 'default');
+            $is_staff = Configure::read('is_staff');
+                if ($is_staff == true) {
+                  echo $this->Html->link(__('New Equipment'), ['action' => 'add'], ['class' => 'side-nav-item']);
+                  echo $this->Html->link(__('Edit Item'), ['action' => 'edit', $equipmentItems->equipment_id], ['class' => 'side-nav-item']);
+                  echo $this->Form->postLink(__('Delete Item'), ['action' => 'delete', $equipmentItems->equipment_id], ['confirm' => __('Are you sure you want to delete {0}?', $equipmentItems->equipment_name), 'class' => 'side-nav-item']);
+                }?>
             <?= $this->Html->link(__('Equipment List'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Equipment'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
