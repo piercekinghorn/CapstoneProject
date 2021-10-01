@@ -13,24 +13,20 @@ Server IP: 54.206.103.30
 8. Any changes to the database creation script can be made to the DatabaseCreateScript.sql
 9. For local testing run the "docker compose down" command and open docker. Delete any instances and containers that are saved in docker.
 10. Re-run the "docker compose up" command to confirm changes are working.
-11. 9. Database and any other changes are automatically deployed to the server when a change is pushed to the repositry main branch.
+11. Database and any other changes are automatically deployed to the server when a change is pushed to the repositry main branch.
 
 ### Resources Directory
 
-[Documentation](https://cqu365-my.sharepoint.com/:f:/g/personal/jack_rolfe_cqumail_com/EtysiLwBA1NOqG0zRGE6OJMBX_W6052omkSvq99B6_lfXA?e=rdQcFr) (Reports, design specs etc)
+[Documentation](https://cqu365-my.sharepoint.com/:f:/g/personal/jack_rolfe_cqumail_com/EugQTUKtNW9OhvjBi3NUpzwBkEsBkE3JIppOnuQXhHHrEQ?e=nacJne) (Reports, design specs etc)
 
-[Sprint Review Videos](https://drive.google.com/drive/u/1/folders/13LeweaKCsdYLkrc6tjZeUculwS8SzRbZ) (Weekly sprint reviews)
-
-[Project Boards](https://github.com/RJGY/capstoneproject/projects/3) 
+[Project Boards](https://github.com/RJGY/capstoneproject/projects/2) 
 
 [Source code](https://github.com/RJGY/capstoneproject)
-
-(Sprint kanban boards)
 ___
 
 ### Project Team
-- [Reese Gunardi](https://github.com/RJGY)
-- [Myles Renaud](https://google.com.au "Link not set") needs to be set
-- [Pierce Kinghorn](https://github.com/PierceKH) 
-- Jack Rolfe
-- Nick 
+- Reese Gunardi - 12109627
+- Myles Renaud - 12091381
+- Pierce Kinghorn - 12091381
+- Jack Rolfe - 12017976
+- Nick Kelly - 0194134
